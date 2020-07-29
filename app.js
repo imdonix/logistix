@@ -62,3 +62,5 @@ app.use(bodyParser.json());
 
 app.get('/version', (req, res) => {res.send(VERSION)})
 app.get('/levels', (req, res) => {res.send(LEVELSAMPLE)})
+
+app.listen(PORT, () => console.log("Server started. " + PORT))
