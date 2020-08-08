@@ -6,7 +6,6 @@ router.post('/', (req, res) =>
 {
     var mail = req.body.email;
 
-
     db.query(find(mail), (player) =>
     {
         if(player.rows.length > 0)

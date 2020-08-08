@@ -18,7 +18,6 @@ module.exports =
         return pool.query(query, (err, res) => 
         {
           if(err) throw err;
-          const duration = Date.now() - start
           callback(res)
         })
       }
