@@ -8,16 +8,6 @@ router.post('/', function (req, res)
     var mail = req.body.email;
     var resoult = req.body.resoult;
 
-
-    /*
-        [JsonProperty("mapid")] public int Map;
-        [JsonProperty("iswin")] public bool IsWin;
-        [JsonProperty("score")] public int Score;
-        [JsonProperty("lostboxes")] public int LostBoxes;
-        [JsonProperty("time")] public int PlayTime;
-        [JsonProperty("iron")] public int Iron;
-        [JsonProperty("wood")] public int Wood;
-    */
     if(resoult.iswin)
     {
         db.query(updatePlayerStat(mail, resoult.mapid, resoult.iron, resoult.wood), 
@@ -41,8 +31,8 @@ function updatePlayerStat(mail, mapid, iron, wood)
 function uploadResoult(mail, resoult)
 {
     return {    
-        text: 'INSERT INTO resoults (mapid, iswin, score, lostboxes, time, email ) VALUES ($1, $2, $3, $4, $5, $6)',
-        values: [resoult.mapid, resoult.iswin, resoult.score, resoult.lostboxes, resoult.time, mail],
+        text: 'INSERT INTO resoults (mapid, iswin, score, lostboxes, time, email, usedmultiplies) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+        values: [resoult.mapid, resoult.iswin, resoult.score, resoult.lostboxes, resoult.time, mail, resoult.usedmultiplies],
     }
 }
 
