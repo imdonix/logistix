@@ -6,7 +6,11 @@ var router = express.Router()
 router.post('/', function (req, res) 
 {
     var mail = req.body.email;
-    var resoult = req.body.resoult;
+    var resoult = JSON.parse(req.body.resoult);
+
+    console.log(req.body.resoult["mapid"]);
+    console.log(resoult);
+
 
     if(resoult.iswin)
     {
@@ -14,7 +18,7 @@ router.post('/', function (req, res)
         (_) => console.log("[Resoult] Player updated: " + mail))
     }
 
-    db.query(uploadResoult(mail, resoult), 
+    db.query(uploadResoult(mail, resoult.mapid, resoult.iswin, resoult.score, resoult.lostboxes, resoult.time, resoult.usedmultiplies), 
     (_) => console.log("[Resoult] New resoult added: " + mail + " | " + resoult.mapid))
 
     db.query(find(mail), (player) => res.send(player.rows[0]))    
@@ -28,11 +32,11 @@ function updatePlayerStat(mail, mapid, iron, wood)
     }
 }
 
-function uploadResoult(mail, resoult)
+function uploadResoult(mail, mapid, iswin, score, lostboxes, time, usedmultiplies)
 {
     return {    
         text: 'INSERT INTO resoults (mapid, iswin, score, lostboxes, time, email, usedmultiplies) VALUES ($1, $2, $3, $4, $5, $6, $7)',
-        values: [resoult.mapid, resoult.iswin, resoult.score, resoult.lostboxes, resoult.time, mail, resoult.usedmultiplies],
+        values: [mapid, iswin, score, lostboxes, time, mail, usedmultiplies],
     }
 }
 
