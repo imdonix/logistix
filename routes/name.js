@@ -11,7 +11,7 @@ router.post('/', function (req, res)
     db.query(rename(email,name), 
     (player) =>
     { 
-        console.log("Name change: " + email + " -> " + name)
+        console.log("[Name] change: " + email + " -> " + name)
         res.send(player.rows[0]) 
     }
     )

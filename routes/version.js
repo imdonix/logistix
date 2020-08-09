@@ -5,7 +5,7 @@ const VERSION = { "api" : "1.0", "client" : "1.0" }
 
 router.get('/', function (req, res) 
 {
-    console.log("Versions requested")
+    console.log("[Version] requested")
     res.json(VERSION);
 })
 

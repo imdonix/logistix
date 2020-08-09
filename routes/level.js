@@ -16,7 +16,7 @@ var Levels =
 
 router.get('/', function (req, res) 
 {
-    console.log("Levels requested")
+    console.log("[Level] requested")
     res.json(Levels);
 })
 

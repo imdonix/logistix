@@ -10,12 +10,12 @@ router.post('/', (req, res) =>
     {
         if(player.rows.length > 0)
         {
-            console.log("Player requested: " + mail);
+            console.log("[Player] requested: " + mail);
             res.send(player.rows[0]);
         }
         else
         {
-            console.log("New palyer inicialized: " + mail);
+            console.log("[Player] New inicialized: " + mail);
             db.query(construct(mail), (newplayer,err) => 
             {
                 res.send(newplayer.rows[0]);
