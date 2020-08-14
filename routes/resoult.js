@@ -8,10 +8,6 @@ router.post('/', function (req, res)
     var mail = req.body.email;
     var resoult = JSON.parse(req.body.resoult);
 
-    console.log(req.body.resoult["mapid"]);
-    console.log(resoult);
-
-
     if(resoult.iswin)
     {
         db.query(updatePlayerStat(mail, resoult.mapid, resoult.iron, resoult.wood), 

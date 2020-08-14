@@ -22,5 +22,3 @@ module.exports =
         })
       }
 }
-
-//"INSERT INTO resoults (id, iswin, score, lostboxes) VALUES (0, true, 0, 0);"
