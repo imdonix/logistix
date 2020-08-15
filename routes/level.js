@@ -67,15 +67,86 @@ var Levels =
         [
             {
                 id: 5,
-                unlocks: [1],
+                unlocks: [4],
                 name: "fifth Job",
                 reward_wood: 510,
                 reward_iron: 100,
-                boxes: [2,2,2,2,2,2,2,2,2,2,2],
+                boxes: [1,2,1,2,1,2,1,2,1,2,1],
                 maxlost: 3
             }
         ]
-
+    },
+    {
+        color: "red",
+        levels:
+        [
+            {
+                id: 6,
+                unlocks: [5],
+                name: "fifth Job",
+                reward_wood: 510,
+                reward_iron: 100,
+                boxes: [1,1,1,0,0,0,2,2,1,0,2],
+                maxlost: 3
+            }
+        ]
+    },
+    {
+        color: "red",
+        levels:
+        [
+            {
+                id: 7,
+                unlocks: [6],
+                name: "fifth Job",
+                reward_wood: 510,
+                reward_iron: 100,
+                boxes: [1,1,1,0,0,0,2,2,1,0,2],
+                maxlost: 3
+            },
+            {
+                id: 8,
+                unlocks: [6],
+                name: "fifth Job",
+                reward_wood: 510,
+                reward_iron: 100,
+                boxes: [1,1,1,1,1,1,1,1,1,1,2],
+                maxlost: 3
+            },
+            {
+                id: 9,
+                unlocks: [6],
+                name: "fifth Job",
+                reward_wood: 510,
+                reward_iron: 100,
+                boxes: [1,1,1,0,0,0,2,2,1,0,2],
+                maxlost: 3
+            },
+            {
+                id: 10,
+                unlocks: [6],
+                name: "fifth Job",
+                reward_wood: 510,
+                reward_iron: 100,
+                boxes: [1,2,2,2,2,2,2,2,1,0,2],
+                maxlost: 3
+            }
+        ]
+    },
+    {
+        color: "red",
+        levels:
+        [
+            {
+                id: 11,
+                unlocks: [7,8,9,10],
+                name: "fifth Job",
+                reward_wood: 510,
+                reward_iron: 100,
+                boxes: [1,1,1,0,0,0,2,2,1,0,2,1,1,1,1,0,0,0,1,0,1,0,1],
+                maxlost: 5
+            }
+        ]
     }
 ]
 
