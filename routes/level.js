@@ -60,6 +60,21 @@ var Levels =
                 maxlost: 3
             }
         ]
+    },
+    {
+        color: "red",
+        levels:
+        [
+            {
+                id: 5,
+                unlocks: [1],
+                name: "fifth Job",
+                reward_wood: 510,
+                reward_iron: 100,
+                boxes: [2,2,2,2,2,2,2,2,2,2,2],
+                maxlost: 3
+            }
+        ]
 
     }
 ]

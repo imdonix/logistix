@@ -11,14 +11,25 @@ router.post('/', function (req, res)
     if(resoult.iswin)
     {
         db.query(updatePlayerStat(mail, resoult.mapid, resoult.iron, resoult.wood), 
-        (_) => console.log("[Resoult] Player updated: " + mail))
+        (_) => 
+        {
+            console.log("[Resoult] Player updated: " + mail)
+            sendPlayeBack(mail, res);
+        })
+    }
+    else
+    {
+        sendPlayeBack(mail, res)
     }
 
     db.query(uploadResoult(mail, resoult.mapid, resoult.iswin, resoult.score, resoult.lostboxes, resoult.time, resoult.usedmultiplies), 
     (_) => console.log("[Resoult] New resoult added: " + mail + " | " + resoult.mapid))
-
-    db.query(find(mail), (player) => res.send(player.rows[0]))    
 })
+
+function sendPlayeBack(mail, res)
+{
+    db.query(find(mail), (player) => res.send(player.rows[0]));
+}
 
 function updatePlayerStat(mail, mapid, iron, wood)
 {
