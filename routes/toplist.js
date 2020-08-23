@@ -16,7 +16,7 @@ router.get('/:mapID', function (req, res)
 function find(id)
 {
     return {
-        text: 'SELECT name, premium, MAX(score) as score FROM resoults, users WHERE users.email = resoults.email AND mapid = $1 AND iswin GROUP BY name, premium ORDER BY MAX(score) DESC',
+        text: 'SELECT users.email, name, premium, MAX(score) as score FROM resoults, users WHERE users.email = resoults.email AND mapid = $1 AND iswin GROUP BY users.email, name, premium ORDER BY MAX(score) DESC',
         values: [id],
     }
 }
