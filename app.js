@@ -9,6 +9,7 @@ const version = require('./routes/version')
 const player = require('./routes/palyer')
 const name = require('./routes/name')
 const resoult = require('./routes/resoult')
+const toplist = require('./routes/toplist')
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,5 +19,6 @@ app.use('/levels', level)
 app.use('/player', player)
 app.use('/name', name)
 app.use('/resoult', resoult)
+app.use('/toplist', toplist)
 
 app.listen(PORT, () => console.log("Server started. " + PORT))
