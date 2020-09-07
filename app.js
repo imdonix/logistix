@@ -20,5 +20,6 @@ app.use('/player', player)
 app.use('/name', name)
 app.use('/resoult', resoult)
 app.use('/toplist', toplist)
+app.get('/privacy', (req, res) => res.sendFile(path.join(__dirname + '/public/privacy.html')))
 
 app.listen(PORT, () => console.log("Server started. " + PORT))
