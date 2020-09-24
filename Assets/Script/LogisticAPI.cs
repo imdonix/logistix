@@ -66,7 +66,7 @@ public class LogisticAPI : WebRequestEngine<LogisticAPI>
     private JObject CreateAuthObject()
     {
         JObject obj = new JObject();
-        obj.Add("email", Player.Instance.GetEmail());
+        obj.Add("email", Player.Instance.GetUserID());
         return obj;
     }
 }

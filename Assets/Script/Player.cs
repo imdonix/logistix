@@ -7,11 +7,11 @@ using UnityEngine;
 
 public class Player : Singleton<Player>
 {
-    private const string MAIL_KEY = "key";
+    private const string ID_KEY = "key";
 
     [Header("View")]
     [SerializeField] private PlayerModel Model;
-    [SerializeField] private string Email;
+    [SerializeField] private string UserID;
     [SerializeField] private bool IsLoggedIn;
 
     #region UNITY
@@ -19,7 +19,7 @@ public class Player : Singleton<Player>
     protected override void Awake()
     {
         base.Awake();
-        LoadEmail();
+        LoadUser();
     }
 
     #endregion
@@ -31,9 +31,9 @@ public class Player : Singleton<Player>
         return IsLoggedIn;
     }
 
-    public string GetEmail()
+    public string GetUserID()
     {
-        return Email;
+        return UserID;
     }
 
     public PlayerModel GetModel()
@@ -48,8 +48,8 @@ public class Player : Singleton<Player>
     /// <param name="error">callback when error</param>
     public void Load(string email, Action error)
     {
-        PlayerPrefs.SetString(MAIL_KEY, email);
-        LoadEmail();
+        PlayerPrefs.SetString(ID_KEY, email);
+        LoadUser();
 
         LogisticAPI.Instance.GetPlayer(model => Refresh(model), 
         err =>
@@ -97,11 +97,11 @@ public class Player : Singleton<Player>
 
     #endregion
 
-    private void LoadEmail()
+    private void LoadUser()
     {
-        IsLoggedIn = PlayerPrefs.HasKey(MAIL_KEY);
+        IsLoggedIn = PlayerPrefs.HasKey(ID_KEY);
         if (IsLoggedIn)
-            Email = PlayerPrefs.GetString(MAIL_KEY);
+            UserID = PlayerPrefs.GetString(ID_KEY);
     }
 
     private bool IsNameValid(string name, out string error)
