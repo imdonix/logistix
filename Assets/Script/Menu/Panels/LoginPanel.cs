@@ -16,6 +16,8 @@ public class LoginPanel : MenuPanel
         Panel.SetActive(false);
     }
 
+    protected override void OnClose() {}
+
     private void StartRequestingPlayer(string userID)
     {
         Panel.SetActive(false);

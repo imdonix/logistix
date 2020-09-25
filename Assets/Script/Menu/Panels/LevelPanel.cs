@@ -28,6 +28,11 @@ public class LevelPanel : MenuPanel
         ShowTree();
     }
 
+    protected override void OnClose() 
+    {
+        Clear();
+    }
+
     public override void Back()
     {
         Menu.Instance.Swich(Menu.Instance.Main);
@@ -35,7 +40,6 @@ public class LevelPanel : MenuPanel
 
     private void ShowTree()
     {
-        Clear();
         ShowLevels();
         ShowDep();
     }

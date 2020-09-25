@@ -2,11 +2,16 @@
 using System;
 using UnityEngine;
 
-public class RecordModel
+public class RecordModel : IComparable<RecordModel>
 { 
     [JsonProperty("name")] public string Name;
     [JsonProperty("premium")] public bool Premium;
     [JsonProperty("score")] public int Score;
+
+    public int CompareTo(RecordModel other)
+    {
+        return other.Score - Score;
+    }
 
     public override bool Equals(object obj)
     {
