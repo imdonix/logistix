@@ -143,8 +143,17 @@ var Levels =
                 name: "fifth Job",
                 reward_wood: 510,
                 reward_iron: 100,
-                boxes: [1,1,1,0,0,0,2,2,1,0,2,1,1,1,1,0,0,0,1,0,1,0,1],
-                maxlost: 5
+                boxes: [1,1,1,0,0,0,2,2,1,0,2,1],
+                maxlost: 3
+            },
+            {
+                id: 12,
+                unlocks: [7,8,9,10],
+                name: "blabla Job",
+                reward_wood: 999,
+                reward_iron: 999,
+                boxes: [3,3,3,4,4,4,5,5,5],
+                maxlost: 2
             }
         ]
     }
