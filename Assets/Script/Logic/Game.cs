@@ -85,7 +85,7 @@ public class Game : MonoBehaviour
             Iron = Iron,
             Wood = Wood,
             Time = Mathf.RoundToInt(PlayTime),
-            Email = Player.Instance.GetEmail()
+            Email = Player.Instance.GetUserID()
         };
     }
 

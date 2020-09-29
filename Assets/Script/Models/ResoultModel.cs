@@ -17,11 +17,16 @@ public class ResoultModel
 
     public override string ToString()
     {
-        return $"[ID:{ID} | Winned:{IsWin} | LostB:{LostBoxes} | Score:{Score} | Time:{Time}]";
+        return $"[ID:{ID} | {GetResoultString()} | LostB:{LostBoxes} | Score:{Score} | Time:{Time}]";
     }
 
     public static implicit operator JToken(ResoultModel mod) 
     {
         return JsonConvert.SerializeObject(mod);
+    }
+
+    private string GetResoultString() 
+    {
+        return IsWin ? "Win" : "Lose";
     }
 }

@@ -3,12 +3,13 @@
 class MainPanel : MenuPanel
 {
 
-	protected override void OnOpen()
-	{}
+	protected override void OnOpen() {}
 
-    #region UI
+	protected override void OnClose() {}
 
-    public void OnPlayButtonClick()
+	#region UI
+
+	public void OnPlayButtonClick()
 	{
 		Menu.Instance.Swich(Menu.Instance.Levels);
 	}

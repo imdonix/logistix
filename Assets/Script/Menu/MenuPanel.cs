@@ -18,11 +18,13 @@ public abstract class MenuPanel : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+        OnClose();
     }
 
     public virtual void Back() { }
 
     protected abstract void OnOpen();
 
+    protected abstract void OnClose();
 
 }

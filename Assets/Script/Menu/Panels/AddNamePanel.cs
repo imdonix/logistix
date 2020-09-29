@@ -14,8 +14,9 @@ class AddNamePanel : MenuPanel
     [SerializeField] private Button Button;
     [SerializeField] private Text Error;
 
-    protected override void OnOpen()
-    {}
+    protected override void OnOpen(){}
+
+    protected override void OnClose(){}
 
     public override void Back()
     { 

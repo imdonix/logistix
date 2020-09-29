@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Facebook.Unity;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class LoginPanel : MenuPanel
@@ -10,22 +11,18 @@ public class LoginPanel : MenuPanel
     [Header("DebugMode")]
     [SerializeField] private string DebugMail = string.Empty;
 
-    protected override void OnOpen()
-    {
-        /*
-        bool LoggedIn = Player.Instance.IsLogged();
-        Panel.SetActive(!LoggedIn);
-
-        if (LoggedIn)
-            StartRequestingPlayer(Player.Instance.GetEmail());
-        */
-    }
-
-    private void StartRequestingPlayer(string email)
+    protected override void OnOpen() 
     {
         Panel.SetActive(false);
-        Test.text = $"Google sync was succesfull: {email}";
-        Player.Instance.Load(email, OnUnsuccesfull);
+    }
+
+    protected override void OnClose() {}
+
+    private void StartRequestingPlayer(string userID)
+    {
+        Panel.SetActive(false);
+        Test.text = $"Google sync was succesfull: {userID}";
+        Player.Instance.Load(userID, OnUnsuccesfull);
     }
 
     private void OnUnsuccesfull()
@@ -53,5 +50,15 @@ public class LoginPanel : MenuPanel
     }
 
     #endregion
+
+    public void AfterInitCompletetd()
+    {
+        SingIn.Instance.GetLoginStatus(res =>
+        {
+            Panel.SetActive(res.Failed);
+            if (!res.Failed)
+                StartRequestingPlayer(res.AccessToken.UserId);
+        });
+    }
 
 }

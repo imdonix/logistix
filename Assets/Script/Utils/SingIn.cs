@@ -19,8 +19,11 @@ public class SingIn : Singleton<SingIn>
 
     private void InitCallback()
     {
-        if (FB.IsInitialized)
+        if (FB.IsInitialized) 
+        {
             FB.ActivateApp();
+            ((LoginPanel)Menu.Instance.Login).AfterInitCompletetd();
+        }
         else
             Debug.LogError("Failed to Initialize the Facebook SDK");
     }
@@ -30,32 +33,22 @@ public class SingIn : Singleton<SingIn>
         Debug.Log(isGameShown);
     }
 
-    public void InvokeLoginScreen(Action<string> email, Action<string> error)
+    public void GetLoginStatus(Action<ILoginStatusResult> succesfull) 
     {
-        var perms = new List<string>() { "public_profile", "email" };
+        FB.Android.RetrieveLoginStatus(res => succesfull.Invoke(res));
+    }
+
+    public void InvokeLoginScreen(Action<string> token, Action<string> error)
+    {
+        var perms = new List<string>() {"public_profile"};
         FB.LogInWithReadPermissions(perms, AuthCallback);
 
         void AuthCallback(ILoginResult result)
         {
             if (FB.IsLoggedIn)
-            {
-                // AccessToken class will have session details
-                var aToken = AccessToken.CurrentAccessToken;
-                // Print current access token's User ID
-                Debug.Log(aToken.UserId);
-                // Print current access token's granted permissions
-                foreach (string perm in aToken.Permissions)
-                {
-                    Debug.Log(perm);
-                }
-
-                email.Invoke(aToken.UserId);
-            }
+                token.Invoke(AccessToken.CurrentAccessToken.UserId);
             else
-            {
-                Debug.Log("User cancelled login");
                 error.Invoke("User cancelled login");
-            }
         }
     }
 

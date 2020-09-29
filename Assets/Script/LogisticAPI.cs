@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 
 public class LogisticAPI : WebRequestEngine<LogisticAPI>
 {
@@ -29,9 +30,9 @@ public class LogisticAPI : WebRequestEngine<LogisticAPI>
     }
 
     public void GetToplist(
-    int id,
-    Action<RecordModel[]> response,
-    Action<string> error)
+        int id,
+        Action<List<RecordModel>> response,
+        Action<string> error)
     {
         Send($"toplist/{id}", response, error);
     }
@@ -66,7 +67,7 @@ public class LogisticAPI : WebRequestEngine<LogisticAPI>
     private JObject CreateAuthObject()
     {
         JObject obj = new JObject();
-        obj.Add("email", Player.Instance.GetEmail());
+        obj.Add("email", Player.Instance.GetUserID());
         return obj;
     }
 }

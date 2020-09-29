@@ -42,7 +42,7 @@ public class GameManager : Singleton<GameManager>
 
     public bool IsDebugMode()
     {
-        return DebugMode;
+        return DebugMode || IsRunningEditorMode();
     }
 
     public LevelMap GetMap()
@@ -74,8 +74,9 @@ public class GameManager : Singleton<GameManager>
         Current.StartGame(GameUpdate, GameEnd);   
     }
 
-
     #endregion
+
+    #region PRIVATE
 
     private void CreateShip()
     {
@@ -88,16 +89,23 @@ public class GameManager : Singleton<GameManager>
             res =>
             {
                 try
-                { 
+                {
                     Map = LevelMap.Create(res);
                     Debug.Log($"[LevelMap] Level map filled with {Map.CountLevels()}");
                 }
-                catch (IllegalLevelMapExeption ex) 
+                catch (IllegalLevelMapExeption ex)
                 { Debug.LogError(ex); };
             },
             err => Debug.LogError(err)
             );
     }
+
+    private bool IsRunningEditorMode()
+    {
+        return Application.platform == RuntimePlatform.WindowsEditor;
+    }
+
+    #endregion
 
     #region GAME_EVENTS
 

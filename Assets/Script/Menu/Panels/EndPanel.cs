@@ -43,6 +43,11 @@ public class EndPanel : MenuPanel
         Status.text = "Loading";
     }
 
+    protected override void OnClose()
+    {
+        ClearComps();
+    }
+
     private void Update()
     {
         rotation += 480 * Time.deltaTime;
@@ -162,9 +167,12 @@ public class EndPanel : MenuPanel
         LogisticAPI.Instance.GetToplist(resoult.ID,
             toplist =>
             {
+                if (resoult.IsWin)
+                    AddResoultToList(toplist);
+
                 GenerateToplist(toplist);
-                
-                if (toplist.Length > 0) 
+
+                if (toplist.Count > 0) 
                 {
                     if (toplist[0].Score < resoult.Score)
                         Status.text = $"New highscore!";
@@ -181,14 +189,26 @@ public class EndPanel : MenuPanel
             });
     }
 
-    private void GenerateToplist(RecordModel[] toplist)
+    private void AddResoultToList(List<RecordModel> toplist)
     {
-        ClearComps();
-        for (int i = 0; i < toplist.Length && i < TOP; i++)
+        var player = Player.Instance.GetModel();
+        RecordModel model = toplist.Find(r => r.Name.Equals(player.Name));
+        if (ReferenceEquals(model, null))
+            toplist.Add(new RecordModel() { Name = player.Name, Premium = player.Premium, Score = resoult.Score });
+        else
+            if(model.Score < resoult.Score)
+                model.Score = resoult.Score;
+
+        toplist.Sort();
+    }
+
+    private void GenerateToplist(List<RecordModel> toplist)
+    {
+        for (int i = 0; i < toplist.Count && i < TOP; i++)
         {
             RecordComponent comp = Instantiate(Record, Toplist);
             comp.gameObject.name = $"${i+1}";
-            comp.Get().localPosition = new Vector2(0, i * RECORD_SIZE + START);
+            comp.Get().localPosition = new Vector2(0, -i * RECORD_SIZE + START);
             comp.Set(i+1,toplist[i]);
             comps.Add(comp);
         }
