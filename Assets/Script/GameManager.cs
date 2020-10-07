@@ -55,6 +55,11 @@ public class GameManager : Singleton<GameManager>
         return Ship;
     }
 
+    public Game GetCurrent()
+    {
+        return Current;
+    }
+
     public Box GetBox(int id)
     {
         int i = 0;
@@ -111,7 +116,7 @@ public class GameManager : Singleton<GameManager>
 
     private void GameUpdate()
     {
-
+        (Menu.Instance.InGame as InPanel).UpdateDropped();
     }
 
     private void GameEnd()

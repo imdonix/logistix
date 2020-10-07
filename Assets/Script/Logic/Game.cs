@@ -30,6 +30,7 @@ public class Game : MonoBehaviour
     private bool Win;
     private int Score;
     private float PlayTime;
+    private string Name;
 
     #region UNITY
 
@@ -44,7 +45,6 @@ public class Game : MonoBehaviour
         DeRegisterEvents();
         DestroyBoxes();
     }
-
 
     #endregion
 
@@ -63,13 +63,15 @@ public class Game : MonoBehaviour
 
     public void Touch()
     {
-        if (State == GameState.Drop)
-            Drop();
+        if(CanInteract())
+            if (State == GameState.Drop)
+                Drop();
     }
 
     public void Swipe(int direction)
     {
-        Debug.Log($"{direction}");
+        if (CanInteract())
+            Debug.Log($"{direction}");
         //TODO
     }
 
@@ -87,6 +89,21 @@ public class Game : MonoBehaviour
             Time = Mathf.RoundToInt(PlayTime),
             Email = Player.Instance.GetUserID()
         };
+    }
+
+    public string GetName()
+    {
+        return Name;
+    }
+
+    public int GetBoxesLeft()
+    {
+        return Inventory.Count;
+    }
+
+    public (int, int) GetLostAndMax()
+    {
+        return (CountLostBoxes(), Mistakes);
     }
 
     #endregion
@@ -220,6 +237,11 @@ public class Game : MonoBehaviour
         PlayTime += Time.deltaTime;
     }
 
+    private bool CanInteract()
+    {
+        return !(Menu.Instance.InGame as InPanel).IsInit;
+    }
+
     #endregion
 
     #region STATIC
@@ -234,6 +256,7 @@ public class Game : MonoBehaviour
         Game tmp = InitTemplate();
         tmp.BoxIDs = boxes;
         tmp.Score = 0;
+        tmp.Name = "test.";
         return tmp;
     }
 
@@ -244,6 +267,7 @@ public class Game : MonoBehaviour
         tmp.Mistakes = game.MaxLost;
         tmp.Iron = game.IronReward;
         tmp.Wood = game.WoodReward;
+        tmp.Name = game.Name;
         return tmp;
     }
         
