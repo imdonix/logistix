@@ -10,7 +10,7 @@ var Levels =
             {
                 id: 0,
                 unlocks: [],
-                name: "A fresh start"
+                name: "A fresh start",
                 reward_wood: 50,
                 reward_iron: 20,
                 boxes: [0, 0, 0, 0, 0, 0],
@@ -26,7 +26,7 @@ var Levels =
             {
                 id: 1,
                 unlocks: [0],
-                name: "Things start to work"
+                name: "Things start to work",
                 reward_wood: 50,
                 reward_iron: 25,
                 boxes: [1, 1, 0, 0, 0],
@@ -35,7 +35,7 @@ var Levels =
             {
                 id: 2,
                 unlocks: [0],
-                name: "Heavy supplies"
+                name: "Heavy supplies",
                 reward_wood: 10,
                 reward_iron: 40,
                 boxes: [1, 1, 1, 1, 1, 1, 1],
@@ -51,7 +51,7 @@ var Levels =
             {
                 id: 3,
                 unlocks: [1],
-                name: "Bouncy"
+                name: "Bouncy",
                 reward_wood: 60,
                 reward_iron: 30,
                 boxes: [0, 0, 0, 0, 0, 0, 3, 3, 3, 3],
@@ -60,7 +60,7 @@ var Levels =
             {
                 id: 4,
                 unlocks: [2],
-                name: "Important supplements"
+                name: "Important supplements",
                 reward_wood: 70,
                 reward_iron: 10,
                 boxes: [0, 0, 1, 1, 1, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
@@ -76,7 +76,7 @@ var Levels =
             {
                 id: 5,
                 unlocks: [3, 4],
-                name: "Small, but expensive"
+                name: "Small, but expensive",
                 reward_wood: 60,
                 reward_iron: 40,
                 boxes: [3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2],
@@ -92,7 +92,7 @@ var Levels =
             {
                 id: 6,
                 unlocks: [5],
-                name: "Tower"
+                name: "Tower",
                 reward_wood: 50,
                 reward_iron: 25,
                 boxes: [3, 3, 5, 5, 3, 3, 5, 5],
@@ -101,7 +101,7 @@ var Levels =
             {
                 id: 7,
                 unlocks: [5],
-                name: "For constuction... and a few tires"
+                name: "For constuction... and a few tires",
                 reward_wood: 60,
                 reward_iron: 70,
                 boxes: [3, 3, 5, 1, 5, 1],
@@ -117,7 +117,7 @@ var Levels =
             {
                 id: 8,
                 unlocks: [6],
-                name: "Car Enterprise"
+                name: "Car Enterprise",
                 reward_wood: 100,
                 reward_iron: 100,
                 boxes: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
@@ -126,7 +126,7 @@ var Levels =
             {
                 id: 9,
                 unlocks: [7],
-                name: "Big Deal"
+                name: "Big Deal",
                 reward_wood: 100,
                 reward_iron: 100,
                 boxes: [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5],
