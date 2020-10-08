@@ -27,6 +27,7 @@ public class LoginPanel : MenuPanel
 
     private void OnUnsuccesfull()
     {
+        Menu.Instance.Pop("Network error!", "Try again later.");
         Test.text = $"Cannot get the player from backend!";
         Panel.SetActive(true);
     }

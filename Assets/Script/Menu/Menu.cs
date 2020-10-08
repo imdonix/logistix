@@ -15,6 +15,9 @@ public class Menu : Singleton<Menu>
     [Header("Overlays")]
     [SerializeField] private MenuPanel Logo;
 
+    [Header("Utils")]
+    [SerializeField] private Popup Popup;
+
     private List<MenuPanel> Panels;
     private MenuPanel Opened;
 
@@ -46,8 +49,9 @@ public class Menu : Singleton<Menu>
 
     public void Pop(string header, string message)
     {
-        //todo
-        Debug.Log($"{header}, {message}");
+        Popup.Pop(header, message);
+
+        Debug.Log($"POPPED: {header}, {message}");
     }
 
     private void ClosePanels()

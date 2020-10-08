@@ -127,9 +127,8 @@ public class EndPanel : MenuPanel
         },
         err =>
         {
-            Debug.Log($"Resoult saved localy {resoult}");
             Debug.LogError("[Network] " + err);
-            //TODO store localy
+            Menu.Instance.Pop("You went offline.", "You can't get reward while you're offline.");
             Player.Instance.Refresh();
         });
     }
@@ -184,7 +183,7 @@ public class EndPanel : MenuPanel
             },
             error =>
             {
-                Debug.LogError($"Toplist cant be loaded! {error}");
+                Menu.Instance.Pop("You went offline.", "We can't get the toplist while you're offline.");
                 ToplistPanel.SetActive(false);
             });
     }

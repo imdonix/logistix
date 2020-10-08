@@ -1,11 +1,14 @@
 ﻿using DSoft;
+using System;
 using UnityEngine;
+using UnityScript.Lang;
 
 public class GameManager : Singleton<GameManager>
 {
+    private const string LEVEL_COUT_KEY = "levelcount";
+
     [Header("Settings")]
     [SerializeField] private bool DebugMode;
-
 
     [Header("Prefhabs")]
     [SerializeField] private Box[] Boxes;
@@ -96,13 +99,26 @@ public class GameManager : Singleton<GameManager>
                 try
                 {
                     Map = LevelMap.Create(res);
-                    Debug.Log($"[LevelMap] Level map filled with {Map.CountLevels()}");
+                    ShowLevesLoaded(Map.CountLevels());
                 }
                 catch (IllegalLevelMapExeption ex)
                 { Debug.LogError(ex); };
             },
             err => Debug.LogError(err)
             );
+    }
+
+    private void ShowLevesLoaded(int count)
+    {
+        int old = 0;
+        if (PlayerPrefs.HasKey(LEVEL_COUT_KEY))
+            old = PlayerPrefs.GetInt(LEVEL_COUT_KEY);
+
+        if (count > old) 
+        {
+            Menu.Instance.Pop("New levels aviable!", $"{count - old} new level available");
+            PlayerPrefs.SetInt(LEVEL_COUT_KEY, count);
+        }
     }
 
     private bool IsRunningEditorMode()
