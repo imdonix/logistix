@@ -165,9 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &23009314
 SpriteRenderer:
@@ -1802,9 +1800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &299773604
 SpriteRenderer:
@@ -2931,9 +2927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &517961683
 SpriteRenderer:
@@ -3029,9 +3023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &569625522
 SpriteRenderer:
@@ -4008,9 +4000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &888674591
 SpriteRenderer:
@@ -4320,9 +4310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &950184387
 SpriteRenderer:
@@ -5461,9 +5449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &1185749567
 SpriteRenderer:
@@ -6957,9 +6943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &1620241611
 SpriteRenderer:
@@ -7489,9 +7473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &1801877151
 SpriteRenderer:
@@ -8242,9 +8224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &1984309917
 SpriteRenderer:
@@ -8340,9 +8320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b2261b35bde9c4c80576a9f01e0247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  RandomMulti: 0
-  Direction: 1
+  Speed: 0.5
   MaxOut: 6
 --- !u!212 &1995750183
 SpriteRenderer:
