@@ -114,6 +114,7 @@ public class Game : MonoBehaviour
     {
         State = GameState.End;
         Win = isWin;
+        AttachSuccesfullBoxesToShip();
         OnEnd.Invoke();
     }
 
@@ -240,6 +241,14 @@ public class Game : MonoBehaviour
     private bool CanInteract()
     {
         return !(Menu.Instance.InGame as InPanel).IsInit;
+    }
+
+    private void AttachSuccesfullBoxesToShip()
+    {
+        Ship ship = GameManager.Instance.GetShip();
+        foreach (var box in Dropped)
+            if (!box.IsLost())
+                box.transform.SetParent(ship.transform);
     }
 
     #endregion

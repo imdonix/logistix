@@ -46,7 +46,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -129,7 +128,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -212,7 +210,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -264,7 +261,7 @@ GameObject:
   - component: {fileID: 7024534461963274861}
   - component: {fileID: 5042889433856713627}
   m_Layer: 0
-  m_Name: BasicShip
+  m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,6 +296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b88f85e678e3f3469c2494ec31027d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 3
+  Fog: 12
+  Slowzone: 3
+  FloatPosition: {x: 0, y: -1.5, z: 0}
 --- !u!61 &6017098486180281044
 BoxCollider2D:
   m_ObjectHideFlags: 0

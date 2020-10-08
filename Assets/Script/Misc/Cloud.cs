@@ -31,6 +31,6 @@ public class Cloud : MonoBehaviour
 
     private void NewRandom()
     {
-        RandomMulti = Random.Range(0.5f, 1.5f);
+        RandomMulti = Random.Range(0.2f, 1f);
     }
 }

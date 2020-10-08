@@ -121,10 +121,11 @@ public class GameManager : Singleton<GameManager>
 
     private void GameEnd()
     {
+        Ship.Send(Current);
+
         Menu.Instance.Swich(Menu.Instance.EndGame);
         (Menu.Instance.EndGame as EndPanel).SetResoult(Current.GetResoult());
 
-        Destroy(Current);
         Current = null;
     }
 
