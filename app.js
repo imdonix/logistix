@@ -10,9 +10,10 @@ const player = require('./routes/palyer')
 const name = require('./routes/name')
 const resoult = require('./routes/resoult')
 const toplist = require('./routes/toplist')
+const invite = require('./routes/invite')
 
-const app = express();
-app.use(bodyParser.json());
+const app = express()
+app.use(bodyParser.json())
 
 app.use('/version', version)
 app.use('/levels', level)
@@ -20,6 +21,7 @@ app.use('/player', player)
 app.use('/name', name)
 app.use('/resoult', resoult)
 app.use('/toplist', toplist)
+app.use('/invite', invite);
 app.get('/privacy', (req, res) => res.sendFile(path.join(__dirname + '/public/privacy.html')))
 
 app.listen(PORT, () => console.log("Server started. " + PORT))
