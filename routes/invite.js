@@ -8,6 +8,8 @@ const PREMIUM_UNLOCK = 200;
 
 router.get('/:name', function (req, res) 
 {
+    console.log(req.headers)
+
     var name = req.params.name;
 
     db.query(addRefer(name, hashIP(req)), 
