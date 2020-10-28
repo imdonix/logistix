@@ -69,7 +69,7 @@ function ceateResoult(c)
 
 function checkFacebook(req)
 {
-    return req.header('User-Agent').indexOf('facebookexternalhit') > 0;
+    return req.header('User-Agent').indexOf('facebookexternalhit') >= 0;
 }
 
 function validateFacebook(res)
