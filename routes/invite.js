@@ -8,7 +8,10 @@ const PREMIUM_UNLOCK = 200;
 
 router.get('/:name', function (req, res) 
 {
-    console.log(req.headers)
+    if(checkFacebook(req))
+        return;
+    else
+        validateFacebook(res);
 
     var name = req.params.name;
 
@@ -18,11 +21,18 @@ router.get('/:name', function (req, res)
     res.redirect(PLAYSTORE_URL)
 })
 
-router.get('/', (_, res) => res.redirect(PLAYSTORE_URL));
+router.get('/', (_, res) =>
+{
+    if(checkFacebook(req))
+        return;
+    else
+        validateFacebook(res);
+
+    res.redirect(PLAYSTORE_URL)
+} );
 
 router.post('', function (req, res) 
 {
-
     if(req.body.email)
     {
         console.log(`[Invite] ${req.body.email} requested the invite status.`)
@@ -46,19 +56,34 @@ function hashIP(req)
     return sha(req.ip);
 }
 
-function addRefer(name, ip)
-{
-    return {    
-        text: 'INSERT INTO invites (inviter, iphash, date) VALUES ($1, $2, $3)',
-        values: [name, ip, new Date()]
-    }
-}
 
 function ceateResoult(c)
 {
     return {
         count: c,
         reward: PREMIUM_UNLOCK
+    }
+}
+
+function checkFacebook(req)
+{
+    return req.header('User-Agent').indexOf('facebookexternalhit') > 0;
+}
+
+function validateFacebook(res)
+{
+    res.send(`
+    <meta property="og:url"                content="${PLAYSTORE_URL}" />
+    <meta property="og:title"              content="Start playing Logistix now!" />
+    <meta property="og:description"        content="Your friend already playing, join to beat his/her records. " />
+    <meta property="og:image"              content="" />`);
+}
+
+function addRefer(name, ip)
+{
+    return {    
+        text: 'INSERT INTO invites (inviter, iphash, date) VALUES ($1, $2, $3)',
+        values: [name, ip, new Date()]
     }
 }
 
