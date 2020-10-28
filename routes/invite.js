@@ -9,9 +9,10 @@ const PREMIUM_UNLOCK = 200;
 router.get('/:name', function (req, res) 
 {
     if(checkFacebook(req))
-        return;
-    else
+    {
         validateFacebook(res);
+        return;
+    }
 
     var name = req.params.name;
 
@@ -24,9 +25,10 @@ router.get('/:name', function (req, res)
 router.get('/', (_, res) =>
 {
     if(checkFacebook(req))
-        return;
-    else
+    {
         validateFacebook(res);
+        return;
+    }
 
     res.redirect(PLAYSTORE_URL)
 } );
