@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('../database')
+const db = require('../db/database')
 var router = express.Router()
 
 router.post('/', (req, res) =>
