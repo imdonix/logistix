@@ -5,7 +5,7 @@ const settings =
     PLAYSTORE_IMG: "https://play.google.com/store/apps/details?id=com.donix.logistix",
     INVITE_TITLE: "Start playing Logistix now!",
     INVITE_DESC: "Your friend already playing, join to beat his/her records.",
-    PREMIUM_UNLOCK: 200,
+    PREMIUM_UNLOCK: 50,
 }
 
 module.exports = settings;
