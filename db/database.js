@@ -85,7 +85,14 @@ module.exports =
             text : "UPDATE users SET name = $1 WHERE email = $2 RETURNING *;",
             values: [name,email],
         }
-    }
+    },
 
+    makePremium: (email) =>
+    {
+        return {    
+            text : "UPDATE users SET premium = true WHERE email = $1",
+            values: [email],
+        }
+    }
 
 }
