@@ -8,7 +8,7 @@ router.post('/', function (req, res)
     var name = req.body.name
     var email = req.body.email
 
-    db.query(rename(email,name), 
+    db.query(db.rename(email,name), 
     (player) =>
     { 
         console.log("[Name] change: " + email + " -> " + name)
@@ -17,13 +17,5 @@ router.post('/', function (req, res)
     )
 
 })
-
-function rename(email,name)
-{
-    return {    
-        text : "UPDATE users SET name = $1 WHERE email = $2 RETURNING *;",
-        values: [name,email],
-    }
-}
 
 module.exports = router

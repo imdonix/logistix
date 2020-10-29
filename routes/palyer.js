@@ -6,7 +6,7 @@ router.post('/', (req, res) =>
 {
     var mail = req.body.email;
 
-    db.query(find(mail), (player) =>
+    db.query(db.find(mail), (player) =>
     {
         if(player.rows.length > 0)
         {
@@ -16,29 +16,12 @@ router.post('/', (req, res) =>
         else
         {
             console.log("[Player] New inicialized: " + mail);
-            db.query(construct(mail), (newplayer,err) => 
+            db.query(db.construct(mail), (newplayer,err) => 
             {
                 res.send(newplayer.rows[0]);
             });
         }
     });
 })
-
-
-function construct(mail)
-{
-    return {    
-        text: 'INSERT INTO users(email) VALUES($1) RETURNING *',
-        values: [mail],
-    }
-}
-
-function find(mail)
-{
-    return {
-        text: 'SELECT * FROM users WHERE email = $1',
-        values: [mail],
-    }
-}
 
 module.exports = router

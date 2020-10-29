@@ -1,10 +1,8 @@
 const express = require('express')
 const db = require('../db/database')
+const settings = require('../settings')
 const sha = require('sha1');
 var router = express.Router()
-
-const PLAYSTORE_URL = "https://play.google.com/store/apps/details?id=com.donix.logistix";
-const PREMIUM_UNLOCK = 200;
 
 router.get('/:name', function (req, res) 
 {
@@ -16,7 +14,7 @@ router.get('/:name', function (req, res)
 
     var name = req.params.name;
 
-    db.query(addRefer(name, hashIP(req)), 
+    db.query(db.addRefer(name, hashIP(req)), 
     (_) => console.log(`[Invite] ${name}'s link opened by ${req.ip}.`))
 
     res.redirect(PLAYSTORE_URL)
@@ -38,7 +36,7 @@ router.post('', function (req, res)
     if(req.body.email)
     {
         console.log(`[Invite] ${req.body.email} requested the invite status.`)
-        db.query(countPlayerInvites(req.body.email), 
+        db.query(db.countPlayerInvites(req.body.email), 
         (data) => 
         {
             let n = 0;
@@ -63,7 +61,7 @@ function ceateResoult(c)
 {
     return {
         count: c,
-        reward: PREMIUM_UNLOCK
+        reward: settings.PREMIUM_UNLOCK
     }
 }
 
@@ -74,27 +72,13 @@ function checkFacebook(req)
 
 function validateFacebook(res)
 {
-    res.send(`
-    <meta property="og:url"                content="${PLAYSTORE_URL}" />
-    <meta property="og:title"              content="Start playing Logistix now!" />
-    <meta property="og:description"        content="Your friend already playing, join to beat his/her records. " />
-    <meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />`);
-}
-
-function addRefer(name, ip)
-{
-    return {    
-        text: 'INSERT INTO invites (inviter, iphash, date) VALUES ($1, $2, $3)',
-        values: [name, ip, new Date()]
-    }
-}
-
-function countPlayerInvites(mail)
-{
-    return {    
-        text: 'SELECT count(DISTINCT iphash) from invites, users WHERE email = $1 AND inviter = name GROUP BY inviter',
-        values: [mail]
-    }
+    res.send
+    (`
+        <meta property="og:url"                content="${settings.PLAYSTORE_URL}" />
+        <meta property="og:title"              content="${settings.INVITE_TITLE}" />
+        <meta property="og:description"        content="${settings.INVITE_DESC}" />
+        <meta property="og:image"              content="${settings.PLAYSTORE_IMG}" />
+    `);
 }
 
 module.exports = router
