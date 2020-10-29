@@ -78,7 +78,7 @@ function validateFacebook(res)
     <meta property="og:url"                content="${PLAYSTORE_URL}" />
     <meta property="og:title"              content="Start playing Logistix now!" />
     <meta property="og:description"        content="Your friend already playing, join to beat his/her records. " />
-    <meta property="og:image"              content="" />`);
+    <meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />`);
 }
 
 function addRefer(name, ip)
