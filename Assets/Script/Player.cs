@@ -76,8 +76,9 @@ public class Player : Singleton<Player>
     /// <param name="model"></param>
     public void Refresh(PlayerModel model)
     {
-        if (model.Premium && !Model.Premium)
-            OnPremiumAccountActivated();
+        if(!ReferenceEquals(Model, null))
+            if (model.Premium && !Model.Premium)
+                OnPremiumAccountActivated();
 
         if (ReferenceEquals(model.Name, null))
             Menu.Instance.Swich(Menu.Instance.AddNamePanel);
