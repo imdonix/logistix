@@ -119,7 +119,7 @@ public class Player : Singleton<Player>
 
     private void OnPremiumAccountActivated()
     {
-        //TODO
+        Menu.Instance.Pop("Premium account", "Congratulation! Your account is premium now.");
     }
 
 }
