@@ -11,9 +11,7 @@ public class PremiumPanel : MenuPanel
     [SerializeField] private Slider Progress;
     [SerializeField] private Text Resoult;
 
-    protected override void OnClose()
-    {
-    }
+    protected override void OnClose() {}
 
     protected override void OnOpen()
     {
@@ -48,10 +46,16 @@ public class PremiumPanel : MenuPanel
 
         LogisticAPI.Instance.GetInvites(res =>
         {
-            Resoult.text = String.Empty;
+            
             Text.text = $"{res.count} of {res.unlocks}";
             Progress.value = res.count / ((float)res.unlocks);
-            Panel.SetActive(true);
+            if (res.count < res.unlocks)
+            {
+                Panel.SetActive(true);
+                Resoult.text = String.Empty;
+            }
+            else
+                RedeemPremium();
         },
         err =>
         {
@@ -59,6 +63,22 @@ public class PremiumPanel : MenuPanel
             Menu.Instance.Pop("You lost connection", "Try again later.");
         });
     }
+
+    private void RedeemPremium()
+    { 
+        void WriteError() { Resoult.text = "Something went wrong while trying to active your account."; }
+        Resoult.text = "Redeem premium in progress...";
+        LogisticAPI.Instance.RedeemPremium(res =>
+        {
+            if (res.Premium)
+                Player.Instance.Refresh(res);
+            else
+                WriteError();
+        },
+        err => WriteError());
+    }
+
+
 
     #endregion
 
