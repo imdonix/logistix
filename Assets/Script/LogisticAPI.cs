@@ -37,6 +37,14 @@ public class LogisticAPI : WebRequestEngine<LogisticAPI>
         Send($"toplist/{id}", response, error);
     }
 
+    public void GetInvites(
+    Action<InviteModel> response,
+    Action<string> error)
+    {
+        Send($"invite", JsonConvert.SerializeObject(CreateAuthObject()), response, error);
+    }
+
+
     #endregion
 
     #region SETS
