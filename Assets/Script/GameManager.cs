@@ -1,4 +1,5 @@
 ﻿using DSoft;
+using Facebook.Unity;
 using System;
 using UnityEngine;
 using UnityScript.Lang;
@@ -82,68 +83,78 @@ public class GameManager : Singleton<GameManager>
         Current.StartGame(GameUpdate, GameEnd);   
     }
 
-    #endregion
-
-    #region PRIVATE
-
-    private void CreateShip()
+    public void StartFacebookShare()
     {
-        Ship = Instantiate(Ships[0]);
+        if (FB.IsInitialized)
+            FB.ShareLink(new Uri($"{LogisticAPI.Instance.GetServerURI()}/invite/{Player.Instance.GetModel().Name}"),
+                "Start playing logistix now!",
+                "Can you beat my highscore? Try logistix now!");
+        else
+            throw new Exception("FB not inicialized");
     }
 
-    private void DownloadLevelMap()
-    {
-        LogisticAPI.Instance.GetLevelMap(
-            res =>
-            {
-                try
-                {
-                    Map = LevelMap.Create(res);
-                    ShowLevesLoaded(Map.CountLevels());
-                }
-                catch (IllegalLevelMapExeption ex)
-                { Debug.LogError(ex); };
-            },
-            err => Debug.LogError(err)
-            );
-    }
+        #endregion
 
-    private void ShowLevesLoaded(int count)
-    {
-        int old = 0;
-        if (PlayerPrefs.HasKey(LEVEL_COUT_KEY))
-            old = PlayerPrefs.GetInt(LEVEL_COUT_KEY);
+        #region PRIVATE
 
-        if (count > old) 
+        private void CreateShip()
         {
-            Menu.Instance.Pop("New levels aviable!", $"{count - old} new level available");
-            PlayerPrefs.SetInt(LEVEL_COUT_KEY, count);
+            Ship = Instantiate(Ships[0]);
         }
-    }
 
-    private bool IsRunningEditorMode()
-    {
-        return Application.platform == RuntimePlatform.WindowsEditor;
-    }
+        private void DownloadLevelMap()
+        {
+            LogisticAPI.Instance.GetLevelMap(
+                res =>
+                {
+                    try
+                    {
+                        Map = LevelMap.Create(res);
+                        ShowLevesLoaded(Map.CountLevels());
+                    }
+                    catch (IllegalLevelMapExeption ex)
+                    { Debug.LogError(ex); };
+                },
+                err => Debug.LogError(err)
+                );
+        }
 
-    #endregion
+        private void ShowLevesLoaded(int count)
+        {
+            int old = 0;
+            if (PlayerPrefs.HasKey(LEVEL_COUT_KEY))
+                old = PlayerPrefs.GetInt(LEVEL_COUT_KEY);
 
-    #region GAME_EVENTS
+            if (count > old) 
+            {
+                Menu.Instance.Pop("New levels aviable!", $"{count - old} new level available");
+                PlayerPrefs.SetInt(LEVEL_COUT_KEY, count);
+            }
+        }
 
-    private void GameUpdate()
-    {
-        (Menu.Instance.InGame as InPanel).UpdateDropped();
-    }
+        private bool IsRunningEditorMode()
+        {
+            return Application.platform == RuntimePlatform.WindowsEditor;
+        }
 
-    private void GameEnd()
-    {
-        Ship.Send(Current);
+        #endregion
 
-        Menu.Instance.Swich(Menu.Instance.EndGame);
-        (Menu.Instance.EndGame as EndPanel).SetResoult(Current.GetResoult());
+        #region GAME_EVENTS
 
-        Current = null;
-    }
+        private void GameUpdate()
+        {
+            (Menu.Instance.InGame as InPanel).UpdateDropped();
+        }
+
+        private void GameEnd()
+        {
+            Ship.Send(Current);
+
+            Menu.Instance.Swich(Menu.Instance.EndGame);
+            (Menu.Instance.EndGame as EndPanel).SetResoult(Current.GetResoult());
+
+            Current = null;
+        }
 
     #endregion
 
