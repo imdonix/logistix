@@ -49,6 +49,13 @@ public class LogisticAPI : WebRequestEngine<LogisticAPI>
 
     #region SETS
 
+    public void RedeemPremium(
+        Action<PlayerModel> response,
+        Action<string> error)
+    {
+        Send("premium", JsonConvert.SerializeObject(CreateAuthObject()), response, error);
+    }
+
     public void SetName(
         string name,
         Action<PlayerModel> response, 
