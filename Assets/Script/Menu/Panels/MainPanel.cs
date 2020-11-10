@@ -29,7 +29,7 @@ class MainPanel : MenuPanel
 
 	public void OnPremiumButtonClick()
 	{
-		//TODO
+		Menu.Instance.Swich(Menu.Instance.Premium);
 	}
 
 	public void OnShopButtonClick()

@@ -11,6 +11,7 @@ public class Menu : Singleton<Menu>
     [SerializeField] public MenuPanel Levels;
     [SerializeField] public MenuPanel InGame;
     [SerializeField] public MenuPanel EndGame;
+    [SerializeField] public MenuPanel Premium;
 
     [Header("Overlays")]
     [SerializeField] private MenuPanel Logo;
@@ -70,6 +71,7 @@ public class Menu : Singleton<Menu>
         Panels.Add(Main);
         Panels.Add(InGame);
         Panels.Add(EndGame);
+        Panels.Add(Premium);
     }
 
     private void OnBack()
