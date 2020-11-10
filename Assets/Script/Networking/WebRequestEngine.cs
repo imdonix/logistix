@@ -41,6 +41,11 @@ namespace DSoft
             return GetPendingCount() > 0;
         }
 
+        public string GetServerURI()
+        {
+            return ServerURI;
+        }
+
         #endregion
 
         #region PROTECTED
