@@ -81,12 +81,12 @@ public class Player : Singleton<Player>
             if (model.Premium && !Model.Premium)
                 OnPremiumAccountActivated();
 
+        Model = model;
+
         if (ReferenceEquals(model.Name, null))
             Menu.Instance.Swich(Menu.Instance.AddNamePanel);
         else
             Menu.Instance.Swich(Menu.Instance.Main);
-
-        Model = model;
     }
 
     /// <summary>
