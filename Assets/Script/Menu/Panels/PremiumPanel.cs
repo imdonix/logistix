@@ -60,7 +60,6 @@ public class PremiumPanel : MenuPanel
         err =>
         {
             Resoult.text = "Premium progress cannot be loaded! Try again later.";
-            Menu.Instance.Pop("You lost connection", "Try again later.");
         });
     }
 
