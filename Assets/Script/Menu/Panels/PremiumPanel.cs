@@ -77,8 +77,6 @@ public class PremiumPanel : MenuPanel
         err => WriteError());
     }
 
-
-
     #endregion
 
 
