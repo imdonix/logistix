@@ -29,8 +29,8 @@ var Levels =
                 name: "Things start to work",
                 reward_wood: 50,
                 reward_iron: 25,
-                boxes: [1, 1, 0, 0, 0],
-                maxlost: 0
+                boxes: [7,7,8,8,9,9,10,10,11,11,11,11],
+                maxlost: 4
             },
             {
                 id: 2,
