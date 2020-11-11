@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    public const float WATER_LEVEL = -1.5f;
+
     private const float TIME_BETWEEN_DROPS = 3;
     private const float SCORE_DISTANCE = 2;
     private const float SCORE_MIN = 0.25f;
@@ -147,6 +149,7 @@ public class Game : MonoBehaviour
         {
             
             Box dropped = GameManager.Instance.Crane.Release();
+            dropped.OnEject();
             Dropped.Add(dropped);
             State = GameState.Wait;
 
@@ -215,9 +218,9 @@ public class Game : MonoBehaviour
     private void DestroyBoxes()
     {
         foreach (Box box in Dropped)
-            Destroy(box.gameObject);
+            box.Destroy();
         if (!ReferenceEquals(Selected, null))
-            Destroy(Selected.gameObject);
+            Selected.Destroy();
     }
 
     private void RegisterEvents(Action onUpdate, Action onEnd)

@@ -5,8 +5,6 @@ using UnityEngine;
 public abstract class Box : MonoBehaviour
 {
 
-    private float WATER_LEVEL = -1;
-
     [Header("Data")]
     [SerializeField] public int ID;
     [SerializeField] public int Score;
@@ -24,6 +22,7 @@ public abstract class Box : MonoBehaviour
 
     #endregion
 
+
     public Rigidbody2D GetRigidbody()
     {
         return Rigidbody;
@@ -34,7 +33,7 @@ public abstract class Box : MonoBehaviour
         return Colider;
     }
 
-    public Vector2 GetSize()
+    public virtual Vector2 GetSize()
     {
         return Colider.bounds.size;
     }
@@ -44,7 +43,7 @@ public abstract class Box : MonoBehaviour
     /// </summary>
     public virtual bool IsLost()
     {
-        return transform.position.y < WATER_LEVEL;
+        return transform.position.y < Game.WATER_LEVEL;
     }
 
     /// <summary>
@@ -53,5 +52,16 @@ public abstract class Box : MonoBehaviour
     public virtual Vector2 GetPosition()
     {
         return transform.position;
+    }
+
+    /// <summary>
+    /// Called when the crane eject the box
+    /// </summary>
+    public virtual void OnEject()
+    {}
+
+    public virtual void Destroy() 
+    {
+        Destroy(gameObject, 1f);
     }
 }
