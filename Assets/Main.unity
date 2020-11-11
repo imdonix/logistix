@@ -162,6 +162,12 @@ MonoBehaviour:
   - {fileID: 503812566897752633, guid: ab375bc70a868ad48ad9903404ca8c53, type: 3}
   - {fileID: 7183882634124514173, guid: 6458422b9b099a44d99290041f04e9dd, type: 3}
   - {fileID: 1744706274463013811, guid: b5fb9240943fc534aa7a61bf002767ee, type: 3}
+  - {fileID: 1223857757776527435, guid: 288d1c81f554c174898b77b105855e13, type: 3}
+  - {fileID: 3300813187560362475, guid: 88e513e8caba2394893b678172bd42ee, type: 3}
+  - {fileID: 3189610561951467323, guid: 99f0d91f62404ab4ca565c1255e1bcf8, type: 3}
+  - {fileID: 3127954244579784833, guid: ad9bb267579fe014bb475e7fce155cdd, type: 3}
+  - {fileID: 1133830466229859672, guid: 4420a38c594e30a4f8c805248b924329, type: 3}
+  - {fileID: 3118421174639268685, guid: 82c9b49c0c655cc4e9641ec2e46a926a, type: 3}
   Ships:
   - {fileID: 484360861374426282, guid: 7fb28a3cf86f3614ebf475cc01125fef, type: 3}
   Template: {fileID: 7004606972184222548, guid: 22c52f99d07c44e48a6f3da8d628514f,
@@ -1260,6 +1266,8 @@ MonoBehaviour:
   fishes:
   - {fileID: 21300000, guid: fb834d59b254e3845a89ecf97eca0c3e, type: 3}
   - {fileID: 21300000, guid: 64d4fa13ae52a5e4fbf1e61b7da6e13c, type: 3}
+  - {fileID: 21300000, guid: 8ab4ff299ac01924ab7b1110e82d0af3, type: 3}
+  - {fileID: 21300000, guid: 1e2ea8010e3aea1439729bd5494ae443, type: 3}
   count: 10
 --- !u!1 &177356699
 GameObject:
@@ -5124,7 +5132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Overlays: []
-  CountDown: 5
+  CountDown: 3
   TitleLabel: {fileID: 738224355}
   CountDownLabel: {fileID: 1450826226}
   Panel: {fileID: 156644919}
