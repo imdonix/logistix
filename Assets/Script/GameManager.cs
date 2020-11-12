@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Prefhabs")]
     [SerializeField] private Box[] Boxes;
+
     [SerializeField] private Ship[] Ships;
     [SerializeField] private Game Template;
 
@@ -93,11 +94,16 @@ public class GameManager : Singleton<GameManager>
             throw new Exception("FB not inicialized");
     }
 
-        #endregion
+    public void SpawnExplosion(Vector3 x, float explosion)
+    {
+        Debug.Log("Bumm at " + x);
+    }
 
-        #region PRIVATE
+    #endregion
 
-        private void CreateShip()
+    #region PRIVATE
+
+    private void CreateShip()
         {
             Ship = Instantiate(Ships[0]);
         }
@@ -139,7 +145,7 @@ public class GameManager : Singleton<GameManager>
 
         #endregion
 
-        #region GAME_EVENTS
+    #region GAME_EVENTS
 
         private void GameUpdate()
         {
