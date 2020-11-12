@@ -170,5 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c242938fd576054985d600ce88efe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fx: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   force: 30
   explosion: 15
+  size: 0.15

@@ -75,7 +75,6 @@ public class Game : MonoBehaviour
     {
         if (CanInteract())
             Debug.Log($"{direction}");
-        //TODO
     }
 
     public ResoultModel GetResoult()

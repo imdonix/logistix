@@ -1,16 +1,17 @@
-﻿using System.Xml.Serialization;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : Item
 {
+    [SerializeField] private GameObject fx;
     [SerializeField] private float force;
     [SerializeField] private float explosion;
+    [SerializeField] private float size;
 
     #region UNITY
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameManager.Instance?.SpawnExplosion(collision.transform.position, explosion);
+        Instantiate(fx, transform.position, Quaternion.identity).transform.localScale *= size;
         Item.ItemDestroy(this);
     }
 

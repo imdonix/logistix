@@ -94,11 +94,6 @@ public class GameManager : Singleton<GameManager>
             throw new Exception("FB not inicialized");
     }
 
-    public void SpawnExplosion(Vector3 x, float explosion)
-    {
-        Debug.Log("Bumm at " + x);
-    }
-
     #endregion
 
     #region PRIVATE
