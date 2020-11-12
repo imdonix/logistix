@@ -4,39 +4,58 @@ using UnityEngine;
 
 public class Gun : Item
 {
-    private const float TRIGGER = 2;
+    private const float TRIGGER = 10;
 
     [SerializeField] private Bullet bullet;
 
     [SerializeField] private Vector2 pivot;
     [SerializeField] private int ammo;
+    [SerializeField] private float firerate;
     [SerializeField] private bool auto;
+    [SerializeField] private float recoil;
 
+    private float cooldown;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.relativeVelocity.magnitude > TRIGGER)
-            ShotBullet();
+        cooldown += Time.deltaTime;
+        if (cooldown > 0.25f)
+            if (collision.relativeVelocity.magnitude > TRIGGER) 
+            {
+                StartCoroutine(ShotBullet());
+                cooldown = 0;
+            }
     }
 
-    private void ShotBullet()
+    private IEnumerator ShotBullet()
     {
-        while (ammo > 0)
+        while (ammo-- > 0)
         {
-            Bullet bull = Instantiate(bullet, transform.position + (Vector3)pivot, transform.rotation);
+            Bullet bull = Instantiate(bullet, GetBulletPos(), transform.rotation);
             bull.Fire();
+            Recoil();
 
-            if (!auto)
-                break;
+            if (!auto) break;
+            yield return new WaitForSeconds(1 / firerate);
         }
 
+    }
+
+    private void Recoil()
+    {
+        GetRigidbody2D().AddForce((transform.position - GetBulletPos()).normalized * recoil);
+    }
+
+    private Vector3 GetBulletPos()
+    {
+        return transform.position + transform.rotation * pivot;
     }
 
     #region GIZMO
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position + (Vector3)pivot, 0.025f);
+        Gizmos.DrawSphere(GetBulletPos(), 0.025f);
     }
 
     #endregion
