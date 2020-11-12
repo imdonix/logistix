@@ -46,6 +46,7 @@ public class Game : MonoBehaviour
     {
         DeRegisterEvents();
         DestroyBoxes();
+        Item.Clear();
     }
 
     #endregion

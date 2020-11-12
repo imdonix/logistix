@@ -34,14 +34,6 @@ public class ManyBox : Box
     {
         return new Vector2(1, 1);
     }
-
-    public override void Destroy()
-    {
-        foreach (Item item in items)
-            Destroy(item, 1f);
-        base.Destroy();
-    }
-
     #endregion
 
 

@@ -168,6 +168,8 @@ MonoBehaviour:
   - {fileID: 3127954244579784833, guid: ad9bb267579fe014bb475e7fce155cdd, type: 3}
   - {fileID: 1133830466229859672, guid: 4420a38c594e30a4f8c805248b924329, type: 3}
   - {fileID: 3118421174639268685, guid: 82c9b49c0c655cc4e9641ec2e46a926a, type: 3}
+  - {fileID: 4394457056785076657, guid: cb36fad865df4e34e878d555fcb6d748, type: 3}
+  - {fileID: 6877010422013120656, guid: 4b5e312b92b6d574bb6fd56e915e1cce, type: 3}
   Ships:
   - {fileID: 484360861374426282, guid: 7fb28a3cf86f3614ebf475cc01125fef, type: 3}
   Template: {fileID: 7004606972184222548, guid: 22c52f99d07c44e48a6f3da8d628514f,
@@ -225,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb1e13b26e66514bac0dc65fbe1d92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDebug: 0
+  IsDebug: 1
   OnlineURI: https://logistix-api.herokuapp.com/
   TestURI: http://localhost:3000/
   Timeout: 10
