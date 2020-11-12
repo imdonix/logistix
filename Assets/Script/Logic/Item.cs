@@ -11,6 +11,8 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
 
+    private static LinkedList<Item> items = new LinkedList<Item>();
+
     private Rigidbody2D Rigid;
     private Collider2D Collider;
 
@@ -18,6 +20,12 @@ public class Item : MonoBehaviour
     {
         Rigid = GetComponent<Rigidbody2D>();
         Collider = GetComponent<Collider2D>();
+        items.AddFirst(this);
+    }
+
+    protected Rigidbody2D GetRigidbody2D()
+    {
+        return Rigid;
     }
 
 
@@ -26,6 +34,16 @@ public class Item : MonoBehaviour
     public virtual bool IsLost()
     {
         return transform.position.y < Game.WATER_LEVEL;
+    }
+
+    #endregion
+
+    #region STATIC
+    public static void Clear()
+    {
+        foreach (Item item in items)
+            Destroy(item.gameObject);
+        items.Clear();
     }
 
     #endregion
