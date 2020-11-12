@@ -11,7 +11,7 @@ public class Bullet : Item
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameManager.Instance.SpawnExplosion(collision.transform.position, explosion);
-        Destroy(gameObject);
+        Item.ItemDestroy(this);
     }
 
     #endregion
@@ -24,8 +24,4 @@ public class Bullet : Item
     }
 
     #endregion
-
-
-
 }
-

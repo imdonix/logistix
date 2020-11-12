@@ -46,6 +46,12 @@ public class Item : MonoBehaviour
         items.Clear();
     }
 
+    public static void ItemDestroy(Item item)
+    {
+        items.Remove(item);
+        Destroy(item.gameObject);
+    }
+
     #endregion
 
 }
