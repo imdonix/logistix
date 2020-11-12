@@ -8,6 +8,22 @@ var Levels =
         levels:
         [
             {
+                id: -1,
+                unlocks: [],
+                name: "TEST",
+                reward_wood: 1,
+                reward_iron: 1,
+                boxes: [13,13,13,13,13],
+                maxlost: 2
+            }
+        ]
+    },
+
+    {
+        color: "green",
+        levels:
+        [
+            {
                 id: 0,
                 unlocks: [],
                 name: "A fresh start",
