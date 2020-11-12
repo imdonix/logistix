@@ -170,6 +170,7 @@ MonoBehaviour:
   - {fileID: 3118421174639268685, guid: 82c9b49c0c655cc4e9641ec2e46a926a, type: 3}
   - {fileID: 4394457056785076657, guid: cb36fad865df4e34e878d555fcb6d748, type: 3}
   - {fileID: 6877010422013120656, guid: 4b5e312b92b6d574bb6fd56e915e1cce, type: 3}
+  - {fileID: 7351972446546743063, guid: 0505316cba6a4b849aa067421368f78c, type: 3}
   Ships:
   - {fileID: 484360861374426282, guid: 7fb28a3cf86f3614ebf475cc01125fef, type: 3}
   Template: {fileID: 7004606972184222548, guid: 22c52f99d07c44e48a6f3da8d628514f,
