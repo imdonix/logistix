@@ -173,11 +173,9 @@ public class EndPanel : MenuPanel
 
                 if (toplist.Count > 0) 
                 {
-                    if (toplist[0].Score < resoult.Score)
+                    if (toplist[0].Score <= resoult.Score)
                         Status.text = $"New highscore!";
                 }
-                else
-                    Status.text = $"New highscore!";
 
                 ToplistLoading.SetActive(false);
             },
@@ -207,7 +205,7 @@ public class EndPanel : MenuPanel
         {
             RecordComponent comp = Instantiate(Record, Toplist);
             comp.gameObject.name = $"${i+1}";
-            comp.Get().localPosition = new Vector2(0, -i * RECORD_SIZE + START);
+            comp.Get().localPosition = new Vector2(0, -i * RECORD_SIZE - (i > 0 ? RECORD_SIZE * .2f : 0) + START);
             comp.Set(i+1,toplist[i]);
             comps.Add(comp);
         }
