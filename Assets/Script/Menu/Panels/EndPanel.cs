@@ -28,6 +28,8 @@ public class EndPanel : MenuPanel
     [SerializeField] public GameObject RewardButton;
     [SerializeField] public RectTransform Toplist;
 
+    [SerializeField] public FireworkSpawner spawner;
+
     private ResoultModel resoult;
     private int randomMultipier;
     private List<RecordComponent> comps = new List<RecordComponent>();
@@ -45,6 +47,7 @@ public class EndPanel : MenuPanel
 
     protected override void OnClose()
     {
+        spawner.Stop();
         ClearComps();
     }
 
@@ -86,6 +89,8 @@ public class EndPanel : MenuPanel
             RewardPanel.SetActive(true);
             Wood.text = resoult.Wood.ToString();
             Iron.text = resoult.Iron.ToString();
+
+            spawner.Spawn();
         }
 
         LoadTopList();
