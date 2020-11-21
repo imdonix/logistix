@@ -1,10 +1,11 @@
 const express = require('express')
+const settings = require('../settings')
 var router = express.Router()
 
 var Levels =
 [
     {
-        color: "green",
+        color: "#008000",
         levels:
         [
             {
@@ -13,14 +14,14 @@ var Levels =
                 name: "TEST",
                 reward_wood: 1,
                 reward_iron: 1,
-                boxes: [13,13,13,13,13],
+                boxes: [13,13,13,14,14],
                 maxlost: 2
             }
         ]
     },
 
     {
-        color: "green",
+        color: "#008000",
         levels:
         [
             {
@@ -36,7 +37,7 @@ var Levels =
     },
     
     {
-        color: "yellow",
+        color: "#ffff00",
         levels:
         [
             {
@@ -61,7 +62,7 @@ var Levels =
     },
     
     {
-        color: "orange",
+        color: "#ffa500",
         levels:
         [
             {
@@ -86,7 +87,7 @@ var Levels =
     },
 
     {
-        color: "red",
+        color: "#ff0000",
         levels:
         [
             {
@@ -102,7 +103,7 @@ var Levels =
     },
 
     {
-        color: "blue",
+        color: "#0000ff",
         levels:
         [
             {
@@ -127,7 +128,7 @@ var Levels =
     },
 
     {
-        color: "purple",
+        color: "#800080",
         levels:
         [
             {
@@ -157,5 +158,32 @@ router.get('/', function (req, res)
     console.log("[Level] requested")
     res.json(Levels);
 })
+
+router.post('/', function (req,res)
+{
+    let pass = req.body.password;
+    let newlevels = req.body.levels;
+    if(pass === cyrb53(settings.MASTER_PASSWORD))
+    {
+        //TODO
+        res.status(200).send("Updated");
+    }
+    else
+        res.status(403).send("Bad password!");
+})
+
+function cyrb53(str) 
+{
+    let h1 = 0xdeadbeef ^ 14, h2 = 0x41c6ce57 ^ 14;
+    for (let i = 0, ch; i < str.length; i++) 
+    {
+        ch = str.charCodeAt(i);
+        h1 = Math.imul(h1 ^ ch, 2654435761);
+        h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1>>>16), 2246822507) ^ Math.imul(h2 ^ (h2>>>13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2>>>16), 2246822507) ^ Math.imul(h1 ^ (h1>>>13), 3266489909);
+    return 4294967296 * (2097151 & h2) + (h1>>>0);
+};
 
 module.exports = router
