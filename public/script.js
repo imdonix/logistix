@@ -9,6 +9,7 @@ const wood = document.querySelector('#wood')
 const iron = document.querySelector('#iron')
 const boxes = document.querySelector('#boxes')
 const lost = document.querySelector('#lost')
+const premium = document.querySelector('#premium')
 const btnAdd = document.querySelector('#add')
 const btnRemove = document.querySelector('#remove')
 const btnReload = document.querySelector('#reload')
@@ -64,12 +65,13 @@ function onAdd()
     selected.reward_iron = iron.value;
     selected.boxes = makeArray(boxes.value),
     selected.maxlost = lost.value;
+    selected.premium = premium.checked;
 
     if(selected.prototype)
     {   
         delete selected.prototype;
         let index = leveltb.value;
-        if(map.length < index)
+        if(map.length <= index)
         {
             const tmp = {'color': randomColor(), 'levels' : []};
             tmp.levels.push(selected);
@@ -126,6 +128,7 @@ function createNew()
         'reward_iron': 0,
         'boxes': "",
         'maxlost': 0,
+        'premium': false,
         'prototype': true
     }
 
@@ -150,6 +153,7 @@ function loadToEditorRecord(record, level)
     boxes.value = selected.boxes,
     arrayChange(boxes, boxcount)
     lost.value = selected.maxlost;
+    premium.checked = selected.premium;
     
     if(!selected.prototype)
     {
