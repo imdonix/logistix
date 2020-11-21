@@ -7,7 +7,8 @@ const pool = new Pool
         connectionString: 
         process.env.DATABASE_URL || CONNECTION_STRING,
         ssl: { rejectUnauthorized: false },
-        connectionTimeoutMillis: 1000,
+        connectionTimeoutMillis: 10000,
+        idleTimeoutMillis: 200,
     }
 )
 
@@ -92,6 +93,21 @@ module.exports =
         return {    
             text : "UPDATE users SET premium = true WHERE email = $1",
             values: [email],
+        }
+    },
+
+    getLevelMap: () =>
+    {
+        return {
+            text: "SELECT map FROM levels ORDER BY version DESC LIMIT 1"
+        }
+    },
+
+    updateLevelMap: (levelMap) =>
+    {
+        return {
+            text: "INSERT INTO levels (map) VALUES ($1);",
+            values: [levelMap]
         }
     }
 

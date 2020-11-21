@@ -13,6 +13,9 @@ const btnAdd = document.querySelector('#add')
 const btnRemove = document.querySelector('#remove')
 const btnReload = document.querySelector('#reload')
 const btnUpload = document.querySelector('#upload')
+const unlockcount = document.querySelector('#unlockcount')
+const boxcount = document.querySelector('#boxcount')
+const btnnew = document.querySelector('#new');
 
 let map = null;
 let selected = null;
@@ -22,9 +25,12 @@ btnAdd.addEventListener('click', onAdd)
 btnRemove.addEventListener('click', onRemove)
 btnReload.addEventListener('click', reload)
 btnUpload.addEventListener('click', onSubmit);
+btnnew.addEventListener('click', (e) => init([]))
+
+unlock.addEventListener('input', (_) => arrayChange(unlock, unlockcount))
+boxes.addEventListener('input', (_) => arrayChange(boxes, boxcount))
 
 reload();
-
 
 function reload(reset)
 {
@@ -100,7 +106,7 @@ function onSubmit()
     .then(res =>
         {
             if(res.status === 200)
-                alert("Levelmap is succesfuly");
+                alert("Levelmap is updated");
             else if(res.status === 403)
                 alert("Bad password");
             else
@@ -124,6 +130,13 @@ function createNew()
     }
 
     loadToEditorRecord(newRecord, 0);
+}
+
+function arrayChange(input, count)
+{
+    console.log(input.value);
+    console.log(makeArray(input.value));
+    count.innerHTML = makeArray(input.value).length.toString()
 }
 
 function loadToEditorRecord(record, level)
@@ -157,11 +170,9 @@ function init(obj)
     update();
 }
 
-function makeArray(str)
+function makeArray(inp)
 {
-    if(str instanceof String)
-        return str.split(',');
-    return [];
+    return inp.toString().split(',').filter(f => f);
 }
 
 function findRecord(id)

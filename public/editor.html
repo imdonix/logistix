@@ -18,14 +18,15 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <h1>Logistix</h1>
-                <h4>Level editor</h2>
+                <hr>
+                <h4>Logistix</h4>
+                <h1>Level editor</h1>
 
                 <label for="id">ID</label><br><input type="number" name="id" id="id">
                 <br>
                 <label for="level">Level</label><br><input type="number" name="level" id="level">
                 <hr>
-                <label for="unlock">Unlocks ( 1,2,3,4 )</label><br><input type="text" name="unlock" id="unlock">
+                <label for="unlock">Unlocks <span id="unlockcount" class="badge badge-primary"></span></label><br> <input type="text" name="unlock" id="unlock">
                 <br>
                 <label for="name">Name</label><br><input type="text" name="name" id="name">
                 <br>
@@ -33,16 +34,15 @@
                 <br>
                 <label for="iron">Iron</label><br><input type="number" name="iron" id="iron">
                 <br>
-                <label for="boxes">Boxes ( 1,2,3,4 )</label><br><input type="text" name="boxes" id="boxes">
+                <label for="boxes">Boxes <span id="boxcount" class="badge badge-primary"></span></label><br> <input type="text" name="boxes" id="boxes">
                 <br>
                 <label for="lost">Max lost</label><br><input type="number" name="lost" id="lost">
-
                 <hr>
                 <button id="add" class="btn btn-primary" >Add</button><button id="remove" class="btn btn-danger">Remove</button>
                 <hr>
                 <button id="reload" class="btn btn-info">Reload with live </button>
-                <hr>
                 <button id="upload" class="btn btn-success">Upload to live</button>
+                <button id="new" class="btn btn-success">Create empty</button>
                 <hr>
             </div>
             <div class="col-sm">

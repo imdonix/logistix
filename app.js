@@ -26,6 +26,6 @@ app.use('/toplist', toplist)
 app.use('/invite', invite);
 app.use('/premium', premium);
 app.use('/editor', editor)
-app.get('/privacy', (req, res) => res.sendFile(path.join(__dirname + '/public/privacy.html')))
+app.get('/privacy', (_, res) => res.sendFile(path.join(__dirname + '/public/privacy.html')))
 
 app.listen(PORT, () => console.log("Server started. " + PORT))
