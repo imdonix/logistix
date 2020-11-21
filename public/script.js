@@ -215,9 +215,9 @@ function update()
             let back = (level.levels.length / 2) * 50;
             let posX = center + (x * 50) - back;
 
-            ctx.fillStyle = level.color; 
+            ctx.fillStyle = "black"; 
             ctx.fillRect(posX, posY, 30, 30);
-            ctx.fillStyle = invertColor(level.color); 
+            ctx.fillStyle = "white"; 
             ctx.fillText(record.id, posX + 11, posY + 18);
             x++
         })
