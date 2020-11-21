@@ -12,6 +12,7 @@ const resoult = require('./routes/resoult')
 const toplist = require('./routes/toplist')
 const invite = require('./routes/invite')
 const premium = require('./routes/premium')
+const editor = require('./routes/editor')
 
 const app = express()
 app.use(bodyParser.json())
@@ -24,6 +25,7 @@ app.use('/resoult', resoult)
 app.use('/toplist', toplist)
 app.use('/invite', invite);
 app.use('/premium', premium);
+app.use('/editor', editor)
 app.get('/privacy', (req, res) => res.sendFile(path.join(__dirname + '/public/privacy.html')))
 
 app.listen(PORT, () => console.log("Server started. " + PORT))
