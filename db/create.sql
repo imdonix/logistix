@@ -28,3 +28,10 @@ CREATE TABLE users
     name text COLLATE pg_catalog."default",
     CONSTRAINT users_pkey PRIMARY KEY (email)
 );
+
+CREATE TABLE public.levels
+(
+    version bigint NOT NULL DEFAULT nextval('levels_id'),
+    map json,
+    CONSTRAINT levels_pkey PRIMARY KEY (version)
+)
