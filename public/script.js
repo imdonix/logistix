@@ -134,8 +134,6 @@ function createNew()
 
 function arrayChange(input, count)
 {
-    console.log(input.value);
-    console.log(makeArray(input.value));
     count.innerHTML = makeArray(input.value).length.toString()
 }
 
@@ -145,10 +143,12 @@ function loadToEditorRecord(record, level)
     leveltb.value = level;
 
     unlock.value = selected.unlocks;
+    arrayChange(unlock, unlockcount)
     name.value = selected.name;
     wood.value = selected.reward_wood;
     iron.value = selected.reward_iron;
     boxes.value = selected.boxes,
+    arrayChange(boxes, boxcount)
     lost.value = selected.maxlost;
     
     if(!selected.prototype)
