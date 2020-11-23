@@ -74,6 +74,7 @@ public class EndPanel : MenuPanel
 
     private void SetUp()
     {
+        FXPlayer.Instance.Play(resoult.IsWin ? FXPlayer.Instance.win : FXPlayer.Instance.lose);
         Primary.text = resoult.IsWin ? "Continue" : "Retry";
         Secoundary.text = resoult.IsWin ? "Continue" : "Retry";
         Status.text = resoult.IsWin ? "You won!" : "You lost!";

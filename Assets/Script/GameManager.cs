@@ -71,9 +71,9 @@ public class GameManager : Singleton<GameManager>
         while (i < Boxes.Length && Boxes[i].ID != id)
             i++;
 
-        if (i < Boxes.Length)
+        if (i < Boxes.Length) 
             return Boxes[i];
-        else
+        else  
             throw new BoxNotExistsExeption(id);
     }
 

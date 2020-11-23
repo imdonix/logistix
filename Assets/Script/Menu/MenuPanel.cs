@@ -12,6 +12,7 @@ public abstract class MenuPanel : MonoBehaviour
         foreach (MenuPanel panel in Overlays) 
             panel.Show();
         gameObject.SetActive(true);
+        FXPlayer.Instance.Play(FXPlayer.Instance.touch);
         OnOpen();
     }
 

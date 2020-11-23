@@ -13,6 +13,7 @@ class MainPanel : MenuPanel
 
 	protected override void OnOpen() 
 	{
+		MusicPlayer.Instance.Play(Song.Menu);
 		PlayerModel model = Player.Instance.GetModel();
 		Name.text = model.Name;
 		Name.color = model.Premium ? Color.yellow : Color.white;

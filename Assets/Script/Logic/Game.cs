@@ -44,7 +44,6 @@ public class Game : MonoBehaviour
 
     private void OnDestroy()
     {
-        DeRegisterEvents();
         DestroyBoxes();
         Item.Clear();
     }
@@ -229,6 +228,7 @@ public class Game : MonoBehaviour
         OnEnd = onEnd;
         InputHandler.Instance.AddClickHandler(Touch);
         InputHandler.Instance.AddSwipeHandler(Swipe);
+        onEnd += DeRegisterEvents;
     }
 
     private void DeRegisterEvents()

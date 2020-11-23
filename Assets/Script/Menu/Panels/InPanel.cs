@@ -21,6 +21,7 @@ public class InPanel : MenuPanel
 
     protected override void OnOpen()
     {
+        MusicPlayer.Instance.Play(Song.Game);
         SetState(true);
         ShowStart(GetGame());
     }
@@ -36,7 +37,8 @@ public class InPanel : MenuPanel
 
         StringBuilder sb = new StringBuilder("");
         for (int i = 0; i < lost.Item2; i++)
-            sb.Append(lost.Item1 > i ? 'X' : 'O');
+            if(!(lost.Item1 > i))
+                sb.Append("O");
         Mistakes.text = sb.ToString();            
     }
 
