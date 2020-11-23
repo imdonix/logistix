@@ -42,7 +42,7 @@ public class FireworkSpawner : MonoBehaviour
         {
             Delete();
             firework = Instantiate(GetRandomFirework(), transform.position + GetRandomDelta(), Quaternion.identity);
-            yield return new WaitForSeconds(3 + Random.Range(0, Delay));
+            yield return new WaitForSeconds(Random.Range(Delay/2, Delay));
         }
         Delete();
     }
