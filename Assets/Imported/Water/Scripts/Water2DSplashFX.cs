@@ -35,7 +35,9 @@ namespace RavingBots.Water2D
             _audioSource.clip = sound;
 			_audioSource.volume = volume;
 			_audioSource.pitch = pitch;
-			_audioSource.Play();
+
+			if(!FXPlayer.Instance.IsMuted())
+				_audioSource.Play();
         }
 
 		void PlayDrops(float scale)

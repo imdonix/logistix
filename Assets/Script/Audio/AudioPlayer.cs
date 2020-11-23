@@ -7,11 +7,17 @@ public abstract class AudioPlayer<T> : Singleton<T>
 
     protected AudioSource sorce;
 
+    #region UNITY
+
     protected virtual void Start()
     {
         sorce = GetComponent<AudioSource>();
         Maintain();
     }
+
+    #endregion
+
+    #region PUBLIC
 
     public void Toggle()
     {
@@ -19,10 +25,12 @@ public abstract class AudioPlayer<T> : Singleton<T>
         PlayerPrefs.Save();
     }
 
-    private bool IsMuted()
+    public bool IsMuted()
     {
-        return PlayerPrefs.GetInt($"audio_{key}", 0) > 0;           
+        return PlayerPrefs.GetInt($"audio_{key}", 0) > 0;
     }
+
+    #endregion
 
     private void Maintain()
     {
