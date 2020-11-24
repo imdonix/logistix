@@ -44,18 +44,18 @@ public class LevelUIComponent : MonoBehaviour
     {
         id = model.ID;
         dep = model.Unlocks;
-        if(model.IsPremiumOnly)
-        {
-            state = LevelState.Premium;
-        }
-        else if (map.IsDone(id))
-        {
+
+        if (map.IsDone(id))
             state = LevelState.Done;
-        }
         else
         {
             if (map.IsUnlocked(id))
-                state = LevelState.Open;
+            {
+                if (model.IsPremiumOnly)
+                    state = LevelState.Premium;
+                else
+                    state = LevelState.Open;
+            }
             else
                 state = LevelState.Locked;
         }
@@ -86,18 +86,12 @@ public class LevelUIComponent : MonoBehaviour
 
     public void OnClick()
     {
-        switch (state)
-        {
-
-            case LevelState.Locked:
-                Menu.Instance.Pop("Locked", "This level is locked!");
-                break;
-            case LevelState.Done:
-            case LevelState.Premium:
-            case LevelState.Open:
-                GameManager.Instance.StartGame(id);
-                break;
-        }
+        if (state.Equals(LevelState.Locked))
+            Menu.Instance.Pop("This level is locked", "You need to complete the mission before.");
+        else if (state.Equals(LevelState.Premium) && !Player.Instance.GetModel().Premium)
+            Menu.Instance.Pop("This level is locked", "Go the premium tab in the menu to unlock the premium levels.");
+        else
+            GameManager.Instance.StartGame(id);
     }
 
     #endregion
