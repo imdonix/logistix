@@ -204,21 +204,22 @@ function update()
 
     map.forEach(level => 
     {
-        let posY = padding + (y * 50);
-        let x = 0;
+        let posY = padding + (y * 50)
+        let x = 0
 
-        ctx.fillStyle = "black"; 
-        ctx.fillText(y.toString(), 50, posY + 18);
+        ctx.fillStyle = "black"
+        ctx.fillText(y.toString(), 50, posY + 18)
 
         level.levels.forEach(record =>
         {
-            let back = (level.levels.length / 2) * 50;
-            let posX = center + (x * 50) - back;
+            let back = (level.levels.length / 2) * 50
+            let posX = center + (x * 50) - back
+            let color = toColor(level.color)
 
-            ctx.fillStyle = "black"; 
-            ctx.fillRect(posX, posY, 30, 30);
-            ctx.fillStyle = "white"; 
-            ctx.fillText(record.id, posX + 11, posY + 18);
+            ctx.fillStyle = color;
+            ctx.fillRect(posX, posY, 30, 30)
+            ctx.fillStyle = invertColor(color)
+            ctx.fillText(record.id, posX + 11, posY + 18)
             x++
         })
         y++
@@ -245,7 +246,14 @@ function padZero(str, len)
 
 function randomColor()
 {
-    return Math.floor(Math.random()*16777215).toString(16);
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+}
+
+function toColor(color)
+{  
+    while(color.length < 6) color += '0'
+    if(color.indexOf('#') === 0) return color
+    return '#' + color
 }
 
 function cyrb53(str) 
