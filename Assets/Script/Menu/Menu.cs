@@ -15,6 +15,7 @@ public class Menu : Singleton<Menu>
 
     [Header("Overlays")]
     [SerializeField] private MenuPanel Logo;
+    [SerializeField] public MenuPanel SoundSettings;
 
     [Header("Utils")]
     [SerializeField] private Popup Popup;
@@ -72,6 +73,7 @@ public class Menu : Singleton<Menu>
         Panels.Add(InGame);
         Panels.Add(EndGame);
         Panels.Add(Premium);
+        Panels.Add(SoundSettings);
     }
 
     private void OnBack()

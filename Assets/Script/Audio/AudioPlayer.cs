@@ -24,6 +24,7 @@ public abstract class AudioPlayer<T> : Singleton<T>
     {
         PlayerPrefs.SetInt($"audio_{key}", IsMuted() ? 0 : 1);
         PlayerPrefs.Save();
+        Maintain();
     }
 
     public bool IsMuted()
