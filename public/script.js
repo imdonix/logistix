@@ -219,7 +219,7 @@ function update()
             ctx.fillStyle = color;
             ctx.fillRect(posX, posY, 30, 30)
             ctx.fillStyle = invertColor(color)
-            ctx.fillText(record.id, posX + 11, posY + 18)
+            ctx.fillText(record.id, posX + 11 - (record.id.toString().length), posY + 19)
             x++
         })
         y++
