@@ -52,8 +52,6 @@ public class Menu : Singleton<Menu>
     public void Pop(string header, string message)
     {
         Popup.Pop(header, message);
-
-        Debug.Log($"POPPED: {header}, {message}");
     }
 
     private void ClosePanels()
