@@ -11725,8 +11725,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2113729805}
   - component: {fileID: 2113729808}
-  - component: {fileID: 2113729807}
   - component: {fileID: 2113729806}
+  - component: {fileID: 2113729807}
   m_Layer: 5
   m_Name: '[Popup]'
   m_TagString: Untagged
@@ -11780,26 +11780,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 2113729804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a6e620ffa5a4e64b8875761130d0139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2971698, g: 0.69922554, b: 1, a: 1}
+  m_Color: {r: 0.2509804, g: 0.4431373, b: 0.7019608, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7429e327548ddc4458a59e05bdb84fb6, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_Sprite: {fileID: 0}
+  m_improveResolution: 0
+  m_Resolution: 0
+  m_useNativeSize: 0
+  cornerSize: {x: 64, y: 64}
+  m_cutUL: 1
+  m_cutUR: 1
+  m_cutLL: 1
+  m_cutLR: 1
+  m_makeColumns: 0
+  m_useColorUp: 0
+  m_colorUp:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_useColorDown: 0
+  m_colorDown:
+    serializedVersion: 2
+    rgba: 0
 --- !u!222 &2113729808
 CanvasRenderer:
   m_ObjectHideFlags: 0
