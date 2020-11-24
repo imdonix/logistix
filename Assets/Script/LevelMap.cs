@@ -32,7 +32,7 @@ public class LevelMap : IEnumerable<LevelRowModel>
         if (Rows.Length < 2) return true;
         if (level.Item1 < 1) return true; // First row alway unlocked
 
-        bool unlock = false;
+        bool unlock = level.Item2.Length == 0;
         for (int i = 0; i < level.Item2.Length; i++)
             unlock = unlock || IsDone(level.Item2[i]);
         return unlock;
