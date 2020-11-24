@@ -9,8 +9,9 @@ public abstract class AudioPlayer<T> : Singleton<T>
 
     #region UNITY
 
-    protected virtual void Start()
+    protected override void Awake()
     {
+        base.Awake();
         sorce = GetComponent<AudioSource>();
         Maintain();
     }

@@ -6114,9 +6114,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: fx
-  win: {fileID: 8300000, guid: a7302b7775483af44952ba13cd0d880f, type: 3}
-  lose: {fileID: 8300000, guid: 2f6bf17acf39fe641a934f3b15e350c9, type: 3}
-  touch: {fileID: 8300000, guid: e6213e0bd7e665c4ba08bc4c009796e5, type: 3}
+  win: {fileID: 8300000, guid: b3b2a291b478bce429bd82a27a0b6272, type: 3}
+  lose: {fileID: 8300000, guid: fb8535e51571a38438a8cf00eefbf557, type: 3}
+  touch: {fileID: 8300000, guid: 9ca2cbde64ed1764d8762f37b1ac3e1a, type: 3}
 --- !u!1 &1021210346
 GameObject:
   m_ObjectHideFlags: 0

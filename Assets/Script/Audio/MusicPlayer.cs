@@ -10,9 +10,8 @@ public class MusicPlayer : AudioPlayer<MusicPlayer>
     private Song state;
     private int times;
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
         times = 0;
     }
 

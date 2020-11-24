@@ -8,6 +8,7 @@ public class FXPlayer : AudioPlayer<FXPlayer>
 
     public void Play(AudioClip audio)
     {
+        Debug.Log(audio);
         sorce.clip = audio;
         sorce.Play();
     }

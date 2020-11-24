@@ -11,7 +11,8 @@ public class Singleton<T> : MonoBehaviour
         if (ReferenceEquals(Instance, null)) 
         {
             Instance = gameObject.GetComponent<T>();
-            DontDestroyOnLoad(gameObject);
+            if(ReferenceEquals(transform.parent,null))
+                DontDestroyOnLoad(gameObject);
         }
         else
             Destroy(gameObject);
