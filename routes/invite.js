@@ -17,10 +17,10 @@ router.get('/:name', function (req, res)
     db.query(db.addRefer(name, hashIP(req)), 
     (_) => console.log(`[Invite] ${name}'s link opened by ${req.ip}.`))
 
-    res.redirect(PLAYSTORE_URL)
+    res.redirect(settings.PLAYSTORE_URL)
 })
 
-router.get('/', (_, res) =>
+router.get('/', (req, res) =>
 {
     if(checkFacebook(req))
     {
@@ -28,7 +28,7 @@ router.get('/', (_, res) =>
         return;
     }
 
-    res.redirect(PLAYSTORE_URL)
+    res.redirect(settings.PLAYSTORE_URL)
 } );
 
 router.post('', function (req, res) 
