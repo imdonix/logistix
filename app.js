@@ -1,8 +1,7 @@
-const PORT = process.env.PORT || 3000;
-
 const express = require('express')
 const bodyParser= require('body-parser')
 const path = require('path')
+const settings = require('./settings')
 
 const level = require('./routes/level')
 const version = require('./routes/version')
@@ -28,4 +27,4 @@ app.use('/premium', premium);
 app.use('/editor', editor)
 app.get('/privacy', (_, res) => res.sendFile(path.join(__dirname + '/public/privacy.html')))
 
-app.listen(PORT, () => console.log("Server started. " + PORT))
+app.listen(settings.PORT, () => console.log(`API running on (${settings.PORT})`))

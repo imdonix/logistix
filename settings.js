@@ -7,6 +7,7 @@ const settings =
     INVITE_DESC: process.env.INVITE_DESC            || "",
     PREMIUM_UNLOCK: process.env.PREMIUM_UNLOCK      || 50,
     MASTER_PASSWORD: process.env.MASTER_PASSWORD    || "master",
+    PORT: process.env.PORT                          || 3000,
 }
 
 module.exports = settings;
