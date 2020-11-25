@@ -1,3 +1,6 @@
+CREATE SEQUENCE levels_id INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999 CACHE 1;
+CREATE SEQUENCE public.resoults_serial_seq INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1;
+
 CREATE TABLE resoults
 (
     mapid integer NOT NULL,
@@ -5,7 +8,7 @@ CREATE TABLE resoults
     score integer NOT NULL,
     lostboxes integer NOT NULL,
     "time" integer NOT NULL,
-    serial bigint NOT NULL DEFAULT nextval('resoults_serial_seq'::regclass),
+    serial bigint NOT NULL DEFAULT nextval('resoults_serial_seq'),
     email text COLLATE pg_catalog."default" NOT NULL,
     usedmultiplies boolean NOT NULL,
     CONSTRAINT resoults_pkey PRIMARY KEY (serial)
