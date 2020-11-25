@@ -8,10 +8,18 @@ public class Ship : MonoBehaviour
 {
     private const float L = 0.05f;
 
+    [Header("Propeties")]
     [SerializeField] private float Speed;
     [SerializeField] private float Fog;
     [SerializeField] private float Slowzone;
     [SerializeField] private Vector3 FloatPosition;
+
+    [SerializeField] private Sprite[] Towers;
+    [SerializeField] private Sprite[] Sides;
+
+    [Header("Dependecies")]
+    [SerializeField] private SpriteRenderer Tower;
+    [SerializeField] private SpriteRenderer Side;
 
     private BoxCollider2D colider;
     private ShipState state;
