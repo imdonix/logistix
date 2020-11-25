@@ -18,6 +18,7 @@ router.post('/', function (req,res)
 
     if(pass === cyrb53(settings.MASTER_PASSWORD))
     {
+        console.log("[Level] levelmap updated")
         db.query(db.updateLevelMap(packed), (r) =>
         {
             if(r.rowCount == 1)
