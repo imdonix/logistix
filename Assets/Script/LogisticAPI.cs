@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class LogisticAPI : WebRequestEngine<LogisticAPI>
 {
@@ -79,10 +80,27 @@ public class LogisticAPI : WebRequestEngine<LogisticAPI>
 
     #endregion
 
+    #region REFER
+
+    public void OpenBugReport()
+    {
+        Application.OpenURL(Utils.CreateURLEndcoded(GetServerURI() + "bug", 
+            "device", SystemInfo.deviceModel, 
+            "ram", SystemInfo.systemMemorySize.ToString(),
+            "player", Player.Instance.GetUserID()));
+    }
+
+    #endregion
+
+    #region PRIVATE
+
     private JObject CreateAuthObject()
     {
         JObject obj = new JObject();
         obj.Add("email", Player.Instance.GetUserID());
         return obj;
     }
+
+    #endregion
+
 }
