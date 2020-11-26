@@ -32,7 +32,7 @@ CREATE TABLE users
     CONSTRAINT users_pkey PRIMARY KEY (email)
 );
 
-CREATE TABLE public.levels
+CREATE TABLE levels
 (
     version bigint NOT NULL DEFAULT nextval('levels_id'),
     map json,
