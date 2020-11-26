@@ -1,0 +1,58 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+public class UpgradeComponent : MonoBehaviour
+{
+    [Header("Dependencies")]
+    [SerializeField] public Text Wood;
+    [SerializeField] public Text Iron;
+    [SerializeField] public Text Status;
+    [SerializeField] public Text Description;
+
+    private Button button;
+
+    #region UNITY
+
+    private void Awake()
+    {
+        button = GetComponent<Button>();
+    }
+
+    #endregion
+
+    public void Set(int max)
+    {
+        Status.text = $"{max} of {max}";
+        SetText("Maxed out");
+        SetCostVisible(false);
+        SetEnabled(false);
+    }
+
+    public void Set(int wood, int iron, int level, int max)
+    {
+        gameObject.SetActive(true);
+        Wood.text = Utils.ToReadableNumber(wood);
+        Iron.text = Utils.ToReadableNumber(iron);
+        Status.text = $"{level} of {max}";
+        SetCostVisible(true);   
+        SetText("Upgrade");
+        SetEnabled(true);
+    }
+
+    private void SetCostVisible(bool visible)
+    {
+        Wood.gameObject.transform.parent.gameObject.SetActive(visible);
+        Iron.gameObject.transform.parent.gameObject.SetActive(visible);
+    }
+
+    private void SetText(string text)
+    {
+        Description.text = text;
+    }
+
+    private void SetEnabled(bool enabled)
+    {
+        button.interactable = enabled;
+    }
+
+}

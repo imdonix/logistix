@@ -97,11 +97,6 @@ public class Player : Singleton<Player>
         Refresh(Model);
     }
 
-    public int GetExtraLife()
-    {
-        return 0;
-    }
-
     #endregion
 
     private void LoadUser()

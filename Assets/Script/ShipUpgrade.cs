@@ -15,14 +15,14 @@ public class ShipUpgrade : Singleton<ShipUpgrade>
     {
         switch (upgrade)
         {
-            case Upgrade.Tower: return GameManager.Instance.GetShipTemplate().Towers.Length;
+            case Upgrade.Tower: return GameManager.Instance.GetShipTemplate().Towers.Length - 1;
             case Upgrade.Body:
                 LevelMap map = GameManager.Instance.GetMap();
                 if (!ReferenceEquals(map, null))
-                    return map.CountLevels();
+                    return map.GetDepth() - 2;
                 else
                     return 0;
-            case Upgrade.Life: return GameManager.Instance.GetShipTemplate().Sides.Length;
+            case Upgrade.Life: return GameManager.Instance.GetShipTemplate().Sides.Length - 1;
         }
         return 0;
     }
@@ -63,6 +63,11 @@ public class ShipUpgrade : Singleton<ShipUpgrade>
     public int GetExtraLife()
     {
         return GetUpgrade(Upgrade.Life);
+    }
+
+    public int GetExtraMultiplier()
+    {
+        return GetUpgrade(Upgrade.Tower);
     }
 
     public void ResetAll()

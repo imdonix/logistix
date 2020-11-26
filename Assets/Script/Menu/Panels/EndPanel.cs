@@ -160,7 +160,7 @@ public class EndPanel : MenuPanel
 
     private void GenerateRandomMultiplier()
     {
-        randomMultipier = UnityEngine.Random.Range(3, 5);
+        randomMultipier = UnityEngine.Random.Range(2, 3 + ShipUpgrade.Instance.GetExtraMultiplier());
         if (resoult.IsWin)
             Secoundary.text = $"{randomMultipier}x";
     }

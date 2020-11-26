@@ -12,6 +12,7 @@ public class Menu : Singleton<Menu>
     [SerializeField] public MenuPanel InGame;
     [SerializeField] public MenuPanel EndGame;
     [SerializeField] public MenuPanel Premium;
+    [SerializeField] public MenuPanel Upgrade;
 
     [Header("Overlays")]
     [SerializeField] private MenuPanel Logo;
@@ -29,6 +30,7 @@ public class Menu : Singleton<Menu>
     {
         base.Awake();
         LoadPanels();
+        EnablePopUp();
     }
 
     private void Start()
@@ -72,6 +74,12 @@ public class Menu : Singleton<Menu>
         Panels.Add(EndGame);
         Panels.Add(Premium);
         Panels.Add(SoundSettings);
+        Panels.Add(Upgrade);
+    }
+
+    private void EnablePopUp()
+    {
+        Popup.gameObject.SetActive(true);
     }
 
     private void OnBack()

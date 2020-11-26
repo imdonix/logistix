@@ -36,8 +36,8 @@ class MainPanel : MenuPanel
 	}
 
 	public void OnShopButtonClick()
-	{ 
-		//TODO
+	{
+		Menu.Instance.Swich(Menu.Instance.Upgrade);
 	}
 
 	#endregion
@@ -47,26 +47,8 @@ class MainPanel : MenuPanel
 	private void LoadResources(PlayerModel model)
 	{
 		(int, int) upgrades = ShipUpgrade.Instance.GetSpent();
-		Wood.text = ToReadableNumber(model.Wood - upgrades.Item1);
-		Iron.text = ToReadableNumber(model.Iron - upgrades.Item2);
-	}
-
-	private static string ToReadableNumber(int number)
-	{
-		string Reverse(string str) { return new string(str.Reverse().ToArray()); }
-
-		StringBuilder tmp = new StringBuilder();
-
-		int c = 0;
-		foreach(char chr in Reverse(number.ToString()))
-		{
-			if (c % 3 == 0 && c > 0)
-				tmp.Append('.');
-			tmp.Append(chr);
-			c++;
-		}
-
-		return Reverse(tmp.ToString());
+		Wood.text = Utils.ToReadableNumber(model.Wood - upgrades.Item1);
+		Iron.text = Utils.ToReadableNumber(model.Iron - upgrades.Item2);
 	}
 
 	#endregion

@@ -38,6 +38,11 @@ public class LevelMap : IEnumerable<LevelRowModel>
         return unlock;
     }
 
+    public int GetDepth()
+    {
+        return Rows.Length;
+    }
+
     public LevelModel GetLevelByID(int id)
     {
         for (int i = 0; i < Rows.Length; i++)
