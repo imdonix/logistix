@@ -97,6 +97,11 @@ public class Player : Singleton<Player>
         Refresh(Model);
     }
 
+    public int GetExtraLife()
+    {
+        return 0;
+    }
+
     #endregion
 
     private void LoadUser()
@@ -122,5 +127,4 @@ public class Player : Singleton<Player>
     {
         Menu.Instance.Pop("Premium account", "Congratulation! Your account is premium now.");
     }
-
 }

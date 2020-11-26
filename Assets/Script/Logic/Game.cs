@@ -104,7 +104,7 @@ public class Game : MonoBehaviour
 
     public (int, int) GetLostAndMax()
     {
-        return (CountLostBoxes(), Mistakes);
+        return (CountLostBoxes(), Mistakes + Player.Instance.GetExtraLife());
     }
 
     #endregion
@@ -200,7 +200,7 @@ public class Game : MonoBehaviour
 
     private bool IsGameLost()
     {
-        return CountLostBoxes() > Mistakes;
+        return CountLostBoxes() > Mistakes + ShipUpgrade.Instance.GetExtraLife();
     }
 
     private int CountLostBoxes()

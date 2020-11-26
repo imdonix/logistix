@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Prefhabs")]
     [SerializeField] private Box[] Boxes;
 
-    [SerializeField] private Ship[] Ships;
+    [SerializeField] private Ship Ships;
     [SerializeField] private Game Template;
 
     [Header("Game Elements")]
@@ -77,6 +77,11 @@ public class GameManager : Singleton<GameManager>
             throw new BoxNotExistsExeption(id);
     }
 
+    public Ship GetShipTemplate()
+    {
+        return Ships;
+    }
+
     public void StartGame(int id)
     {
         Current = Game.CreateGame(Map.GetLevelByID(id));
@@ -100,7 +105,7 @@ public class GameManager : Singleton<GameManager>
 
     private void CreateShip()
         {
-            Ship = Instantiate(Ships[0]);
+            Ship = Instantiate(Ships);
         }
 
         private void DownloadLevelMap()

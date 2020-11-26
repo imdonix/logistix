@@ -14,8 +14,8 @@ public class Ship : MonoBehaviour
     [SerializeField] private float Slowzone;
     [SerializeField] private Vector3 FloatPosition;
 
-    [SerializeField] private Sprite[] Towers;
-    [SerializeField] private Sprite[] Sides;
+    [SerializeField] public Sprite[] Towers;
+    [SerializeField] public Sprite[] Sides;
 
     [Header("Dependecies")]
     [SerializeField] private SpriteRenderer Tower;
@@ -78,9 +78,17 @@ public class Ship : MonoBehaviour
         {Destroy(game.gameObject); game = null;}
 
         transform.position = Vector3.left * Fog + FloatPosition;
+        UpdateVisual();
         state = ShipState.Arive;
     }
 
+    private void UpdateVisual()
+    {
+
+
+        Tower.sprite = Towers[Math.Min(Towers.Length-1, ShipUpgrade.Instance.GetUpgrade(Upgrade.Tower))];
+        Side.sprite = Sides[Math.Min(Sides.Length-1, ShipUpgrade.Instance.GetUpgrade(Upgrade.Life))];
+    }
 
     private void Move()
     {

@@ -130,12 +130,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 23456274}
+  - component: {fileID: 23456279}
   - component: {fileID: 23456273}
   - component: {fileID: 23456275}
   - component: {fileID: 23456277}
   - component: {fileID: 23456276}
   - component: {fileID: 23456278}
-  - component: {fileID: 23456279}
   m_Layer: 0
   m_Name: '[Manager]'
   m_TagString: Untagged
@@ -172,8 +172,7 @@ MonoBehaviour:
   - {fileID: 4394457056785076657, guid: cb36fad865df4e34e878d555fcb6d748, type: 3}
   - {fileID: 6877010422013120656, guid: 4b5e312b92b6d574bb6fd56e915e1cce, type: 3}
   - {fileID: 7351972446546743063, guid: 0505316cba6a4b849aa067421368f78c, type: 3}
-  Ships:
-  - {fileID: 484360861374426282, guid: 7fb28a3cf86f3614ebf475cc01125fef, type: 3}
+  Ships: {fileID: 6312838015407232147, guid: 211d7b14903d1244481cb2533146939a, type: 3}
   Template: {fileID: 7004606972184222548, guid: 22c52f99d07c44e48a6f3da8d628514f,
     type: 3}
   Crane: {fileID: 1297031236}
@@ -254,9 +253,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 23456272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0071fe972f20b4b9ed48b9ab12facf, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c50136bf621a1c4a8746aabb7cd179d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Base: 50
 --- !u!1 &28357117
 GameObject:
   m_ObjectHideFlags: 0
