@@ -146,7 +146,6 @@ public class Game : MonoBehaviour
     {
         IEnumerator DeAtttach()
         {
-            
             Box dropped = GameManager.Instance.Crane.Release();
             dropped.OnEject();
             Dropped.Add(dropped);
