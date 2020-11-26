@@ -12,6 +12,7 @@ const toplist = require('./routes/toplist')
 const invite = require('./routes/invite')
 const premium = require('./routes/premium')
 const editor = require('./routes/editor')
+const bug = require('./routes/bug')
 
 const app = express()
 app.use(bodyParser.json())
@@ -25,6 +26,7 @@ app.use('/toplist', toplist)
 app.use('/invite', invite);
 app.use('/premium', premium);
 app.use('/editor', editor)
+app.use('/bug', bug)
 app.get('/privacy', (_, res) => res.sendFile(path.join(__dirname + '/public/privacy.html')))
 
 app.listen(settings.PORT, () => console.log(`API running on (${settings.PORT})`))
