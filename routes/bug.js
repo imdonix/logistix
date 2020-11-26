@@ -8,7 +8,7 @@ router.get('/script.js', (req,res) => res.sendFile(path.join(__dirname + '/../pu
 router.post('/', (req,res) =>
 {
     res.status(200).send();
-    console.log(req.body) //TODO
+    //TODO
 
 })
 
