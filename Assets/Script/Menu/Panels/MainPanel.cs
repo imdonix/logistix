@@ -17,8 +17,7 @@ class MainPanel : MenuPanel
 		PlayerModel model = Player.Instance.GetModel();
 		Name.text = model.Name;
 		Name.color = model.Premium ? Color.yellow : Color.white;
-		Wood.text = ToReadableNumber(model.Wood);
-		Iron.text = ToReadableNumber(model.Iron);
+		LoadResources(model);
 		PremiumButton.SetActive(!model.Premium);
 	}
 
@@ -44,6 +43,13 @@ class MainPanel : MenuPanel
 	#endregion
 
 	#region PRIAVTE
+
+	private void LoadResources(PlayerModel model)
+	{
+		(int, int) upgrades = ShipUpgrade.Instance.GetSpent();
+		Wood.text = ToReadableNumber(model.Wood - upgrades.Item1);
+		Iron.text = ToReadableNumber(model.Iron - upgrades.Item2);
+	}
 
 	private static string ToReadableNumber(int number)
 	{
