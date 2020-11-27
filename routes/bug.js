@@ -9,7 +9,7 @@ const script = "bug"
 
 router.get('/', (req,res) => res.sendFile(path.join(__dirname + '/../public/bug.html')))
 router.get('/script.js', (req,res) => 
-fs.existsSync(__dirname + `/../public/${script}.min.js`) ? res.sendFile(path.join(__dirname + `/../public/${script}.min.js.js`)) : res.sendFile(path.join(__dirname + `/../public/${script}.js`)))
+fs.existsSync(__dirname + `/../public/${script}.min.js`) ? res.sendFile(path.join(__dirname + `/../public/${script}.min.js`)) : res.sendFile(path.join(__dirname + `/../public/${script}.js`)))
 
 router.post('/', (req,res) =>
 {
