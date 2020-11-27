@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const db = require('../db/database')
+const settings = require('../settings')
 const { cyrb53 } = require('../crypto')
 var router = express.Router()
 
@@ -24,6 +25,29 @@ router.post('/all', (_,res) =>
     })
 })
 
+router.post('/fix/:id', (req,res) =>
+{
+    if(req.params.id)
+    {
+        if(req.body.pass )
+        {
+            if(req.body.pass === cyrb53(settings.MASTER_PASSWORD))
+            {
+                db.query(db.fixBug(req.params.id), (_) =>
+                {
+                    console.log("[Bug] bug fixed id")
+                    res.send(200).send('Succes')
+                })
+            }
+            else
+                res.status(401).send('Bad master password.')
+        }
+        else
+            res.status(401).send('You need to set the master key.')
+    }
+    else
+        res.status(400).send('You need id.')
 
+})
 
 module.exports = router
