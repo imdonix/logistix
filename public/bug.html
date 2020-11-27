@@ -14,9 +14,9 @@
     </style>
 </head>
 <body>
-    <div id="report" class="container fixed-top hidden">
+    <div id="report" class="container fixed-top hidden overflow-auto">
         <div class="row justify-content-md-center">
-            <div class="col-sm-6">
+            <div class="col-sm-6 ">
                 <hr>
                 <h4>Logistix</h4>
                 <h1>Bug report</h1>
@@ -24,20 +24,20 @@
                 <div class="form-group">
                     <label for="device">Your device</label>
                     <input type="text" class="form-control" id="device" placeholder="Your device">
-                    </div>
-                    <div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="ram">Your device RAM <span class="badge badge-info">(MB)</span></label>
                     <input type="number" class="form-control" id="ram" placeholder="Your device RAM">
-                    </div>
-                    <div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="player">Your player ID</label>
                     <input type="text" class="form-control" id="player" placeholder="Your player ID">
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                    <label for="bug"> Please write down the bug <span class="badge badge-primary">*</span> <span id="size" class="badge "></span></label>
-                    <textarea id="bug" class="form-control" rows="3" placeholder="What happened?"></textarea>
-                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label for="bug"> Please write down the bug <span class="badge badge-primary">*</span></label>
+                    <textarea id="bug" class="form-control" rows="3" maxlength="200" placeholder="What happened?"></textarea>
+                </div>
                 <button id="send" class="btn btn-primary mb-2">Send report</button>
             </div>
         </div>
