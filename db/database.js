@@ -108,6 +108,29 @@ module.exports =
             text: "INSERT INTO levels (map) VALUES ($1);",
             values: [levelMap]
         }
+    },
+
+    postBug: (bug, player, device, ram) =>
+    {
+        return {
+            text: "INSERT INTO bugs (bug, player, device, ram) VALUES ($1, $2, $3, $4)",
+            values: [bug, player, device, ram]
+        }
+    },
+
+    fixBug: (id) =>
+    {
+        return {
+            text: "UPDATE bugs SET fixed = 'true' WHERE id = $1",
+            values: [id]
+        }
+    },
+
+    getBugs: () =>
+    {
+        return {
+            text: "SELECT * FROM bugs",
+        }
     }
 
 }
