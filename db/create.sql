@@ -38,3 +38,15 @@ CREATE TABLE levels
     map json,
     CONSTRAINT levels_pkey PRIMARY KEY (version)
 )
+
+CREATE TABLE bugs
+(
+    id bigint NOT NULL DEFAULT nextval('bug_id'::regclass),
+    bug text COLLATE pg_catalog."default" NOT NULL,
+    player text COLLATE pg_catalog."default",
+    device text COLLATE pg_catalog."default",
+    ram text COLLATE pg_catalog."default",
+    fixed boolean DEFAULT false,
+    date date NOT NULL DEFAULT now(),
+    CONSTRAINT bugs_pkey PRIMARY KEY (id)
+)
