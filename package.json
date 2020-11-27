@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "build": "node build.js",
     "test": "nodemon app.js"
   },
   "repository": {
@@ -24,6 +25,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "node-minify": "^3.6.0",
     "path": "^0.12.7",
     "pg": "^8.5.1",
     "sha1": "^1.1.1"
