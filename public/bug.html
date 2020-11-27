@@ -9,14 +9,15 @@
     crossorigin="anonymous">
     <title>Logistix - Bug report</title>
     <style>
-        body { text-align: center; }
+        html {height: 100%;}
+        body { text-align: center; height: 100%; }
         .hidden { visibility: hidden; }
     </style>
 </head>
 <body>
-    <div id="report" class="container fixed-top hidden overflow-auto">
-        <div class="row justify-content-md-center">
-            <div class="col-sm-6 ">
+    <div class="container">
+        <div id="report" class="row sticky-top justify-content-md-center">
+            <div class="col-sm-8 ">
                 <hr>
                 <h4>Logistix</h4>
                 <h1>Bug report</h1>
@@ -41,10 +42,8 @@
                 <button id="send" class="btn btn-primary mb-2">Send report</button>
             </div>
         </div>
-    </div>
 
-    <div id="thank" class="container fixed-top hidden">
-        <div class="row justify-content-md-center">
+        <div id="thank" class="row sticky-top justify-content-md-center hidden">
             <div class="col-6">
                 <hr>
                 <h4>Logistix</h4>
@@ -53,20 +52,33 @@
                 <p>You will be notified in the game about your bug.</p>
             </div>
         </div>
-    </div>
 
-    <div id="main" class="container fixed-top">
-        <div class="row justify-content-md-center">
+        <div id="main" class="row sticky-top justify-content-md-center">
             <div class="col-6">
                 <hr>
                 <h4>Logistix</h4>
                 <h1>Bugs</h1>
                 <hr>
-                <p>In progress.</p>
+                <div id="content" class="accordion">
+
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                #1
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 
     <script src="bug/script.js"></script>
 </body>
