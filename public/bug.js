@@ -15,19 +15,8 @@ const max = 200
 function init()
 {
     send.addEventListener('click', sendReport)
-
-    const player = url.get('player');
-    if(player)
-    {
-        report.classList.toggle('hidden', false);
-        main.classList.toggle('hidden', true);
-        loadURLData();
-    }
-    else
-    {
-        report.classList.toggle('hidden', true);
-        main.classList.toggle('hidden', false);
-    }
+    report.classList.toggle('hidden', false);
+    loadURLData();
 }
 
 function loadURLData()
@@ -41,7 +30,7 @@ function getData()
 {
     return {
         player: player.value,
-        device: device.value ,
+        device: device.value,
         ram: ram.value,
         send: bug.value,
     }
