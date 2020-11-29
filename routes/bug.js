@@ -1,15 +1,13 @@
 const express = require('express')
 const path = require('path')
-const fs = require('fs')
+const { getScript } = require('../minify')
 const db = require('../db/database')
 const settings = require('../settings')
 const { cyrb53 } = require('../crypto')
 var router = express.Router()
-const script = "bug"
 
 router.get('/', (req,res) => res.sendFile(path.join(__dirname + '/../public/bug.html')))
-router.get('/script.js', (req,res) => 
-fs.existsSync(__dirname + `/../public/${script}.min.js`) ? res.sendFile(path.join(__dirname + `/../public/${script}.min.js`)) : res.sendFile(path.join(__dirname + `/../public/${script}.js`)))
+router.get('/script.js', (req,res) => res.sendFile(getScript("bug")))
 
 router.post('/', (req,res) =>
 {

@@ -1,11 +1,9 @@
 const express = require('express')
 const path = require('path')
-const fs = require('fs')
+const { getScript } = require('../minify')
 var router = express.Router()
-const script = "editor"
 
 router.get('/', (req,res) => res.sendFile(path.join(__dirname + '/../public/editor.html')))
-router.get('/script.js', (req,res) =>
-fs.existsSync(__dirname + `/../public/${script}.min.js`) ? res.sendFile(path.join(__dirname + `/../public/${script}.min.js`)) : res.sendFile(path.join(__dirname + `/../public/${script}.js`)))
+router.get('/script.js', (req,res) => res.sendFile(getScript("editor")))
 
 module.exports = router
