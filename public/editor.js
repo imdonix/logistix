@@ -19,8 +19,9 @@ const unlockcount = document.querySelector('#unlockcount')
 const boxcount = document.querySelector('#boxcount')
 const btnnew = document.querySelector('#new');
 
-let map = null;
-let selected = null;
+let map = null
+let selected = null
+let scrollState = 0
 
 id.addEventListener('change', onChange)
 btnAdd.addEventListener('click', onAdd)
@@ -207,7 +208,7 @@ function update()
     let prev = []
     map.forEach(level => 
     {
-        let posY = padding + (y * (size + size/2))
+        let posY = padding + scrollState + (y * (size + size/2))
         let x = 0
 
         ctx.fillStyle = "black"
@@ -276,7 +277,12 @@ function toColor(color)
 
 function scroll(event)
 {
+    if(map == null) return;
+
     event.preventDefault();
+    scrollState += -event.deltaY;
+    if(scrollState > 0) scrollState = 0
+    update();
 }
 
 function cyrb53(str) 
