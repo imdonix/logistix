@@ -1,4 +1,5 @@
-const padding = 50;
+const padding = 50
+const size = 30
 const canvas = document.querySelector('#levels')
 
 const id = document.querySelector('#id')
@@ -27,6 +28,7 @@ btnRemove.addEventListener('click', onRemove)
 btnReload.addEventListener('click', reload)
 btnUpload.addEventListener('click', onSubmit);
 btnnew.addEventListener('click', (e) => init([]))
+canvas.addEventListener('wheel', scroll);
 
 unlock.addEventListener('input', (_) => arrayChange(unlock, unlockcount))
 boxes.addEventListener('input', (_) => arrayChange(boxes, boxcount))
@@ -202,26 +204,42 @@ function update()
     let center = canvas.clientWidth / 2;
     let y = 0;
 
+    let prev = []
     map.forEach(level => 
     {
-        let posY = padding + (y * 50)
+        let posY = padding + (y * (size + size/2))
         let x = 0
 
         ctx.fillStyle = "black"
-        ctx.fillText(y.toString(), 50, posY + 18)
+        ctx.fillText(y.toString(), (size + size/2), posY + 18)
 
+        let temp = [];
         level.levels.forEach(record =>
         {
-            let back = (level.levels.length / 2) * 50
-            let posX = center + (x * 50) - back
+            let back = (level.levels.length / 2) * (size + size/2)
+            let posX = center + (x * (size + size/2)) - back
             let color = toColor(level.color)
 
             ctx.fillStyle = color;
-            ctx.fillRect(posX, posY, 30, 30)
+            ctx.fillRect(posX, posY, size, size)
             ctx.fillStyle = invertColor(color)
             ctx.fillText(record.id, posX + 11 - (record.id.toString().length), posY + 19)
+            record.unlocks.forEach(i =>
+                {
+                    let to = prev.find(p => p[0] == i);
+                    console.log(to)
+                    if(to)
+                    {
+                        ctx.beginPath();
+                        ctx.moveTo(posX+size/2, posY);
+                        ctx.lineTo(to[1]+size/2, to[2]+size);
+                        ctx.stroke();
+                    }
+                })
+            temp.push([record.id,posX,posY])
             x++
         })
+        prev = temp
         y++
     });
 }
@@ -254,6 +272,11 @@ function toColor(color)
     while(color.length < 6) color += '0'
     if(color.indexOf('#') === 0) return color
     return '#' + color
+}
+
+function scroll(event)
+{
+    event.preventDefault();
 }
 
 function cyrb53(str) 
