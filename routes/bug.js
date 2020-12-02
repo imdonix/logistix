@@ -6,8 +6,10 @@ const settings = require('../settings')
 const { cyrb53 } = require('../crypto')
 var router = express.Router()
 
-router.get('/', (req,res) => res.sendFile(path.join(__dirname + '/../public/bug.html')))
+router.get('/', (req,res) => getPage(req.query.player,res))
+
 router.get('/script.js', (req,res) => res.sendFile(getScript("bug")))
+router.get('/review.js', (req,res) => res.sendFile(getScript("review")))
 
 router.post('/', (req,res) =>
 {
@@ -30,14 +32,14 @@ router.post('/fix/:id', (req,res) =>
 {
     if(req.params.id)
     {
-        if(req.body.pass )
+        if(req.body.pass)
         {
             if(req.body.pass === cyrb53(settings.MASTER_PASSWORD))
             {
                 db.query(db.fixBug(req.params.id), (_) =>
                 {
                     console.log("[Bug] bug fixed id")
-                    res.send(200).send('Succes')
+                    res.status(200).send('Succes')
                 })
             }
             else
@@ -50,5 +52,14 @@ router.post('/fix/:id', (req,res) =>
         res.status(400).send('You need id.')
 
 })
+
+
+function getPage(isReport, res)
+{
+    if(isReport)
+        res.sendFile(path.join(__dirname + '/../public/bug.html'))
+    else
+        res.sendFile(path.join(__dirname + '/../public/review.html'))
+}
 
 module.exports = router
