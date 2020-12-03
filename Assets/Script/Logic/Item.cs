@@ -41,14 +41,17 @@ public class Item : MonoBehaviour
     #region STATIC
     public static void Clear()
     {
-        foreach (Item item in items) Destroy(item.gameObject);
+        foreach (Item item in items) 
+            if(item.gameObject != null)
+                Destroy(item.gameObject);
         items.Clear();
     }
 
     public static void ItemDestroy(Item item)
     {
+        if (item.gameObject != null)
+            Destroy(item.gameObject);
         items.Remove(item);
-        Destroy(item.gameObject);
     }
 
     #endregion
