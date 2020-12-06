@@ -44,7 +44,9 @@ function reload(reset)
 
     map = null;
     update();
-    fetch('/levels').then(res => res.json()).catch(err => {console.log("Data cant be loaded from /levels"); init([])}).then(data => init(data))
+    fetch('/levels')
+    .then(res => res.json())
+    .catch(err => {console.log("Data cant be loaded from /levels"); init([])}).then(data => init(data))
 }
 
 function onChange()
