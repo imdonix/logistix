@@ -15,6 +15,11 @@ Have an online level editor (/editor).
 - Level map visualized
 - Editor
 
+![Editor preview](https://raw.githubusercontent.com/imdonix/logistix/master/doc/editor_preview.png)
+
 Have an online bug report system (/bug)
 - Post
 - Review
+
+![Bug preview](https://github.com/imdonix/logistix/raw/master/doc/bug_preview.png)
+
