@@ -1,8 +1,7 @@
-﻿using DSoft;
-using Facebook.Unity;
+﻿using Facebook.Unity;
 using System;
 using UnityEngine;
-using UnityScript.Lang;
+using Newtonsoft.Json;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -10,6 +9,8 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Settings")]
     [SerializeField] private bool DebugMode;
+    [SerializeField] private bool AddFreeMode;
+    
 
     [Header("Prefhabs")]
     [SerializeField] private Box[] Boxes;
@@ -20,6 +21,8 @@ public class GameManager : Singleton<GameManager>
     [Header("Game Elements")]
     [SerializeField] public Crane Crane;
 
+    [Header("Offline LevelMap")]
+    [SerializeField] public TextAsset OfflineLevelMap;
 
     private LevelMap Map;
 
@@ -99,6 +102,11 @@ public class GameManager : Singleton<GameManager>
             throw new Exception("FB not inicialized");
     }
 
+    public bool GetAddFreeMode()
+    {
+        return AddFreeMode;
+    }
+
     #endregion
 
     #region PRIVATE
@@ -121,7 +129,18 @@ public class GameManager : Singleton<GameManager>
                     catch (IllegalLevelMapExeption ex)
                     { Debug.LogError(ex); };
                 },
-                err => Debug.LogError(err)
+                err => 
+                {
+                    try
+                    {
+                        Map = LevelMap.Create(JsonConvert.DeserializeObject<LevelRowModel[]>(OfflineLevelMap.text));
+                        ShowLevesLoaded(Map.CountLevels());
+                    }
+                    catch (IllegalLevelMapExeption ex)
+                    { Debug.LogError(ex); };
+
+                    Debug.LogError("Levelmap cant be loaded - " + err);
+                }
                 );
         }
 

@@ -155,7 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acdb2f3be6188a45a6a2bd500b5da02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugMode: 0
+  DebugMode: 1
+  AddFreeMode: 1
   Boxes:
   - {fileID: 6983512673087029088, guid: 1a059d8cdd48fe8499d558105a67dab7, type: 3}
   - {fileID: 8022622036673661655, guid: 5763f71bb80235e4bad920126ba39e83, type: 3}
@@ -8723,7 +8724,7 @@ MonoBehaviour:
 
     TIP: Share your gameplayer and reach
     out people to get free premium account wich unlock new levels, add you better
-    multiplier and add free. '
+    multiplier.'
 --- !u!222 &1071562861
 CanvasRenderer:
   m_ObjectHideFlags: 0
