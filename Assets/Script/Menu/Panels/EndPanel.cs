@@ -70,6 +70,7 @@ public class EndPanel : MenuPanel
         this.resoult = resoult;
         SetUp();
         GenerateRandomMultiplier();
+        AddFreeBonus();
     }
 
     private void SetUp()
@@ -163,6 +164,12 @@ public class EndPanel : MenuPanel
         randomMultipier = UnityEngine.Random.Range(2, 3 + ShipUpgrade.Instance.GetExtraMultiplier());
         if (resoult.IsWin)
             Secoundary.text = $"{randomMultipier}x";
+    }
+
+    private void AddFreeBonus()
+    {
+        if(GameManager.Instance.GetAddFreeMode())
+            OnSecoundary();
     }
 
     private void LoadTopList()
