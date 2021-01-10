@@ -13,6 +13,7 @@ public class InPanel : MenuPanel
     [SerializeField] public Transform Panel;
     [SerializeField] public Text Left;
     [SerializeField] public Text Mistakes;
+    [SerializeField] public Text Score;
 
 
     public bool IsInit { get; private set; }
@@ -40,6 +41,11 @@ public class InPanel : MenuPanel
             if(!(lost.Item1 > i))
                 sb.Append("O");
         Mistakes.text = sb.ToString();            
+    }
+
+    public void ShowScore(int score)
+    {
+        Score.text = score.ToString();
     }
 
     #endregion

@@ -116,6 +116,7 @@ public class Game : MonoBehaviour
         State = GameState.End;
         Win = isWin;
         AttachSuccesfullBoxesToShip();
+        ((InPanel)Menu.Instance.InGame).ShowScore(0);
         OnEnd.Invoke();
     }
 
@@ -153,6 +154,7 @@ public class Game : MonoBehaviour
 
             yield return new WaitForSeconds(TIME_BETWEEN_DROPS);
             Score += GetScoreOf(dropped);
+            ((InPanel)Menu.Instance.InGame).ShowScore(Score);
             Select(0);
         }
         StartCoroutine(DeAtttach());
