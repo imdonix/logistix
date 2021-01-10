@@ -27,6 +27,6 @@ app.use('/invite', invite);
 app.use('/premium', premium);
 app.use('/editor', editor)
 app.use('/bug', bug)
-app.get('/privacy', (_, res) => res.sendFile(path.join(__dirname + '/public/privacy.data')))
+app.get('/privacy', (_, res) => res.sendFile(path.join(__dirname + '/public/privacy.data'), { headers: { 'content-type' : 'text/html' } }, err => { res.status(500).send()}))
 
 app.listen(settings.PORT, () => console.log(`API running on (${settings.PORT})`))
