@@ -21,8 +21,8 @@ public class GameManager : Singleton<GameManager>
     [Header("Game Elements")]
     [SerializeField] public Crane Crane;
 
-    [Header("Offline LevelMap")]
-    [SerializeField] public TextAsset OfflineLevelMap;
+    [Header("Offline")]
+    [SerializeField] public TextAsset LevelMapData;
 
     private LevelMap Map;
 
@@ -112,57 +112,57 @@ public class GameManager : Singleton<GameManager>
     #region PRIVATE
 
     private void CreateShip()
-        {
-            Ship = Instantiate(Ships);
-        }
+    {
+        Ship = Instantiate(Ships);
+    }
 
-        private void DownloadLevelMap()
-        {
-            LogisticAPI.Instance.GetLevelMap(
-                res =>
-                {
-                    try
-                    {
-                        Map = LevelMap.Create(res);
-                        ShowLevesLoaded(Map.CountLevels());
-                    }
-                    catch (IllegalLevelMapExeption ex)
-                    { Debug.LogError(ex); };
-                },
-                err => 
-                {
-                    try
-                    {
-                        Map = LevelMap.Create(JsonConvert.DeserializeObject<LevelRowModel[]>(OfflineLevelMap.text));
-                        ShowLevesLoaded(Map.CountLevels());
-                    }
-                    catch (IllegalLevelMapExeption ex)
-                    { Debug.LogError(ex); };
-
-                    Debug.LogError("Levelmap cant be loaded - " + err);
-                }
-                );
-        }
-
-        private void ShowLevesLoaded(int count)
-        {
-            int old = 0;
-            if (PlayerPrefs.HasKey(LEVEL_COUT_KEY))
-                old = PlayerPrefs.GetInt(LEVEL_COUT_KEY);
-
-            if (count > old) 
+    private void DownloadLevelMap()
+    {
+        LogisticAPI.Instance.GetLevelMap(
+            res =>
             {
-                Menu.Instance.Pop("New levels aviable!", $"{count - old} new level available");
-                PlayerPrefs.SetInt(LEVEL_COUT_KEY, count);
+                try
+                {
+                    Map = LevelMap.Create(res);
+                    ShowLevesLoaded(Map.CountLevels());
+                }
+                catch (IllegalLevelMapExeption ex)
+                { Debug.LogError(ex); };
+            },
+            err => 
+            {
+                try
+                {
+                    Map = LevelMap.Create(JsonConvert.DeserializeObject<LevelRowModel[]>(LevelMapData.text));
+                    ShowLevesLoaded(Map.CountLevels());
+                }
+                catch (IllegalLevelMapExeption ex)
+                { Debug.LogError(ex); };
+
+                Debug.LogError("Levelmap cant be loaded - " + err);
             }
-        }
+            );
+    }
 
-        private bool IsRunningEditorMode()
+    private void ShowLevesLoaded(int count)
+    {
+        int old = 0;
+        if (PlayerPrefs.HasKey(LEVEL_COUT_KEY))
+            old = PlayerPrefs.GetInt(LEVEL_COUT_KEY);
+
+        if (count > old) 
         {
-            return Application.platform == RuntimePlatform.WindowsEditor;
+            Menu.Instance.Pop("New levels aviable!", $"{count - old} new level available");
+            PlayerPrefs.SetInt(LEVEL_COUT_KEY, count);
         }
+    }
 
-        #endregion
+    private bool IsRunningEditorMode()
+    {
+        return Application.platform == RuntimePlatform.WindowsEditor;
+    }
+
+    #endregion
 
     #region GAME_EVENTS
 

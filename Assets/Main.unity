@@ -177,6 +177,7 @@ MonoBehaviour:
   Template: {fileID: 7004606972184222548, guid: 22c52f99d07c44e48a6f3da8d628514f,
     type: 3}
   Crane: {fileID: 1297031236}
+  OfflineLevelMap: {fileID: 4900000, guid: 65b1d2cf6ab3fb742bbc74e6906da20a, type: 3}
 --- !u!4 &23456274
 Transform:
   m_ObjectHideFlags: 0
@@ -1512,7 +1513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &165635206
 RectTransform:
   m_ObjectHideFlags: 0
