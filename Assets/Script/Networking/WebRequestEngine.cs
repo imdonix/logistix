@@ -14,7 +14,7 @@ namespace DSoft
         [SerializeField] private bool IsDebug;
         [SerializeField] private string OnlineURI;
         [SerializeField] private string TestURI;
-        [SerializeField] private int Timeout = 10;
+        [SerializeField] private int Timeout = 25;
 
         private int RequestsPendingCount;
         private string ServerURI => IsDebug ? TestURI : OnlineURI;
