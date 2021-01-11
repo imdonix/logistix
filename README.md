@@ -11,13 +11,13 @@ This project provide a simple API for the unity game, these are:
 - Invite player (/invite)
 - Premium activation (/premium)
 
-Have an online level editor (/editor).
+## Level editor ([/editor](https://logistix-api.herokuapp.com/editor)).
 - Level map visualized
 - Editor
 
 ![Editor preview](https://raw.githubusercontent.com/imdonix/logistix/master/doc/editor_preview.png)
 
-Have an online bug report system (/bug)
+## Bug report system ([/bug](https://logistix-api.herokuapp.com/bug))
 - Post
 - Review
 
