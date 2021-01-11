@@ -169,7 +169,8 @@ public class EndPanel : MenuPanel
     private void AddFreeBonus()
     {
         if(GameManager.Instance.GetAddFreeMode())
-            OnSecoundary();
+            if(resoult.IsWin)
+                OnSecoundary();
     }
 
     private void LoadTopList()

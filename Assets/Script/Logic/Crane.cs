@@ -106,7 +106,7 @@ public class Crane : MonoBehaviour
 
     private float GetDistanceFromCrane()
     {
-        return Attached.GetSize().y / DISTANCE_DIVIDER;
+        return Mathf.Clamp(Attached.GetSize().y / DISTANCE_DIVIDER,0.75f,3);
     }
 
     private void SetSpawnPoint()
