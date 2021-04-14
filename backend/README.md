@@ -12,11 +12,11 @@
 - Level map visualized
 - Editor
 
-![Editor preview](https://media.githubusercontent.com/media/imdonix/logistix/master/backend/doc/editor_preview.png)
+![Editor preview](../Documentation/editor_preview.png)
 
 ## Bug report system ([/bug](https://logistix-api.herokuapp.com/bug))
 - Post
 - Review
 
-![Bug preview](https://media.githubusercontent.com/media/imdonix/logistix/master/backend/doc/bug_preview.png)
+![Bug preview](../Documentation/bug_preview.png)
 
