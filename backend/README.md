@@ -1,8 +1,5 @@
-# Logistix | Backend
+##  API
 
-[Logistix](https://play.google.com/store/apps/details?id=com.donix.logistix) is a casual mobile game created with Unity. 
-
-This project provide a simple API for the unity game, these are:
 - Current version  (/version)
 - Current levelmap (/levels)
 - Name set, get (/player)
