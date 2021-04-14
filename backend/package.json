@@ -1,0 +1,38 @@
+{
+  "name": "logistix",
+  "version": "1.0.0",
+  "description": "Backend for Logistix unity game.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "build": "node build.js",
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imdonix/logistix.git"
+  },
+  "keywords": [
+    "unity",
+    "backend"
+  ],
+  "author": "donix",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imdonix/logistix/issues"
+  },
+  "homepage": "https://github.com/imdonix/logistix#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-minify": "^3.6.0",
+    "path": "^0.12.7",
+    "pg": "^8.5.1",
+    "sha1": "^1.1.1",
+    "js-yaml": ">=3.13.1"
+  },
+  "engines": {
+    "node": "12.13.0",
+    "npm": "6.12.0"
+  }
+}
