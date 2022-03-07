@@ -17,16 +17,14 @@ namespace Logistix
         [SerializeField] private bool DebugMode;
         [SerializeField] private bool AddFreeMode;
 
-
-        [Header("Prefhabs")]
-        [SerializeField] private Box[] Boxes;
-
+        [Header("Prefabs")]
         [SerializeField] private Ship Ships;
         [SerializeField] private Game Template;
 
         [Header("Game Elements")]
         [SerializeField] public Crane Crane;
 
+        private Box[] Boxes;
         private LevelMap Map;
         private Ship Ship;
         private Game Current;
@@ -36,6 +34,7 @@ namespace Logistix
 
         public void Start()
         {
+            GatherBoxes();
             DownloadLevelMap();
             CreateShip();
             Menu.Instance.Swich(Menu.Instance.Login);
@@ -102,6 +101,11 @@ namespace Logistix
         #endregion
 
         #region PRIVATE
+
+        private void GatherBoxes()
+        {
+            Boxes = Resources.LoadAll<Box>("Boxes");
+        }
 
         private void CreateShip()
         {
