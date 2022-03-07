@@ -97,7 +97,7 @@ namespace Logistix
 
         public string GetInviteURL()
         {
-            return $"{GetServerURI()}invite/${Player.GetUserID()}";
+            return $"{GetServerURI()}invite/{Player.GetUserID()}";
         }
 
         #endregion

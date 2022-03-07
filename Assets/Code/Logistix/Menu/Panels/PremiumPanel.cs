@@ -35,7 +35,7 @@ namespace UI
         {
             string refer = LogisticAPI.Instance.GetInviteURL();
             NativeShare share = new NativeShare();
-            share.SetTitle("");
+            share.SetTitle("Share the game with your friends!");
             share.SetText($"Play logistix with me: {refer}");
             share.SetUrl(refer);
             share.Share();
