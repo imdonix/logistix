@@ -1,5 +1,5 @@
-﻿using Logistix.Core;
-using Networking.Core;
+﻿using Logistix;
+using Logistix.Core;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,7 +68,7 @@ namespace UI
             LogisticAPI.Instance.RedeemPremium(res =>
             {
                 if (res.Premium)
-                    Player.Instance.Refresh(res);
+                    Player.Refresh(res);
                 else
                     WriteError();
             },

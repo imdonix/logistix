@@ -4,16 +4,14 @@ using Utils;
 
 namespace Logistix.Core
 {
-    public class ShipUpgrade : Singleton<ShipUpgrade>
+    public static class ShipUpgrade
     {
         private const string domain = "upgrade";
-
-        [Header("Start")]
-        [SerializeField] private int Base;
+        private const int Base = 50;
 
         #region PUBLIC
 
-        public int GetUpgradeMax(Upgrade upgrade)
+        public static int GetUpgradeMax(Upgrade upgrade)
         {
             switch (upgrade)
             {
@@ -29,18 +27,18 @@ namespace Logistix.Core
             return 0;
         }
 
-        public int GetUpgrade(Upgrade upgrade)
+        public static int GetUpgrade(Upgrade upgrade)
         {
             return PlayerPrefs.GetInt(GetKey(upgrade), 0);
         }
 
-        public (int, int) GetNextLevelCost(Upgrade upgrade)
+        public static (int, int) GetNextLevelCost(Upgrade upgrade)
         {
             int i = GetUpgrade(upgrade) + 1;
             return GetCost(upgrade, i);
         }
 
-        public (int, int) GetSpent()
+        public static (int, int) GetSpent()
         {
             (int, int) sum = (0, 0);
             foreach (Upgrade up in Enum.GetValues(typeof(Upgrade)))
@@ -56,23 +54,23 @@ namespace Logistix.Core
             return sum;
         }
 
-        public void UpgradeOne(Upgrade upgrade)
+        public static void UpgradeOne(Upgrade upgrade)
         {
             PlayerPrefs.SetInt(GetKey(upgrade), GetUpgrade(upgrade) + 1);
             PlayerPrefs.Save();
         }
 
-        public int GetExtraLife()
+        public static int GetExtraLife()
         {
             return GetUpgrade(Upgrade.Life);
         }
 
-        public int GetExtraMultiplier()
+        public static int GetExtraMultiplier()
         {
             return GetUpgrade(Upgrade.Tower);
         }
 
-        public void ResetAll()
+        public static void ResetAll()
         {
             foreach (Upgrade up in Enum.GetValues(typeof(Upgrade)))
                 PlayerPrefs.DeleteKey(GetKey(up));
@@ -81,7 +79,7 @@ namespace Logistix.Core
 
         #endregion
 
-        private (int, int) GetCost(Upgrade upgrade, int level)
+        private static (int, int) GetCost(Upgrade upgrade, int level)
         {
             switch (upgrade)
             {
@@ -92,7 +90,7 @@ namespace Logistix.Core
             return (0, 0);
         }
 
-        private (int, int) CalculateNextLevelConst(int level, float wood, float iron)
+        private static (int, int) CalculateNextLevelConst(int level, float wood, float iron)
         {
             float expOf(int index) { return Mathf.Pow(index, 1.15f); }
 
@@ -106,7 +104,7 @@ namespace Logistix.Core
             return (Mathf.RoundToInt(res.Item1), Mathf.RoundToInt(res.Item2));
         }
 
-        private string GetKey(Upgrade upgrade)
+        private static string GetKey(Upgrade upgrade)
         {
             switch (upgrade)
             {

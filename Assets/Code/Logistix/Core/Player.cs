@@ -4,42 +4,30 @@ using System;
 using System.Text.RegularExpressions;
 using UI;
 using UnityEngine;
-using Utils;
 
 namespace Logistix.Core
 {
-    public class Player : Singleton<Player>
+    public static class Player
     {
         private const string ID_KEY = "key";
 
-        [Header("View")]
-        [SerializeField] private PlayerModel Model;
-        [SerializeField] private string UserID;
-        [SerializeField] private bool IsLoggedIn;
-
-        #region UNITY
-
-        protected override void Awake()
-        {
-            base.Awake();
-            LoadUser();
-        }
-
-        #endregion
+        private static PlayerModel Model;
+        private static string UserID;
+        private static bool IsLoggedIn;
 
         #region PUBLIC
 
-        public bool IsLogged()
+        public static bool IsLogged()
         {
             return IsLoggedIn;
         }
 
-        public string GetUserID()
+        public static string GetUserID()
         {
             return UserID;
         }
 
-        public PlayerModel GetModel()
+        public static PlayerModel GetModel()
         {
             return Model;
         }
@@ -49,7 +37,7 @@ namespace Logistix.Core
         /// </summary>
         /// <param name="email">email</param>
         /// <param name="error">callback when error</param>
-        public void Load(string email, Action error)
+        public static void Load(string email, Action error)
         {
             PlayerPrefs.SetString(ID_KEY, email);
             LoadUser();
@@ -62,7 +50,7 @@ namespace Logistix.Core
             });
         }
 
-        public void SetName(string name, Action<string> error)
+        public static void SetName(string name, Action<string> error)
         {
             string errorText;
             if (IsNameValid(name, out errorText))
@@ -77,7 +65,7 @@ namespace Logistix.Core
         /// Refresh the player model.
         /// </summary>
         /// <param name="model"></param>
-        public void Refresh(PlayerModel model)
+        public static void Refresh(PlayerModel model)
         {
             if (!ReferenceEquals(Model, null))
                 if (model.Premium && !Model.Premium)
@@ -94,21 +82,21 @@ namespace Logistix.Core
         /// <summary>
         /// Call this when you have no new playermodel to Refresh
         /// </summary>
-        public void Refresh()
+        public static void Refresh()
         {
             Refresh(Model);
         }
 
         #endregion
 
-        private void LoadUser()
+        public static void LoadUser()
         {
             IsLoggedIn = PlayerPrefs.HasKey(ID_KEY);
             if (IsLoggedIn)
                 UserID = PlayerPrefs.GetString(ID_KEY);
         }
 
-        private bool IsNameValid(string name, out string error)
+        private static bool IsNameValid(string name, out string error)
         {
             if (name.Length < 4)
             { error = "short"; return false; }
@@ -120,7 +108,7 @@ namespace Logistix.Core
             return true;
         }
 
-        private void OnPremiumAccountActivated()
+        private static void OnPremiumAccountActivated()
         {
             Menu.Instance.Pop("Premium account", "Congratulation! Your account is premium now.");
         }

@@ -13,9 +13,10 @@ namespace UI
 
         protected override void OnOpen()
         {
+            Player.LoadUser();
             Panel.SetActive(false);
 
-            SingIn.Instance.InvokeLoginScreen(StartRequestingPlayer,
+            SingIn.InvokeLoginScreen(StartRequestingPlayer,
             err =>
             {
                 Debug.LogError($"Login with google is failed: {err}");
@@ -32,11 +33,11 @@ namespace UI
             if (GameManager.Instance.IsDebugMode())
             {
                 string rand = $"{userID}-{Random.Range(int.MinValue, int.MaxValue)}";
-                Player.Instance.Load(rand, OnUnsuccesfull);
+                Player.Load(rand, OnUnsuccesfull);
             }
             else
             {
-                Player.Instance.Load(userID, OnUnsuccesfull);
+                Player.Load(userID, OnUnsuccesfull);
             }
         }
 

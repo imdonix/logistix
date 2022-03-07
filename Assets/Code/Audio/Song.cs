@@ -1,5 +1,8 @@
-﻿public enum Song
-{ 
-    Menu,
-    Game
+﻿namespace Audio
+{
+    public enum Song
+    {
+        Menu,
+        Game
+    }
 }

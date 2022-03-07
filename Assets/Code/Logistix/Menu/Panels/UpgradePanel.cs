@@ -42,11 +42,11 @@ namespace UI
 
         private void Refresh(UpgradeComponent comp, Upgrade upgrade)
         {
-            int level = ShipUpgrade.Instance.GetUpgrade(upgrade);
-            int max = ShipUpgrade.Instance.GetUpgradeMax(upgrade);
+            int level = ShipUpgrade.GetUpgrade(upgrade);
+            int max = ShipUpgrade.GetUpgradeMax(upgrade);
             if (level < max)
             {
-                (int, int) res = ShipUpgrade.Instance.GetNextLevelCost(upgrade);
+                (int, int) res = ShipUpgrade.GetNextLevelCost(upgrade);
                 comp.Set(res.Item1, res.Item2, level, max);
             }
             else
@@ -55,8 +55,8 @@ namespace UI
 
         private void SetBalance()
         {
-            PlayerModel model = Player.Instance.GetModel();
-            (int, int) spent = ShipUpgrade.Instance.GetSpent();
+            PlayerModel model = Player.GetModel();
+            (int, int) spent = ShipUpgrade.GetSpent();
             WoodBalance.text = Util.ToReadableNumber(model.Wood - spent.Item1);
             IronBalance.text = Util.ToReadableNumber(model.Iron - spent.Item2);
         }
@@ -65,7 +65,7 @@ namespace UI
         {
             if (CanUpgrade(upgrade))
             {
-                ShipUpgrade.Instance.UpgradeOne(upgrade);
+                ShipUpgrade.UpgradeOne(upgrade);
                 GameManager.Instance.GetShip().Send();
                 Refresh();
             }
@@ -75,9 +75,9 @@ namespace UI
 
         private bool CanUpgrade(Upgrade upgrade)
         {
-            PlayerModel model = Player.Instance.GetModel();
-            (int, int) spent = ShipUpgrade.Instance.GetSpent();
-            (int, int) price = ShipUpgrade.Instance.GetNextLevelCost(upgrade);
+            PlayerModel model = Player.GetModel();
+            (int, int) spent = ShipUpgrade.GetSpent();
+            (int, int) price = ShipUpgrade.GetNextLevelCost(upgrade);
             return model.Wood - spent.Item1 >= price.Item1 && model.Iron - spent.Item2 >= price.Item2;
         }
 

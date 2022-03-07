@@ -1,6 +1,6 @@
-﻿using Logistix;
+﻿using Audio;
+using Logistix;
 using Logistix.Core;
-using Networking.Core;
 using Networking.Models;
 using Scripts;
 using System.Collections.Generic;
@@ -81,7 +81,7 @@ namespace UI
 
         private void SetUp()
         {
-            FXPlayer.Instance.Play(resoult.IsWin ? FXPlayer.Instance.win : FXPlayer.Instance.lose);
+            SoundPlayer.Instance.Play(resoult.IsWin ? SoundPlayer.Instance.win : SoundPlayer.Instance.lose);
             Primary.text = resoult.IsWin ? "Continue" : "Retry";
             Secoundary.text = resoult.IsWin ? "Continue" : "Retry";
             Status.text = resoult.IsWin ? "You won!" : "You lost!";
@@ -134,7 +134,7 @@ namespace UI
                 if (retry)
                     GameManager.Instance.StartGame(resoult.ID);
                 else
-                    Player.Instance.Refresh(playerModel);
+                    Player.Refresh(playerModel);
 
                 Debug.Log($"Resoult uploaded {resoult}");
             },
@@ -142,7 +142,7 @@ namespace UI
             {
                 Debug.LogError("[Network] " + err);
                 Menu.Instance.Pop("You went offline.", "You can't get reward while you're offline.");
-                Player.Instance.Refresh();
+                Player.Refresh();
             });
         }
 
@@ -167,7 +167,7 @@ namespace UI
 
         private void GenerateRandomMultiplier()
         {
-            randomMultipier = UnityEngine.Random.Range(2, 3 + ShipUpgrade.Instance.GetExtraMultiplier());
+            randomMultipier = UnityEngine.Random.Range(2, 3 + ShipUpgrade.GetExtraMultiplier());
             if (resoult.IsWin)
                 Secoundary.text = $"{randomMultipier}x";
         }
@@ -208,7 +208,7 @@ namespace UI
 
         private void AddResoultToList(List<RecordModel> toplist)
         {
-            var player = Player.Instance.GetModel();
+            var player = Player.GetModel();
             RecordModel model = toplist.Find(r => r.Name.Equals(player.Name));
             if (ReferenceEquals(model, null))
                 toplist.Add(new RecordModel() { Name = player.Name, Premium = player.Premium, Score = resoult.Score });

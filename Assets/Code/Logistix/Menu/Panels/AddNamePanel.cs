@@ -27,7 +27,7 @@ namespace UI
         {
             Button.gameObject.SetActive(false);
 
-            Player.Instance.SetName(NameField.text,
+            Player.SetName(NameField.text,
             error =>
             {
                 Error.text = error;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Audio;
+using UnityEngine;
 
 namespace UI
 {
@@ -13,7 +14,7 @@ namespace UI
             foreach (MenuPanel panel in Overlays)
                 panel.Show();
             gameObject.SetActive(true);
-            FXPlayer.Instance.Play(FXPlayer.Instance.touch);
+            SoundPlayer.Instance.Play(SoundPlayer.Instance.touch);
             OnOpen();
         }
 

@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Utils
 {
-    public class SingIn : Singleton<SingIn>
+    public static class SingIn
     {
-        public void InvokeLoginScreen(Action<string> token, Action<string> error)
+        public static void InvokeLoginScreen(Action<string> token, Action<string> error)
         {
             token.Invoke(SystemInfo.deviceUniqueIdentifier);
         }

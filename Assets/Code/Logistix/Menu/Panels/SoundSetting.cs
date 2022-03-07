@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Audio;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI
@@ -38,7 +39,7 @@ namespace UI
 
         public void OnSoundTouch()
         {
-            FXPlayer.Instance.Toggle();
+            SoundPlayer.Instance.Toggle();
             Set();
         }
 
@@ -48,7 +49,7 @@ namespace UI
         private void Set()
         {
             music.sprite = MusicPlayer.Instance.IsMuted() ? MusicOff : MusicOn;
-            sound.sprite = FXPlayer.Instance.IsMuted() ? SoundOff : SoundOn;
+            sound.sprite = SoundPlayer.Instance.IsMuted() ? SoundOff : SoundOn;
         }
 
     }

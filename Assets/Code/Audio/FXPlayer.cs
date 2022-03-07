@@ -1,15 +1,45 @@
 ﻿using UnityEngine;
+using Utils;
 
-public class FXPlayer : AudioPlayer<FXPlayer>
+namespace Audio
 {
-    [SerializeField] public AudioClip win;
-    [SerializeField] public AudioClip lose;
-    [SerializeField] public AudioClip touch;
-
-    public void Play(AudioClip audio)
+    [RequireComponent(typeof(AudioSource))]
+    public abstract class FXPlayer<T> : Singleton<T>
     {
-        sorce.clip = audio;
-        sorce.Play();
-    }
+        [SerializeField] private string key;
 
+        protected AudioSource sorce;
+
+        #region UNITY
+
+        protected override void Awake()
+        {
+            base.Awake();
+            sorce = GetComponent<AudioSource>();
+            Maintain();
+        }
+
+        #endregion
+
+        #region PUBLIC
+
+        public void Toggle()
+        {
+            PlayerPrefs.SetInt($"audio_{key}", IsMuted() ? 0 : 1);
+            PlayerPrefs.Save();
+            Maintain();
+        }
+
+        public bool IsMuted()
+        {
+            return PlayerPrefs.GetInt($"audio_{key}", 0) > 0;
+        }
+
+        #endregion
+
+        private void Maintain()
+        {
+            sorce.mute = IsMuted();
+        }
+    }
 }

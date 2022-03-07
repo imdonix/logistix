@@ -23,7 +23,7 @@ namespace Logistix.Core
 
         public bool IsDone(int id)
         {
-            return Contain(Player.Instance.GetModel().CompletedLeves, id);
+            return Contain(Player.GetModel().CompletedLeves, id);
         }
 
         public bool IsUnlocked(int id)

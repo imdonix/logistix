@@ -134,10 +134,7 @@ GameObject:
   - component: {fileID: 23456274}
   - component: {fileID: 23456273}
   - component: {fileID: 23456275}
-  - component: {fileID: 23456278}
-  - component: {fileID: 23456277}
   - component: {fileID: 23456276}
-  - component: {fileID: 23456279}
   m_Layer: 0
   m_Name: '[Manager]'
   m_TagString: Untagged
@@ -221,45 +218,6 @@ MonoBehaviour:
   OnlineURI: https://logistix-api.herokuapp.com/
   TestURI: http://localhost/
   Timeout: 25
---- !u!114 &23456277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23456272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 593ef34ab9e9c444eb3455f4d39b2b41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Base: 50
---- !u!114 &23456278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23456272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85a0f41a1f31fd14e98a0999cfa6eaf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &23456279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23456272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d17d8fe276bb08046a339bf0ad3442fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UserID: 
-  IsLoggedIn: 0
 --- !u!1 &28357117
 GameObject:
   m_ObjectHideFlags: 0
@@ -9897,9 +9855,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: OpenBugReport
+      - m_Target: {fileID: 165635207}
+        m_TargetAssemblyTypeName: UI.MainPanel, Assembly-CSharp
+        m_MethodName: OnBugReport
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15322,7 +15280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2132494200
 RectTransform:
   m_ObjectHideFlags: 0

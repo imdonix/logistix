@@ -1,4 +1,6 @@
-﻿using Logistix.Core;
+﻿using Audio;
+using Logistix;
+using Logistix.Core;
 using Networking.Models;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +19,7 @@ namespace UI
 		protected override void OnOpen()
 		{
 			MusicPlayer.Instance.Play(Song.Menu);
-			PlayerModel model = Player.Instance.GetModel();
+			PlayerModel model = Player.GetModel();
 			Name.text = model.Name;
 			Name.color = model.Premium ? Color.yellow : Color.white;
 			LoadResources(model);
@@ -43,13 +45,18 @@ namespace UI
 			Menu.Instance.Swich(Menu.Instance.Upgrade);
 		}
 
+		public void OnBugReport()
+        {
+			LogisticAPI.Instance.OpenBugReport();
+		}
+
 		#endregion
 
 		#region PRIAVTE
 
 		private void LoadResources(PlayerModel model)
 		{
-			(int, int) upgrades = ShipUpgrade.Instance.GetSpent();
+			(int, int) upgrades = ShipUpgrade.GetSpent();
 			Wood.text = Util.ToReadableNumber(model.Wood - upgrades.Item1);
 			Iron.text = Util.ToReadableNumber(model.Iron - upgrades.Item2);
 		}

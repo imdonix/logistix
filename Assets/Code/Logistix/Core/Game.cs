@@ -91,7 +91,7 @@ namespace Logistix.Core
                 Iron = Iron,
                 Wood = Wood,
                 Time = Mathf.RoundToInt(PlayTime),
-                Email = Player.Instance.GetUserID()
+                Email = Player.GetUserID()
             };
         }
 
@@ -107,7 +107,7 @@ namespace Logistix.Core
 
         public (int, int) GetLostAndMax()
         {
-            return (CountLostBoxes(), Mistakes + ShipUpgrade.Instance.GetExtraLife());
+            return (CountLostBoxes(), Mistakes + ShipUpgrade.GetExtraLife());
         }
 
         #endregion
@@ -204,7 +204,7 @@ namespace Logistix.Core
 
         private bool IsGameLost()
         {
-            return CountLostBoxes() > Mistakes + ShipUpgrade.Instance.GetExtraLife();
+            return CountLostBoxes() > Mistakes + ShipUpgrade.GetExtraLife();
         }
 
         private int CountLostBoxes()

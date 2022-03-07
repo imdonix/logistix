@@ -92,7 +92,7 @@ namespace UI
         {
             if (state.Equals(LevelState.Locked))
                 Menu.Instance.Pop("This level is locked", "You need to complete the mission before.");
-            else if (state.Equals(LevelState.Premium) && !Player.Instance.GetModel().Premium)
+            else if (state.Equals(LevelState.Premium) && !Player.GetModel().Premium)
                 Menu.Instance.Pop("This level is locked", "Go the premium tab in the menu to unlock the premium levels.");
             else
                 GameManager.Instance.StartGame(id);
