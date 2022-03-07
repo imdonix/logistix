@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Audio;
 
 namespace RavingBots.Water2D
 {
@@ -36,7 +37,7 @@ namespace RavingBots.Water2D
 			_audioSource.volume = volume;
 			_audioSource.pitch = pitch;
 
-			if(!FXPlayer.Instance.IsMuted())
+			if(!SoundPlayer.Instance.IsMuted())
 				_audioSource.Play();
         }
 

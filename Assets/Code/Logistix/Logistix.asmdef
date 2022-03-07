@@ -1,0 +1,20 @@
+{
+    "name": "Logistix",
+    "rootNamespace": "",
+    "references": [
+        "GUID:80fb89b84019666418e1d06dd1b48d5b",
+        "GUID:114dd83e1940dd241a7976e7e545fcda",
+        "GUID:d4665e38d7ba9cb4291e9877fb0ffb24",
+        "GUID:adf5792741c18ae41b3eb9a72d64e335",
+        "GUID:a8666f70ac9ccd0469b03aa5ee04030d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

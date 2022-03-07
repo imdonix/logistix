@@ -46,6 +46,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3762331153704124805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b88f85e678e3f3469c2494ec31027d3, type: 3}
+  m_Script: {fileID: 11500000, guid: fc615ef074e822043a6fab294d2ac8bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
@@ -137,7 +138,7 @@ MonoBehaviour:
   Towers:
   - {fileID: 21300000, guid: 047037d602df530488b56bbcf0d20876, type: 3}
   - {fileID: 21300000, guid: 749da208cc59edf40b494410cdea8406, type: 3}
-  - {fileID: 21300000, guid: 749da208cc59edf40b494410cdea8406, type: 3}
+  - {fileID: 21300000, guid: 2a7ab71993d826544ba80a33b8b78fcb, type: 3}
   Sides:
   - {fileID: 21300000, guid: a2ecfae64dc16fa4ba111e47948b963a, type: 3}
   - {fileID: 21300000, guid: 80284ac1da3b433459879d99eb8cb366, type: 3}
@@ -267,6 +268,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -291,7 +293,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2a7ab71993d826544ba80a33b8b78fcb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 047037d602df530488b56bbcf0d20876, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -348,6 +350,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -372,7 +375,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 80284ac1da3b433459879d99eb8cb366, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2ecfae64dc16fa4ba111e47948b963a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
