@@ -1,7 +1,5 @@
-﻿using Boo.Lang;
-using System;
-using System.Collections;
-using TMPro;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,7 +46,8 @@ public class Popup : MonoBehaviour
 
     private void Pop()
     {
-        var data = pops.Pop();
+        var data = pops[0];
+        pops.RemoveAt(0);
         locked = true;
         StartCoroutine(Show(data.Item1, data.Item2));
 

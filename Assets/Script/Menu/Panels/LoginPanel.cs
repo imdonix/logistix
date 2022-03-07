@@ -1,5 +1,4 @@
-﻿using Facebook.Unity;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class LoginPanel : MenuPanel
@@ -51,15 +50,5 @@ public class LoginPanel : MenuPanel
     }
 
     #endregion
-
-    public void AfterInitCompletetd()
-    {
-        SingIn.Instance.GetLoginStatus(res =>
-        {
-            Panel.SetActive(res.Failed);
-            if (!res.Failed)
-                StartRequestingPlayer(res.AccessToken.UserId);
-        });
-    }
 
 }

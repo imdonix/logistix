@@ -1,6 +1,4 @@
-﻿using Facebook.Unity;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Newtonsoft.Json;
 
 public class GameManager : Singleton<GameManager>
@@ -90,16 +88,6 @@ public class GameManager : Singleton<GameManager>
         Current = Game.CreateGame(Map.GetLevelByID(id));
         Menu.Instance.Swich(Menu.Instance.InGame);
         Current.StartGame(GameUpdate, GameEnd);   
-    }
-
-    public void StartFacebookShare()
-    {
-        if (FB.IsInitialized)
-            FB.ShareLink(new Uri($"{LogisticAPI.Instance.GetServerURI()}/invite/{Player.Instance.GetModel().Name}"),
-                "Start playing logistix now!",
-                "Can you beat my highscore? Try logistix now!");
-        else
-            throw new Exception("FB not inicialized");
     }
 
     public bool GetAddFreeMode()

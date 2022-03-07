@@ -24,10 +24,6 @@ public class PremiumPanel : MenuPanel
 
     #region UI
 
-    public void OnShareClick()
-    {
-        GameManager.Instance.StartFacebookShare();
-    }
 
     public void OnBackClick()
     {
