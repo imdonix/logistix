@@ -92,7 +92,7 @@ namespace Networking.Core
             req.timeout = Timeout;
             yield return req.SendWebRequest();
 
-            if (req.isNetworkError || req.isHttpError)
+            if (req.result >= UnityWebRequest.Result.ConnectionError)
                 error.Invoke(req.error);
             else
                 response.Invoke(JsonConvert.DeserializeObject<T>(req.downloadHandler.text));

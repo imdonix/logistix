@@ -26,10 +26,19 @@ namespace UI
 
         #region UI
 
-
         public void OnBackClick()
         {
             Back();
+        }
+
+        public void OnShareClick()
+        {
+            string refer = LogisticAPI.Instance.GetInviteURL();
+            NativeShare share = new NativeShare();
+            share.SetTitle("Share the game with your friends!");
+            share.SetText($"Play logistix with me: {refer}");
+            share.SetUrl(refer);
+            share.Share();
         }
 
         #endregion

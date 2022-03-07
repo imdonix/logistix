@@ -95,6 +95,11 @@ namespace Logistix
                 "player", Player.GetUserID()));
         }
 
+        public string GetInviteURL()
+        {
+            return $"{GetServerURI()}invite/{Player.GetUserID()}";
+        }
+
         #endregion
 
         #region PRIVATE

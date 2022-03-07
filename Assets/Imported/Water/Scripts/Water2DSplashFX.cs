@@ -24,7 +24,9 @@ namespace RavingBots.Water2D
 		void Awake()
 		{
 			_audioSource = GetComponent<AudioSource>();
-			_gravityModifier = DropParticles.gravityModifier;
+			ParticleSystem.MainModule module = DropParticles.main;
+			ParticleSystem.MinMaxCurve curve = module.gravityModifier;
+			_gravityModifier = curve.constant;
 		}
 
 		public void Play(float scale, AudioClip sound, float volume, float pitch)
@@ -43,7 +45,8 @@ namespace RavingBots.Water2D
 
 		void PlayDrops(float scale)
 		{
-			DropParticles.gravityModifier = _gravityModifier * scale;
+			ParticleSystem.MainModule module = DropParticles.main;
+			module.gravityModifier = _gravityModifier * scale;
 			DropParticles.Emit(Mathf.RoundToInt(scale * DropCount));
 
 			PrepareTable(DropParticles, ref _drops);
