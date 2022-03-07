@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Utils
 {
@@ -6,7 +7,7 @@ namespace Utils
     {
         public void InvokeLoginScreen(Action<string> token, Action<string> error)
         {
-            token.Invoke("TESTID"); //TODO
+            token.Invoke(SystemInfo.deviceUniqueIdentifier);
         }
 
     }

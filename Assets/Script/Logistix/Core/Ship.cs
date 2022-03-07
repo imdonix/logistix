@@ -84,8 +84,6 @@ namespace Logistix.Core
 
         private void UpdateVisual()
         {
-
-
             Tower.sprite = Towers[Math.Min(Towers.Length - 1, ShipUpgrade.Instance.GetUpgrade(Upgrade.Tower))];
             Side.sprite = Sides[Math.Min(Sides.Length - 1, ShipUpgrade.Instance.GetUpgrade(Upgrade.Life))];
         }

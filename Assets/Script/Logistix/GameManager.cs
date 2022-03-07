@@ -27,11 +27,7 @@ namespace Logistix
         [Header("Game Elements")]
         [SerializeField] public Crane Crane;
 
-        [Header("Offline")]
-        [SerializeField] public TextAsset LevelMapData;
-
         private LevelMap Map;
-
         private Ship Ship;
         private Game Current;
 
@@ -123,21 +119,31 @@ namespace Logistix
                         ShowLevesLoaded(Map.CountLevels());
                     }
                     catch (IllegalLevelMapExeption ex)
-                    { Debug.LogError(ex); };
-                },
-                err =>
-                {
-                    try
                     {
-                        Map = LevelMap.Create(JsonConvert.DeserializeObject<LevelRowModel[]>(LevelMapData.text));
-                        ShowLevesLoaded(Map.CountLevels());
-                    }
-                    catch (IllegalLevelMapExeption ex)
-                    { Debug.LogError(ex); };
-
+                        Debug.LogError(ex);
+                        LoadOfflineMap();
+                    };
+                },
+                err => 
+                {
                     Debug.LogError("Levelmap cant be loaded - " + err);
-                }
-                );
+                    LoadOfflineMap();
+                });
+        }
+
+        private void LoadOfflineMap()
+        {
+            try
+            {
+                TextAsset cache = Resources.Load<TextAsset>("levelmap");
+                Map = LevelMap.Create(JsonConvert.DeserializeObject<LevelRowModel[]>(cache.text));
+                ShowLevesLoaded(Map.CountLevels());
+            }
+            catch (IllegalLevelMapExeption ex)
+            {
+                Debug.LogError(ex); //TODO exit with corrupted game data
+            };
+
         }
 
         private void ShowLevesLoaded(int count)
