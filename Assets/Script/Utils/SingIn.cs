@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-
-public class SingIn : Singleton<SingIn>
+namespace Utils
 {
-    protected override void Awake()
+    public class SingIn : Singleton<SingIn>
     {
-        base.Awake();
+        public void InvokeLoginScreen(Action<string> token, Action<string> error)
+        {
+            token.Invoke("TESTID"); //TODO
+        }
+
     }
-
-    public void InvokeLoginScreen(Action<string> token, Action<string> error)
-    {
-        token.Invoke("TESTID");
-    }
-
-
 }

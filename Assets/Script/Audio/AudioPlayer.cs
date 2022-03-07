@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utils;
 
 [RequireComponent(typeof(AudioSource))]
 public abstract class AudioPlayer<T> : Singleton<T>

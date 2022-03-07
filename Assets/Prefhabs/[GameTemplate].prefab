@@ -40,12 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4781665699860083827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cafbc4fa6ff25b04284bdcb286c957a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bd373b76b72fd2478b0e3301146fa93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  BoxIDs: 0000000001000000010000000000000000000000
+  BoxIDs: 
   Mistakes: 0
-  State: 0
-  Inventory: []
-  Dropped: []

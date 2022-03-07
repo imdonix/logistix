@@ -1,21 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour
+namespace Utils
 {
-    public static T Instance { get; private set; }
-
-    protected virtual void Awake()
+    public class Singleton<T> : MonoBehaviour
     {
-        if (ReferenceEquals(Instance, null)) 
-        {
-            Instance = gameObject.GetComponent<T>();
-            if(ReferenceEquals(transform.parent,null))
-                DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
-    }
+        public static T Instance { get; private set; }
 
+        protected virtual void Awake()
+        {
+            if (ReferenceEquals(Instance, null))
+            {
+                Instance = gameObject.GetComponent<T>();
+                if (ReferenceEquals(transform.parent, null))
+                    DontDestroyOnLoad(gameObject);
+            }
+            else
+                Destroy(gameObject);
+        }
+
+    }
 }
