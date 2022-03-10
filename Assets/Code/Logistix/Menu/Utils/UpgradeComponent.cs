@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Utils;
+using TMPro;
 
 namespace UI
 {
@@ -9,8 +10,8 @@ namespace UI
         [Header("Dependencies")]
         [SerializeField] public Text Wood;
         [SerializeField] public Text Iron;
-        [SerializeField] public Text Status;
-        [SerializeField] public Text Description;
+        [SerializeField] public TMP_Text Status;
+        [SerializeField] public TMP_Text Description;
 
         private Button button;
 

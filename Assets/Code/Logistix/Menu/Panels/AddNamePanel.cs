@@ -1,6 +1,7 @@
 ﻿using Logistix.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace UI
 {
@@ -8,9 +9,14 @@ namespace UI
     {
 
         [Header("Menu Elements")]
-        [SerializeField] private InputField NameField;
+        [SerializeField] private TMP_InputField NameField;
         [SerializeField] private Button Button;
         [SerializeField] private Text Error;
+
+        private void Awake()
+        {
+            NameField.onSelect.AddListener(delegate { OnSelect(); });
+        }
 
         protected override void OnOpen() { }
 
@@ -33,6 +39,14 @@ namespace UI
                 Error.text = error;
                 Button.gameObject.SetActive(true);
             });
+        }
+
+        public void OnSelect()
+        {
+#if DEBUG
+            NameField.Select();
+            TouchScreenKeyboard.Open(NameField.text);
+#endif
         }
 
         #endregion
