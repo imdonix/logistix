@@ -13,6 +13,11 @@ namespace UI
         [SerializeField] private Button Button;
         [SerializeField] private Text Error;
 
+        private void Awake()
+        {
+            NameField.onSelect.AddListener(delegate { OnSelect(); });
+        }
+
         protected override void OnOpen() { }
 
         protected override void OnClose() { }
@@ -34,6 +39,14 @@ namespace UI
                 Error.text = error;
                 Button.gameObject.SetActive(true);
             });
+        }
+
+        public void OnSelect()
+        {
+#if DEBUG
+            NameField.Select();
+            TouchScreenKeyboard.Open(NameField.text);
+#endif
         }
 
         #endregion
