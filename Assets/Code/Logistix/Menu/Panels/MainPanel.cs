@@ -5,15 +5,16 @@ using Networking.Models;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
+using TMPro;
 
 namespace UI
 {
 	public class MainPanel : MenuPanel
 	{
 
-		[SerializeField] private Text Name;
-		[SerializeField] private Text Wood;
-		[SerializeField] private Text Iron;
+		[SerializeField] private TMP_Text Name;
+		[SerializeField] private TMP_Text Wood;
+		[SerializeField] private TMP_Text Iron;
 		[SerializeField] private GameObject PremiumButton;
 
 		protected override void OnOpen()

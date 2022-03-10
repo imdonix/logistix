@@ -1,6 +1,7 @@
 ﻿using Logistix.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace UI
 {
@@ -8,7 +9,7 @@ namespace UI
     {
 
         [Header("Menu Elements")]
-        [SerializeField] private InputField NameField;
+        [SerializeField] private TMP_InputField NameField;
         [SerializeField] private Button Button;
         [SerializeField] private Text Error;
 
