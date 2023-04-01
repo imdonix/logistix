@@ -1,4 +1,5 @@
-﻿using Networking.Models;
+﻿using Audio;
+using Networking.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -154,6 +155,7 @@ namespace Logistix.Core
                 dropped.OnEject();
                 Dropped.Add(dropped);
                 State = GameState.Wait;
+                SoundPlayer.Instance.Play(SoundPlayer.Instance.eject);
 
                 yield return new WaitForSeconds(TIME_BETWEEN_DROPS);
                 Score += GetScoreOf(dropped);
