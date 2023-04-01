@@ -33,7 +33,7 @@ namespace UI
 
         public void OnShareClick()
         {
-            string refer = LogisticAPI.Instance.GetInviteURL();
+            string refer = GameManager.Instance.API.GetInviteURL();
             NativeShare share = new NativeShare();
             share.SetTitle("Share the game with your friends!");
             share.SetText($"Play logistix with me: {refer}");
@@ -51,7 +51,7 @@ namespace UI
             Panel.SetActive(false);
             Resoult.text = "Loading...";
 
-            LogisticAPI.Instance.GetInvites(res =>
+            GameManager.Instance.API.GetInvites(res =>
             {
 
                 Text.text = $"{res.count} of {res.unlocks}";
@@ -74,7 +74,7 @@ namespace UI
         {
             void WriteError() { Resoult.text = "Something went wrong while trying to active your account."; }
             Resoult.text = "Redeem premium in progress...";
-            LogisticAPI.Instance.RedeemPremium(res =>
+            GameManager.Instance.API.RedeemPremium(res =>
             {
                 if (res.Premium)
                     Player.Refresh(res);

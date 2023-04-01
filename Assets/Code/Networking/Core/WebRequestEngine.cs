@@ -8,7 +8,7 @@ using Utils;
 
 namespace Networking.Core
 {
-    public abstract class WebRequestEngine<L> : Singleton<L>, IEngineStatus
+    public abstract class WebRequestEngine<L> : MonoBehaviour, IEngineStatus
     {
         [Header("Properties")]
         [SerializeField] private bool IsDebug;
@@ -21,9 +21,8 @@ namespace Networking.Core
 
         #region UNITY
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
             RequestsPendingCount = 0;
         }
 

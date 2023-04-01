@@ -47,7 +47,7 @@ namespace UI
 
 		public void OnBugReport()
         {
-			LogisticAPI.Instance.OpenBugReport();
+			GameManager.Instance.API.OpenBugReport();
 		}
 
 		#endregion

@@ -29,14 +29,18 @@ namespace Logistix
         private Ship Ship;
         private Game Current;
 
+        public IAPI API { get; internal set; }
+
 
         #region UNITY
 
         public void Start()
         {
-            GatherBoxes();
+            Boxes = Resources.LoadAll<Box>("Boxes");
+            Ship = Instantiate(Ships);
+
             DownloadLevelMap();
-            CreateShip();
+
             Menu.Instance.Swich(Menu.Instance.Login);
         }
 
@@ -102,19 +106,9 @@ namespace Logistix
 
         #region PRIVATE
 
-        private void GatherBoxes()
-        {
-            Boxes = Resources.LoadAll<Box>("Boxes");
-        }
-
-        private void CreateShip()
-        {
-            Ship = Instantiate(Ships);
-        }
-
         private void DownloadLevelMap()
         {
-            LogisticAPI.Instance.GetLevelMap(
+            GameManager.Instance.API.GetLevelMap(
                 res =>
                 {
                     try
@@ -130,7 +124,7 @@ namespace Logistix
                 },
                 err => 
                 {
-                    Debug.LogError("Levelmap cant be loaded - " + err);
+                    Debug.LogWarning("Levelmap cant be loaded - " + err);
                     LoadOfflineMap();
                 });
         }

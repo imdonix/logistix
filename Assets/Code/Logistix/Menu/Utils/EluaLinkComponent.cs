@@ -10,7 +10,7 @@ namespace UI
 
         public void OnClick()
         {
-            Application.OpenURL(Util.CreateURLEndcoded(LogisticAPI.Instance.GetServerURI() + EULA_ENDPOINT, new string[] { }));
+            Application.OpenURL(Util.CreateURLEndcoded(GameManager.Instance.API.GetServerURI() + EULA_ENDPOINT, new string[] { }));
         }
 
     }

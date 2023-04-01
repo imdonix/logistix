@@ -128,7 +128,7 @@ namespace UI
         private void UploadLevel(bool retry)
         {
             ButtonPanel.SetActive(false);
-            LogisticAPI.Instance.UploadLevelResoult(resoult,
+            GameManager.Instance.API.UploadLevelResoult(resoult,
             playerModel =>
             {
                 if (retry)
@@ -183,7 +183,7 @@ namespace UI
         {
             ToplistPanel.SetActive(true);
             ToplistLoading.SetActive(true);
-            LogisticAPI.Instance.GetToplist(resoult.ID,
+            GameManager.Instance.API.GetToplist(resoult.ID,
                 toplist =>
                 {
                     if (resoult.IsWin)

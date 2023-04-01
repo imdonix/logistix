@@ -42,7 +42,7 @@ namespace Logistix.Core
             PlayerPrefs.SetString(ID_KEY, email);
             LoadUser();
 
-            LogisticAPI.Instance.GetPlayer(model => Refresh(model),
+            GameManager.Instance.API.GetPlayer(model => Refresh(model),
             err =>
             {
                 Debug.LogError(err);
@@ -54,7 +54,7 @@ namespace Logistix.Core
         {
             string errorText;
             if (IsNameValid(name, out errorText))
-                LogisticAPI.Instance.SetName(name,
+                GameManager.Instance.API.SetName(name,
                 model => Refresh(model),
                 err => error.Invoke(err));
             else

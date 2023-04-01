@@ -10,7 +10,7 @@ using Utils;
 
 namespace Logistix
 {
-    public class LogisticAPI : WebRequestEngine<LogisticAPI>
+    public class LogisticAPI : WebRequestEngine<LogisticAPI>, IAPI
     {
         #region GETS
 
