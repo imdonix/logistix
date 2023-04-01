@@ -60,6 +60,8 @@ namespace Logistix
 
         public string GetServerURI();
 
+        public string GetEULA();
+
         #endregion
 
     }

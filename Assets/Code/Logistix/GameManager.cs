@@ -14,6 +14,7 @@ namespace Logistix
         private const string LEVEL_COUT_KEY = "levelcount";
 
         [Header("Settings")]
+        [SerializeField] private bool IsOfflineMode;
         [SerializeField] private bool DebugMode;
         [SerializeField] private bool AddFreeMode;
 
@@ -29,7 +30,7 @@ namespace Logistix
         private Ship Ship;
         private Game Current;
 
-        public IAPI API { get; internal set; }
+        public IAPI API => IsOfflineMode ? (IAPI) GetComponent<OfflineAPI>() : (IAPI) GetComponent<LogisticAPI>();
 
 
         #region UNITY
@@ -102,6 +103,12 @@ namespace Logistix
             return AddFreeMode;
         }
 
+        public static LevelRowModel[] LoadOfflineMap()
+        {
+            TextAsset cache = Resources.Load<TextAsset>("levelmap");
+            return JsonConvert.DeserializeObject<LevelRowModel[]>(cache.text);
+        }
+
         #endregion
 
         #region PRIVATE
@@ -116,32 +123,21 @@ namespace Logistix
                         Map = LevelMap.Create(res);
                         ShowLevesLoaded(Map.CountLevels());
                     }
-                    catch (IllegalLevelMapExeption ex)
+                    catch (IllegalLevelMapExeption e)
                     {
-                        Debug.LogError(ex);
-                        LoadOfflineMap();
+                        Debug.LogError($"Levelmap can't be parsed: {e}");
+
+                        Map = LevelMap.Create(LoadOfflineMap());
+                        ShowLevesLoaded(Map.CountLevels());
                     };
                 },
                 err => 
                 {
                     Debug.LogWarning("Levelmap cant be loaded - " + err);
-                    LoadOfflineMap();
+
+                    Map = LevelMap.Create(LoadOfflineMap());
+                    ShowLevesLoaded(Map.CountLevels());
                 });
-        }
-
-        private void LoadOfflineMap()
-        {
-            try
-            {
-                TextAsset cache = Resources.Load<TextAsset>("levelmap");
-                Map = LevelMap.Create(JsonConvert.DeserializeObject<LevelRowModel[]>(cache.text));
-                ShowLevesLoaded(Map.CountLevels());
-            }
-            catch (IllegalLevelMapExeption ex)
-            {
-                Debug.LogError(ex); //TODO exit with corrupted game data
-            };
-
         }
 
         private void ShowLevesLoaded(int count)

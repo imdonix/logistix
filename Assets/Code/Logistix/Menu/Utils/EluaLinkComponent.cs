@@ -6,11 +6,9 @@ namespace UI
 {
     public class EluaLinkComponent : MonoBehaviour
     {
-        private const string EULA_ENDPOINT = "privacy";
-
         public void OnClick()
         {
-            Application.OpenURL(Util.CreateURLEndcoded(GameManager.Instance.API.GetServerURI() + EULA_ENDPOINT, new string[] { }));
+            Application.OpenURL(Util.CreateURLEndcoded(GameManager.Instance.API.GetEULA(), new string[] { }));
         }
 
     }

@@ -11,8 +11,9 @@ namespace Audio
         private Song state;
         private int times;
 
-        protected void Start()
+        protected override void Awake()
         {
+            base.Awake();
             times = 0;
         }
 

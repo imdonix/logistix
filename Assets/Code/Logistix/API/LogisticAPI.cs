@@ -111,6 +111,11 @@ namespace Logistix
             return obj;
         }
 
+        public string GetEULA()
+        {
+            return $"{GetServerURI()}privacy";
+        }
+
         #endregion
 
     }

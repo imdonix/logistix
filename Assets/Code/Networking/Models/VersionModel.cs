@@ -7,6 +7,11 @@ namespace Networking.Models
         [JsonProperty("api")] public string Api;
         [JsonProperty("client")] public string Client;
 
+        public VersionModel(string api, string client)
+        {
+            Api = api;
+            Client = client;
+        }
 
         public override string ToString()
         {
