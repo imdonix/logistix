@@ -1,8 +1,12 @@
 # Logistix
 
-Logistix is a casual puzzle mobile game created with Unity3D.
+Logistix is a casual puzzle mobile game.
 
-Play the game:
+## [Game](https://github.com/imdonix/logistix/tree/master/Assets)
+
+The game is created with `Unity`.
+
+You can play the game here:
 
 - [Google Play](https://play.google.com/store/apps/details?id=com.donix.logistix)
 - [APK](https://github.com/imdonix/logistix/releases)
