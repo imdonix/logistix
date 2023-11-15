@@ -16,16 +16,6 @@ CREATE TABLE invites
     date date
 );
 
-CREATE TABLE users
-(
-    completed text,
-    email text PRIMARY KEY,
-    name text,
-    iron integer DEFAULT 0,
-    wood integer DEFAULT 0,
-    premium boolean DEFAULT false,
-);
-
 CREATE TABLE levels
 (
     version bigint NOT NULL,

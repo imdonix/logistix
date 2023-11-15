@@ -1,48 +1,87 @@
+import { DataTypes, Model, Sequelize } from "sequelize";
 import { Database } from "sqlite3";
 
 const db = new Database('logistix-db')
+const sequelize = new Sequelize('sqlite:dobabDB', {
+    logging: false
+});
 
 
-interface ParameterizedSQL
-{
-    text : string,
-    values? : Array<string>
+CREATE TABLE bugs
+(
+    id bigint NOT NULL DEFAULT ,
+    bug text,
+    player text,
+    device text,
+    ram text,
+    fixed boolean DEFAULT false,
+    date date NOT NULL DEFAULT now(),
+)
+
+export interface UserModel {
+    email: string
+    name: string
+    completed : string
+    iron : number
+    wood : number
+    premium : boolean
 }
 
-export function querySQL(query : ParameterizedSQL, callback : (rows : Array<any>) => void)
+export interface BugModel {
+    id : number,
+    bug : string
+    player : string
+    device : string
+    ram : string
+}
+
+
+export class User extends Model<UserModel>
 {
+    declare email : string
+    declare name : string
+    declare completed : string
+    declare iron : number
+    declare wood : number
+    declare premium : boolean
+}
 
-    function dumyParamInjection(query : ParameterizedSQL) : string // SQL injection can be executed
-    {
-        let copy = query.text
-
-        if(query.values)
-        {
-            for (const i in query.values)
-            {
-                copy = copy.replace(`${i + 1}`, query.values[i])
-            }
-    
-            console.log(`converted: ${query.text} => ${copy}`)
-        }
-
-        return copy
+User.init({
+    email : {
+        type : DataTypes.STRING,
+        primaryKey : true
+    },
+    name : {
+        type : DataTypes.STRING,
+    },
+    completed : {
+        type : DataTypes.STRING,
+    },
+    iron : {
+        type : DataTypes.INTEGER,
+        allowNull : true        
+    },
+    wood : {
+        type : DataTypes.INTEGER,
+        defaultValue : 0
+    },
+    premium : {
+        type : DataTypes.BOOLEAN,
+        defaultValue : 0
     }
+},{
+    sequelize
+})
 
-
-    db.all(dumyParamInjection(query), (err, rows) => {
-        if(err)
-        {
-            console.error(err)
-        }
-        else
-        {
-            callback(rows)
-        }
-    })
-
-}
     
+
+
+
+
+
+
+
+
 export const findToplistSQL = (id : string) =>
 {
     return {

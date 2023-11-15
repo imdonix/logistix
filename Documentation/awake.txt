@@ -1,0 +1,6 @@
+- Refactor UI with Modern UI pack
+- Refactor the backend
+	- Rework the premium system
+	- Remove bug reporting
+	- Rewrite backend from js to ts
+- Create a new gameplay loop to make the game more "reactive"
