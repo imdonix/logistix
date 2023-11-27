@@ -1,38 +1,25 @@
 import { Router } from "express";
-import { findSQL, querySQL, updatePlayerStatSQL, uploadResultSQL } from "../db/database";
+import { findUser, updateUserStat, uploadResult } from "../database";
 
 export const resultRouter = Router()
 
 
-resultRouter.post('/', function (req, res) 
+resultRouter.post('/', async function (req, res) 
 {
-    var mail = req.body.email;
-    var resoult = JSON.parse(req.body.resoult);
+    const mail = req.body.email;
+    const result = JSON.parse(req.body.resoult);
 
-    if(resoult.iswin)
+    if(result.iswin)
     {
-        querySQL(updatePlayerStatSQL(mail, resoult.mapid, resoult.iron, resoult.wood), 
-        (rows) => 
-        {
-            console.log("[Resoult] Player updated: " + mail)
-            sendPlayeBack(mail, res)
-        })
+        await updateUserStat(mail, result.mapid, result.iron, result.wood), 
+        console.log(`[Resoult] '${mail}' finished -> ${result.mapid} (${result.iron}|${result.wood})`)
+        res.send(await findUser(mail))
     }
     else
     {
-        sendPlayeBack(mail, res)
+        console.log(`[Resoult] '${mail}' failed -> ${result.mapid}`)
+        res.send(await findUser(mail))
     }
 
-    querySQL(uploadResultSQL(mail, resoult.mapid, resoult.iswin, resoult.score, resoult.lostboxes, resoult.time, resoult.usedmultiplies), 
-    (rows) => console.log("[Resoult] New resoult added: " + mail + " | " + resoult.mapid))
+    await uploadResult(mail, result.mapid, result.iswin, result.score, result.lostboxes, result.time, result.usedmultiplies)
 })
-
-
-function sendPlayeBack(mail : string, res : any)
-{
-    querySQL(findSQL(mail), (rows) => {
-
-        // TODO: Conversion may be needed
-        res.send(rows[0])
-    })
-}

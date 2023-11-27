@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { countPlayerInvitesSQL, findSQL, makePremiumSQL, querySQL } from "../db/database";
+import { countPlayerInvitesSQL, findSQL, makePremiumSQL, querySQL } from "../database";
 import { PREMIUM_UNLOCK } from "../settings";
 
 export const premiumRouter = Router()

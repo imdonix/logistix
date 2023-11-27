@@ -65,7 +65,7 @@ namespace UI
 
         private void ShowDepFor(LevelUIComponent level, int row)
         {
-            int[] deps = level.GetDeps();
+            string[] deps = level.GetDeps();
             for (int i = 0; i < deps.Length; i++)
             {
                 Vector2 delta = (Vector2.up * 20);
@@ -78,7 +78,7 @@ namespace UI
             }
         }
 
-        private Vector2 FindLoc(int id, int row)
+        private Vector2 FindLoc(string id, int row)
         {
             foreach (var level in rows[row].Levels)
                 if (level.GetID() == id)

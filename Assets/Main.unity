@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acdb2f3be6188a45a6a2bd500b5da02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOfflineMode: 1
+  IsOfflineMode: 0
   DebugMode: 0
   AddFreeMode: 1
   Ships: {fileID: 6312838015407232147, guid: 211d7b14903d1244481cb2533146939a, type: 3}
@@ -200,9 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42daaebfe36bfbb43979c5a82e2cb2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDebug: 0
+  IsDebug: 1
   OnlineURI: https://logistix-api.herokuapp.com/
-  TestURI: http://localhost/
+  TestURI: http://localhost:3000/
   Timeout: 25
 --- !u!114 &23456277
 MonoBehaviour:

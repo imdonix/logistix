@@ -1,17 +1,14 @@
 import { Router } from "express";
-import { findToplistSQL, querySQL } from "../db/database";
+import { toplist } from "../database";
 
 export const toplistRouter = Router()
 
-toplistRouter.get('/:mapID', function (req, res) 
+toplistRouter.get('/:mapID', async function (req, res) 
 {
-    var id = req.params.mapID;
+    const mapid = req.params.mapID;
 
-    querySQL(findToplistSQL(id), (toplist) =>
-    {
-        console.log(`[Toplist] requested (${id}) [${toplist.length}]`)
-        
-        // TODO: Conversion may be needed
-        res.send(toplist)
-    })
+    console.log(`[Toplist] requested (${mapid})`)
+    const list = await toplist(mapid)
+    res.send(list)
+    
 })

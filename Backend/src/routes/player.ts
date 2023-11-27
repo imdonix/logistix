@@ -1,34 +1,23 @@
 import { Router } from "express";
-import { constructSQL, findSQL, querySQL } from "../db/database";
+import { createUser, findUser } from "../database";
 
 
 export const playerRouter = Router()
 
-playerRouter.post('/', (req, res) =>
+playerRouter.post('/', async (req, res) =>
 {
-    var mail = req.body.email;
+    const mail = req.body.email;
 
-    querySQL(findSQL(mail), (rows) =>
+    const player = await findUser(mail)
+    if(player)
     {
-
-        // TODO: Conversion may be needed
-        if(rows.length > 0)
-        {
-            console.log("[Player] requested: " + mail);
-
-            // TODO: Conversion may be needed
-            res.send(rows[0]);
-        }
-        else
-        {
-            console.log("[Player] New inicialized: " + mail);
-
-
-            querySQL(constructSQL(mail), (rows) => 
-            {
-                // TODO: Conversion may be needed
-                res.send(rows[0]);
-            });
-        }
-    });
+        console.log(`[Player] '${mail}' returned.`)
+        res.send(player)
+    }
+    else
+    {
+        console.log(`[Player] '${mail}' inicialized.`);
+        const fresh = await createUser(mail)
+        res.send(fresh)
+    }
 })

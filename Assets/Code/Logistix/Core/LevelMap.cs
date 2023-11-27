@@ -21,14 +21,14 @@ namespace Logistix.Core
             return c;
         }
 
-        public bool IsDone(int id)
+        public bool IsDone(string id)
         {
             return Contain(Player.GetModel().CompletedLeves, id);
         }
 
-        public bool IsUnlocked(int id)
+        public bool IsUnlocked(string id)
         {
-            (int, int[]) level = FindRowAndDependencyByID(id);
+            (int, string[]) level = FindRowAndDependencyByID(id);
             if (Rows.Length < 2) return true;
             if (level.Item1 < 1) return true; // First row alway unlocked
 
@@ -43,7 +43,7 @@ namespace Logistix.Core
             return Rows.Length;
         }
 
-        public LevelModel GetLevelByID(int id)
+        public LevelModel GetLevelByID(string id)
         {
             for (int i = 0; i < Rows.Length; i++)
                 for (int j = 0; j < Rows[i].Levels.Length; j++)
@@ -56,7 +56,7 @@ namespace Logistix.Core
 
         #region PRIVATE
 
-        private (int, int[]) FindRowAndDependencyByID(int id)
+        private (int, string[]) FindRowAndDependencyByID(string id)
         {
             for (int i = 0; i < Rows.Length; i++)
                 for (int j = 0; j < Rows[i].Levels.Length; j++)
@@ -82,15 +82,18 @@ namespace Logistix.Core
             return map;
         }
 
-        private static bool Contain(int[] arr, int item)
+        private static bool Contain(string arr, string item)
         {
-            if (arr == null) return false;
+            string[] splitted = arr.Split('|');
+            foreach (string map in splitted)
+            {
+                if(map.Equals(item))
+                {
+                    return true;
+                }
+            }
 
-            int i = 0;
-            while (i < arr.Length && arr[i] != item)
-                i++;
-
-            return i < arr.Length;
+            return false;
         }
 
         #endregion

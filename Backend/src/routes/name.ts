@@ -1,22 +1,15 @@
 import { Router } from "express"
-import { querySQL, renameSQL } from "../db/database"
+import { renameUser } from "../database"
 
 export const nameRouter = Router()
 
 
-nameRouter.post('/', function (req, res) 
+nameRouter.post('/', async function (req, res) 
 {
-    var name = req.body.name
-    var email = req.body.email
+    const name = req.body.name
+    const mail = req.body.email
 
-    querySQL(renameSQL(email,name), 
-    (rows) =>
-    { 
-        console.log("[Name] change: " + email + " -> " + name)
-
-        // TODO: Conversion may be needed
-        res.send(rows[0]) 
-    }
-    )
-
+    const updated = await renameUser(mail, name) 
+    console.log(`[Player] '${mail}' given name '${name}'`)
+    res.send(updated) 
 })

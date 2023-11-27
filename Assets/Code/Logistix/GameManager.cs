@@ -91,7 +91,7 @@ namespace Logistix
             return Ships;
         }
 
-        public void StartGame(int id)
+        public void StartGame(string id)
         {
             Current = Game.CreateGame(Map.GetLevelByID(id));
             Menu.Instance.Swich(Menu.Instance.InGame);

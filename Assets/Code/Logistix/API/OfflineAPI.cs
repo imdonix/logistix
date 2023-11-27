@@ -64,7 +64,7 @@ namespace Logistix
         }
 
         public void GetToplist(
-            int id,
+            string id,
             Action<List<RecordModel>> response,
             Action<string> error)
         {
@@ -149,42 +149,26 @@ namespace Logistix
             return model;
         }
 
-        private int[] ReadLevelMemory()
+        private string ReadLevelMemory()
         {
-            string[] tmp = PlayerPrefs.HasKey(KEY_LVL) ? PlayerPrefs.GetString(KEY_LVL).Split(' ') : new string[0];
-            int[] res = new int[tmp.Length];
-
-            for (int i = 0; i < tmp.Length; i++)
-            {
-                res[i] = int.Parse(tmp[i]);
-            }
-
-            return res;
+            return PlayerPrefs.HasKey(KEY_LVL) ? PlayerPrefs.GetString(KEY_LVL) : string.Empty;
         }
 
-        private void AppendLevelMemory(int level)
+        private void AppendLevelMemory(string level)
         {
-            int[] old = ReadLevelMemory();
-
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < old.Length; i++)
-            {
-                builder.Append($"{old[i]} ");
-            }
-            builder.Append(level);
-
-            PlayerPrefs.SetString(KEY_LVL, builder.ToString());
+            string old = ReadLevelMemory();
+            PlayerPrefs.SetString(KEY_LVL, $"{old}|{level}");
         }
 
-        private List<RecordModel> GetToplist(int map)
+        private List<RecordModel> GetToplist(string map)
         {
             List<RecordModel> res = new List<RecordModel>();
-            List<(int, string, int)> records = new List<(int, string, int)>();
+            List<(string, string, int)> records = new List<(string, string, int)>();
 
             string[] tmp = PlayerPrefs.HasKey(KEY_TOP) ? PlayerPrefs.GetString(KEY_TOP).Split(' ') : new string[0];
             for (int i = 0; i < tmp.Length; i += 3)
             {
-                records.Add((int.Parse(tmp[i]), tmp[i + 1], int.Parse(tmp[i + 2])));
+                records.Add((tmp[i], tmp[i + 1], int.Parse(tmp[i + 2])));
             }
 
             foreach (var rec in records)
@@ -198,9 +182,9 @@ namespace Logistix
             return res;
         }
 
-        private void AppendRecordMemory(int map, int score)
+        private void AppendRecordMemory(string map, int score)
         {
-            string[] old = PlayerPrefs.HasKey(KEY_TOP) ? PlayerPrefs.GetString(KEY_TOP).Split(' ') : new string[0];
+            string[] old = PlayerPrefs.HasKey(KEY_TOP) ? PlayerPrefs.GetString(KEY_TOP).Split('|') : new string[0];
 
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < old.Length; i++)

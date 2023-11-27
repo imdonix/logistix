@@ -5,8 +5,8 @@ namespace Networking.Models
 {
     public class LevelModel
     {
-        [JsonProperty("id")] public int ID;
-        [JsonProperty("unlocks")] public int[] Unlocks;
+        [JsonProperty("id")] public string ID;
+        [JsonProperty("unlocks")] public string[] Unlocks;
         [JsonProperty("name")] public string Name;
         [JsonProperty("boxes")] public int[] BoxIDs;
         [JsonProperty("maxlost")] public int MaxLost;

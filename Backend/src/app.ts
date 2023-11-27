@@ -1,4 +1,3 @@
-import bodyParser from "body-parser"
 import express, { json } from "express"
 import { versionRouter } from "./routes/version"
 import { levelRouter } from "./routes/level"
@@ -10,6 +9,8 @@ import { inviteRouter } from "./routes/invite"
 import { premiumRouter } from "./routes/premium"
 import { bugRouter } from "./routes/bug"
 import { PORT } from "./settings"
+import { initdb } from "./database"
+
 
 const app = express()
 app.use(json())
@@ -24,7 +25,6 @@ app.use('/toplist', toplistRouter)
 app.use('/invite', inviteRouter);
 app.use('/premium', premiumRouter);
 app.use('/bug', bugRouter)
-app.use(express.static('public', { extensions : ['html'] }))
+app.use(express.static('public', { extensions : ['html', 'js'] }))
 
-
-app.listen(PORT, () => console.log(`Logistix API started. (http://localhost:${PORT}) `))
+initdb().then(() => app.listen(PORT, () => console.log(`Logistix API started. (http://localhost:${PORT}) `)))

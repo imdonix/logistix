@@ -20,7 +20,7 @@ namespace Logistix.Core
         private const float SCORE_MAX = 3f;
 
         [Header("Data")]
-        [SerializeField] private int ID;
+        [SerializeField] private string ID;
         [SerializeField] private int[] BoxIDs;
         [SerializeField] private int Mistakes;
 

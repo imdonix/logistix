@@ -19,8 +19,8 @@ namespace UI
 
         private DiamondGraph Image;
         private LevelMap map;
-        private int id;
-        private int[] dep;
+        private string id;
+        private string[] dep;
 
         private void Awake()
         {
@@ -30,12 +30,12 @@ namespace UI
             SetAlpha();
         }
 
-        public int GetID()
+        public string GetID()
         {
             return id;
         }
 
-        public int[] GetDeps()
+        public string[] GetDeps()
         {
             return dep;
         }

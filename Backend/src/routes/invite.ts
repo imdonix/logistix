@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { INVITE_DESC, INVITE_TITLE, PLAYSTORE_IMG, PLAYSTORE_URL, PREMIUM_UNLOCK } from "../settings";
-import { addReferSQL, countPlayerInvitesSQL, querySQL } from "../db/database";
+import { addReferSQL, countPlayerInvitesSQL, querySQL } from "../database";
 
 export const inviteRouter = Router()
 

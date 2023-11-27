@@ -5,14 +5,14 @@ namespace Logistix.Utils
 {
     public class IllegalLevelMapExeption : Exception
     {
-        private int ID;
+        private string ID;
 
-        public IllegalLevelMapExeption(int iD)
+        public IllegalLevelMapExeption(string iD)
         {
             ID = iD;
         }
 
-        public int GetInvalidID()
+        public string GetInvalidID()
         {
             return ID;
         }

@@ -6,7 +6,7 @@ namespace Networking.Models
     public class ResoultModel
     {
 
-        [JsonProperty("mapid")] public int ID;
+        [JsonProperty("mapid")] public string ID;
         [JsonProperty("iswin")] public bool IsWin;
         [JsonProperty("score")] public int Score;
         [JsonProperty("lostboxes")] public int LostBoxes;

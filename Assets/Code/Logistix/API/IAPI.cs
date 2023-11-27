@@ -22,7 +22,7 @@ namespace Logistix
             Action<string> error);
 
         public void GetToplist(
-            int id,
+            string id,
             Action<List<RecordModel>> response,
             Action<string> error);
 

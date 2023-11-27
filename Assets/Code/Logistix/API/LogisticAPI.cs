@@ -36,7 +36,7 @@ namespace Logistix
         }
 
         public void GetToplist(
-            int id,
+            string id,
             Action<List<RecordModel>> response,
             Action<string> error)
         {
